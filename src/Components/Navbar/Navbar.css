@@ -1,0 +1,72 @@
+.navbar{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:linear-gradient(to top, var(--dark), var(--primary));
+    padding:60px 30px;
+}
+
+.navbar > ul{
+    width:100%;
+    display:flex;
+    list-style: none;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.navbar > ul > li > h1{
+    color:var(--white);
+    text-align:left;
+    font-size:1.5em;
+    font-weight:bold;
+    display:inline-block;
+    position: relative;
+    top:-2px;
+}
+
+.navbar > ul > li > i{
+    color:#fff;
+    display:inline-block;
+    position: fixed;
+    top:20px;
+    right:16px;
+}
+
+.navbar > ul > li{
+    text-align:left;
+}
+
+.navbar > ul > li > p{
+    font-size:0.9em;
+    color:var(--white);
+    width:100%;
+}
+
+.navbar > #searchBox{
+    position: relative;
+}
+
+.navbar > #searchBox > input{
+    margin-top:20px;
+    outline:none;
+    border:none;
+    box-shadow: none;
+    font-size:1.2em;
+    padding:10px 20px;
+    font-weight:450;
+    color:var(--gray);
+    border-radius:100px;
+    width:100%;
+    box-shadow:0 10px 10px rgba(0,0,0,.1);
+}
+
+.navbar > #searchBox > label{
+    position: absolute;
+    top:20px;
+    right:10px;
+    color:var(--primary);
+    padding:5px;
+    font-size:2em;
+    margin:0;
+}
