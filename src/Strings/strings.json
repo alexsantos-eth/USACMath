@@ -1,7 +1,21 @@
 {
-    "navbar":{
+    "navbar": {
         "title": "Buscador USACMath",
-        "text": "Bienvenido al buscador del departamento de matematica, aqui puedes buscar parciales, claves, proyectos de cualquier curso del departamento.",
+        "text": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, etc de cualquier curso del area matemática y profesional con todos los documentos más recientes publicados.",
         "search": "Buscar archivos"
+    },
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos",
+    "files": {
+        "shareText": "Te comparto este archivo desde el buscador USACMath",
+        "share": "Copiado al portapapeles"
+    },
+    "toast": {
+        "text_1": "De nuevo en línea",
+        "text_2": "Sin conexión a internet"
+    },
+    "rights": {
+        "text_1": "OpenSource MIT LICENSE",
+        "text_2": "Alex Santos ® 2020"
     }
 }

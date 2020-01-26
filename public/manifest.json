@@ -1,6 +1,6 @@
 {
-  "short_name": "Dep. Mate",
-  "name": "Departamento de matematica",
+  "short_name": "USACMath",
+  "name": "Departamento de Matemática",
   "icons": [
     {
       "src": "./images/logo.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#2196f3",
+  "theme_color": "#607d8b",
   "background_color": "#ffffff"
 }

@@ -1,0 +1,19 @@
+footer {
+  background: #555;
+  color: var(--white);
+}
+
+footer>#fContent {
+  padding: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+footer>#fContent>span {
+  font-size: 0.7em;
+}
+
+footer>#fContent>h1 {
+  font-size: 1.2em;
+}

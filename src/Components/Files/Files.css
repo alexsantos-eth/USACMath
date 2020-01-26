@@ -1,0 +1,184 @@
+@keyframes op {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#filecontainer {
+    padding: 20px 20px 0 20px;
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    opacity: 1;
+    animation: op 0.3s ease-in-out 1;
+}
+
+.file {
+    background: var(--white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    margin-bottom: 30px;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.file>.fileHead {
+    padding-top: 20px;
+}
+
+.file>.fileHead>h1 {
+    font-size: 1.3em;
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, .8);
+}
+
+.file>.fileHead>p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, .6);
+}
+
+.file>.fileMiddle {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.file>.fileMiddle>ul {
+    list-style: none;
+    padding: 10px 0 20px 0;
+    font-size: 0.8em;
+    display: flex;
+}
+
+.file>.fileMiddle>ul>li {
+    margin-right: 20px;
+}
+
+.file>.fileMiddle>ul>li>i {
+    font-style: normal;
+    margin-right: 5px;
+    color: rgba(0, 0, 0, .55);
+    font-weight: 450;
+}
+
+.file>.fileMiddle>ul>li>span {
+    color: rgba(0, 0, 0, .4);
+    display: block;
+    text-transform: capitalize;
+}
+
+.file>.fileBody {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.file>.fileBody>.actions {
+    position: relative;
+    z-index: 5;
+}
+
+.action {
+    appearance: none;
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: none;
+}
+
+.action>i, .action>label {
+    position: relative;
+    margin-top: 3px;
+    color: rgba(0, 0, 0, .7);
+}
+
+.file>.prevBtn:checked~.preview {
+    transition: opacity 0.3s ease-in-out, transform 0s linear 0s;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.file>.prevBtn {
+    display: none;
+}
+
+.file>.fileBody>a {
+    text-decoration: none;
+    position: relative;
+    color: var(--white);
+    font-size: 0.9em;
+    padding: 15px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.file>.fileBody>a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: var(--buttons);
+}
+
+.file>.fileBody>a>i {
+    position: relative;
+    margin-top: -10px;
+    top: 5.5px;
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: var(--gray-light);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
+}
+
+.preview>.closePrev {
+    color: var(--white);
+    border-radius: 0 0 100% 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--primary);
+    padding: 10px 25px 25px 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+.preview>.closePrev::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+}
+
+@media screen and (min-width:720px) {
+    #filecontainer {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+    }
+}

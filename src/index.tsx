@@ -1,7 +1,8 @@
 // REACT AND APP
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './Components/App/App';
+//@ts-ignore
+import { render } from "react-snapshot";
 
 // ESTILOS
 import './index.css';
@@ -9,5 +10,5 @@ import './index.css';
 // SERVICE WORKERS
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-serviceWorker.unregister();
+render(<App />, document.getElementById('root'));
+serviceWorker.register();

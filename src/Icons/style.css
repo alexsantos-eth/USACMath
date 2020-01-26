@@ -1,13 +1,14 @@
 /* fallback */
+
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    font-display:swap;
+    font-display: swap;
     src: url("flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2") format('woff2');
-  }
-  
-  .material-icons {
+}
+
+.material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -21,4 +22,4 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
-  }
+}
