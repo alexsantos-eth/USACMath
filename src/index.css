@@ -4,7 +4,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    --width: 900px;
     --white: #fff;
+    --dark: #455a64;
     --buttons: #1976d2;
     --primary: #607d8b;
     --gray: #777;

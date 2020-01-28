@@ -1,4 +1,4 @@
-// STILOS Y FIREBASE
+// ESTILOS Y FIREBASE
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import firebase from "../../Keys/firebase";
 import "firebase/database";
@@ -82,7 +82,17 @@ const App: React.FC = () => {
     });
   }
 
+  // ANIMAR HACIA ARRIBA
+  const scrollTop = () => window.scrollTo({
+    behavior: "smooth",
+    left: 0,
+    top: 0
+  });
+
   useEffect(() => {
+    //BOTON DE SUBIR
+    const up: HTMLSpanElement | null = document.querySelector(".floating") as HTMLSpanElement;
+
     // LIMITAR A 6 ARCHIVOS POR PAGINA EN ESCRITORIO
     if (window.innerWidth >= 720) dataPart = 6;
 
@@ -110,6 +120,13 @@ const App: React.FC = () => {
 
     // MOSTRAR ALERTA AL COMPARTIR
     showToasts = () => showToast(2);
+
+    // MOSTRAR BOTON DE SUBIR
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20 && up) up.style.transform = "scale(1)";
+      else up.style.transform = "scale(0)";
+    })
+
   })
 
   return (
@@ -128,6 +145,7 @@ const App: React.FC = () => {
       <Toast text={Strings.toast.text_1} />
       <Toast text={Strings.files.share} />
       <Footer {...Strings.rights} />
+      <span onClick={scrollTop} className="material-icons floating waves">arrow_upward</span>
     </>
   );
 }

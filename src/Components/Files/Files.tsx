@@ -10,7 +10,7 @@ import copy from 'copy-to-clipboard';
 let shareCount: number = 0;
 
 // PROPIEDADES
-interface Props { data: Idata[], appName: string; shareText: string; showToast: Function; }
+interface Props { data: Idata[], appName: string; shareText: string; showToast: Function }
 
 const File: React.FC<Props> = (props: Props) => {
 	// FUNCION DE COMPARTIR

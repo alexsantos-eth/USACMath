@@ -108,6 +108,10 @@
     transform: scale(1);
 }
 
+.file>.prevBtn:checked~.floating {
+    transform: scale(0);
+}
+
 .file>.prevBtn {
     display: none;
 }

@@ -1,6 +1,6 @@
 .App {
     width: 100%;
-    max-width: 700px;
+    max-width: var(--width);
     margin: 0 auto;
 }
 
@@ -47,6 +47,32 @@
 #prels {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+.floating {
+    position: fixed!important;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    margin: 10px;
+    color: var(--white);
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 2;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.floating::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--dark);
+    z-index: -1;
 }
 
 @media screen and (min-width:720px) {
