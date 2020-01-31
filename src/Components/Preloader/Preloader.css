@@ -11,7 +11,6 @@
 }
 
 #preloader {
-    width: 100%;
     background: var(--white);
     position: relative;
     z-index: 5;
@@ -22,7 +21,7 @@
     border-radius: 10px;
     opacity: 1;
     animation: sp 2s ease-in-out infinite;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 #preloader>span {

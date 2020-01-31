@@ -6,7 +6,6 @@ import './Index.css';
 import Navbar from "../Components/Navbar/Navbar";
 import Files from "../Components/Files/Files";
 import Preloader from "../Components/Preloader/Preloader";
-import Toast from "../Components/Toast/Toast"
 import Spinner from "../Components/Spinner/Spinner";
 
 // TEXTOS
@@ -16,7 +15,7 @@ import Strings from "../Strings/strings.json";
 import copy from 'copy-to-clipboard';
 
 // ICONOS, EFECTOS Y HOOKS
-import { useRipples, getData } from '../Utils/hooks';
+import { getData, showToast } from '../Utils/hooks';
 import { FixedSizeList as List } from 'react-window';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -24,7 +23,7 @@ import { RouteComponentProps } from 'react-router-dom';
 const defData: Idata = { course: "", link: "", title: "", text: "", type: "", upload: "" };
 
 // MOSTRAR TEXTO AL COMPARTIR
-let showToasts = () => { };
+let showToasts = () => showToast(Strings.toast.share);
 
 // FUNCTION PARA PREVIUSALIZAR
 let showPreview = (str: string) => { };
@@ -37,13 +36,6 @@ let copyD: Idata[];
 
 interface State { data: Idata[]; showMore?: boolean; preview?: string }
 
-// ANIMAR HACIA ARRIBA
-const scrollTop = () => window.scrollTo({
-  behavior: "smooth",
-  left: 0,
-  top: 0
-});
-
 // LIMITAR SHARE API
 let shareCount: number = 0;
 
@@ -52,8 +44,8 @@ const shareAction = (e: any) => {
   if (navigator.share && shareCount === 0) {
     navigator
       .share({
-        title: Strings.navbar.title,
-        text: Strings.files.shareText,
+        title: Strings.application.title,
+        text: Strings.share.text,
         url: e.target?.getAttribute("data-link")
       })
       .then(() => console.log("Successfully share"))
@@ -67,11 +59,8 @@ const shareAction = (e: any) => {
 
 // COMPONENTE
 const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
-  // EFECTO RIPPLE
-  useRipples();
-
   // OBETNER PATHNAME
-  const path = props.location.pathname.substr(1);
+  const path: string = props.location.pathname.substr(8);
 
   // BUSCAR STRING EN TODOS LOS ARCHIVOS
   const searchFilter = (key: string) => {
@@ -80,17 +69,19 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
     let searchData: Idata[] = [];
 
     // RECORRER CADA ARCHIVO DE LA COPIA
-    for (let i: number = 0; i < cData.length; i++) {
+    if (copyD) for (let i: number = 0; i < copyD.length; i++) {
       if (
         copyD[i].course.includes(res) ||
         copyD[i].link.includes(res) ||
         copyD[i].text.includes(res) ||
         copyD[i].title.includes(res) ||
-        copyD[i].type.includes(res)
+        copyD[i].type.includes(res) ||
+        copyD[i].upload.includes(res)
       ) searchData.push(copyD[i]);
     }
 
     // ACTUALIZAR LISTA
+    cData = searchData;
     setData({ data: searchData })
   }
 
@@ -112,32 +103,23 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
     setData({ data: dataS })
 
     // OBTENER TEXTO DE PATH
-    if (path) searchFilter(path);
+    if (path.length > 0) searchFilter(path);
   })
 
   // MOSTRAR LISTAS DE ARVHIVOS
-  const Row = ({ index, style }: { index: number, style: any }) => {
-    let c = data.data[index];
+  const Row = ({ index, style }: { index: number, style: React.CSSProperties }) => {
+    let c: Idata = data.data[index];
+    let props = { shareAction, showPreview, index };
+
     return (
       <div id="filecontainer" style={style}>
-        <Files
-          showToast={showToasts}
-          shareAction={shareAction}
-          showPreview={showPreview}
-          index={index}
-          course={c.course}
-          link={c.link}
-          text={c.text}
-          title={c.title}
-          type={c.type}
-          upload={c.upload}
-        />
+        <Files {...props} {...c} />
       </div>
     )
   }
 
   // OBTENER TEXTO DE BUSQUEDA
-  const getVal = (val: string) => searchFilter(val);
+  const getVal = (val: string) => searchFilter(val)
 
   useEffect(() => {
     //VISTA PREVIA Y VIEWPORT
@@ -145,36 +127,10 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
     const vp: HTMLMetaElement | null = document.getElementById("viewport") as HTMLMetaElement;
     const closePrev: HTMLButtonElement | null = document.querySelector(".closePrev") as HTMLButtonElement;
 
-    // SELECCIONAR MENSAJE DE ALERTA INFERIOR Y ESTADO DE CONEXION
-    const toast: NodeListOf<HTMLDivElement> | null = document.querySelectorAll(".toast") as NodeListOf<HTMLDivElement>;
-    const online = navigator.onLine;
-
-    // MOSTRA TOAST CON MENSAJE
-    const showToast = (i: number) => {
-      if (toast) {
-        toast[0].style.transform = "translateY(100%)";
-        toast[1].style.transform = "translateY(100%)";
-        toast[i].style.transform = "translateY(0)";
-        setTimeout(() => (toast[i].style.transform = "translateY(100%)"), 5000);
-      }
-    }
-
-    // MOSTRAR ALERTA CUANDO RECUPERO LA CONEXION
-    if (closeCount === 0) window.addEventListener("online", () => showToast(1));
-
-    // MOSTRAR ALERTA CUANDO PERDIO LA CONEXION
-    if (closeCount === 0) window.addEventListener("offline", () => showToast(0));
-
-    // DETECTAR CONEXION AL ENTRAR
-    if (!online) showToast(0);
-
-    // MOSTRAR ALERTA AL COMPARTIR
-    showToasts = () => showToast(2);
-
     // MOSTRAR VISTA PREVIA
     showPreview = (link: string) => {
       setTimeout(() => {
-        setData({ data: copyD, preview: link });
+        setData({ data: cData, preview: link })
       }, 100);
       togglePreview.checked = true;
       vp?.setAttribute("content", "width=device-width, initial-scale=1")
@@ -182,16 +138,17 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
 
     // QUITAR ZOOM
     if (closeCount === 0) closePrev.addEventListener("click", () => {
-      setData({ data: copyD, preview: undefined });
       vp?.setAttribute("content", "width=device-width, initial-scale=1, user-scalable=no")
+      setData({ data: cData, preview: undefined })
     })
 
+    // LIMITAR RENDER 
     closeCount++;
   })
 
   return (
     <>
-      <Navbar {...Strings.navbar} getVal={getVal} />
+      <Navbar {...Strings.application} getVal={getVal} />
       <input type="checkbox" id="togglePreview" />
 
       <div className="App">
@@ -205,27 +162,19 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         </div>
 
         {data.data.length > 1 && <List
-          height={window.innerHeight + 100}
-          itemCount={data.data.length}
-          itemSize={300}
           width={window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth}
+          height={window.innerHeight + 115}
+          itemCount={data.data.length}
+          itemSize={270}
         >{Row}
         </List>
         }
       </div>
 
-      <Toast text={Strings.toast.text_2} />
-      <Toast text={Strings.toast.text_1} />
-      <Toast text={Strings.files.share} />
-
-      <span onClick={scrollTop} className="material-icons floating waves">arrow_upward</span>
-
       <div className="preview">
         <label htmlFor="togglePreview" className="material-icons closePrev waves waves-dark">close</label>
-
         {data.preview &&
           <>
-
             <Spinner />
             <iframe
               width="100%"
@@ -233,7 +182,6 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
               title={data.preview}
               src={`https://docs.google.com/gview?embedded=true&url=${data.preview}`}
             />
-
           </>
         }
       </div>

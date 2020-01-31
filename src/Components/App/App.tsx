@@ -23,7 +23,7 @@ const App: React.FC = () => {
             render={(props: RouteComponentProps<any>) => <Index {...props} />}
           />
           <Route
-            path='/:key'
+            path='/buscar/:key'
             render={(props: RouteComponentProps<any>) => <Index {...props} />}
           />
         </Switch>

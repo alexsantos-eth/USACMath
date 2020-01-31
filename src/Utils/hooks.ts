@@ -51,3 +51,25 @@ export const useRipples = () => {
     }
   }
 };
+
+// MOSTRAR TOAST
+export const showToast = (text: string) => {
+  let div: HTMLDivElement = document.createElement("div") as HTMLDivElement;
+  let span: HTMLDivElement = document.createElement("span") as HTMLDivElement;
+  div.classList.add("toast");
+  span.textContent = text;
+  div.appendChild(span);
+  document.body.appendChild(div);
+
+  setTimeout(() => {
+    div.style.transform = "translateY(0)";
+  }, 10)
+
+  setTimeout(() => {
+    div.style.transform = "translateY(100%)";
+  }, 5000);
+
+  setTimeout(() => {
+    document.body.removeChild(div);
+  }, 5300);
+}

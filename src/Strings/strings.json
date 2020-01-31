@@ -1,18 +1,18 @@
 {
-    "navbar": {
+    "application": {
         "title": "Dep. de Matemática",
         "text": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, etc de cualquier curso del area matemática y profesional con todos los documentos más recientes publicados.",
-        "search": "Buscar archivos"
+        "search": "Buscar archivos",
+        "advancedSearch": "Busqueda rapida"
     },
-    "showMore": "Mostrar más",
-    "showLess": "Mostrar menos",
-    "files": {
-        "shareText": "Te comparto este archivo desde el buscador USACMath",
-        "share": "Copiado al portapapeles"
+    "share": {
+        "text": "Te comparto este archivo desde el Departamento de Matemática"
     },
     "toast": {
         "text_1": "De nuevo en línea",
-        "text_2": "Sin conexión a internet"
+        "text_2": "Sin conexión a internet",
+        "share": "Copiado al portapapeles",
+        "update": "Actualización disponible"
     },
     "rights": {
         "text_1": "OpenSource MIT LICENSE",

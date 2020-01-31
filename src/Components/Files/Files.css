@@ -10,9 +10,11 @@
 .file {
     background: var(--white);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
-    margin-bottom: 30px;
     padding: 0 20px;
     border-radius: 10px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .file>.fileHead {
@@ -27,13 +29,14 @@
 
 .file>.fileHead>p {
     margin-top: 10px;
-    line-height: 20px;
     font-size: 0.9em;
     color: rgba(0, 0, 0, .6);
+    text-overflow: ellipsis;
 }
 
 .file>.fileMiddle {
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    align-self: flex-end;
 }
 
 .file>.fileMiddle>ul {

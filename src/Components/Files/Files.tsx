@@ -6,7 +6,6 @@ import "./Files.css";
 // PROPIEDADES
 interface Props extends Idata {
 	index: number;
-	showToast: Function;
 	shareAction: (event: any) => void;
 	showPreview: (event: any) => void
 }
