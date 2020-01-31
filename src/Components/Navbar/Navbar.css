@@ -23,7 +23,7 @@
     width: 100%;
     max-width: var(--width);
     margin: 0 auto;
-    padding: 33px 30px 100px 30px;
+    padding: 30px;
 }
 
 .navbar>#navContent>ul {
@@ -91,4 +91,11 @@
     padding: 5px;
     font-size: 2em;
     margin: 0;
+}
+
+@media screen and (min-width:1024px) {
+    .navbar {
+        width: 60%;
+        height: 100vh;
+    }
 }

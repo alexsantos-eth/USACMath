@@ -4,7 +4,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    --width: 900px;
+    --width: 1024px;
     --white: #fff;
     --dark: #455a64;
     --buttons: #1976d2;
@@ -17,7 +17,7 @@ body {
     font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overflow: hidden;
     font-size: 15px;
 }
 
@@ -52,6 +52,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 
 .ripple-dark {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 @keyframes ripple {

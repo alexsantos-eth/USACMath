@@ -4,49 +4,17 @@
     margin: 0 auto;
 }
 
-#showMore {
-    color: var(--white);
-    appearance: none;
-    width: calc(100% - 40px);
-    text-align: center;
-    border: none;
-    outline: none;
-    background: none;
-    position: relative;
-    left: 20px;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
 .active {
     margin-bottom: 90px!important;
-}
-
-#showMore::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background: var(--primary);
-}
-
-#showMore>i {
-    position: relative;
-    margin-top: -10px;
-    top: 6.5px;
 }
 
 #prels {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+#prels+div {
+    margin: 0 auto;
 }
 
 .floating {
@@ -75,8 +43,86 @@
     z-index: -1;
 }
 
-@media screen and (min-width:720px) {
-    #prels {
-        grid-template-columns: 1fr 1fr;
+#togglePreview {
+    display: none;
+}
+
+#togglePreview:checked~.preview {
+    transition: opacity 0.3s ease-in-out, transform 0s linear 0s;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#togglePreview:checked~.floating {
+    transform: scale(0);
+}
+
+#filecontainer {
+    padding: 20px 20px 0 20px;
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    animation: op 0.3s ease-in-out 1;
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: var(--gray-light);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
+}
+
+.preview>.closePrev {
+    color: var(--white);
+    border-radius: 0 0 100% 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--primary);
+    padding: 10px 25px 25px 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+.preview>.closePrev::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+}
+
+@keyframes iframe {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.preview>iframe {
+    opacity: 1;
+    animation: iframe 1s ease-in-out 1;
+}
+
+@media screen and (min-width:1024px) {
+    .App {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40%;
+        height: 100vh;
     }
 }
