@@ -1,7 +1,5 @@
-// ESTILOS Y FIREBASE
+// ESTILOS Y TIPOS
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
-import firebase from "../Keys/firebase";
-import "firebase/database";
 import './Index.css';
 
 // COMPONENTES 
@@ -17,16 +15,10 @@ import Strings from "../Strings/strings.json";
 // COPIAR TEXTO
 import copy from 'copy-to-clipboard';
 
-// ICONOS Y EFECTOS
-import { useRipples } from '../Utils/hooks';
+// ICONOS, EFECTOS Y HOOKS
+import { useRipples, getData } from '../Utils/hooks';
 import { FixedSizeList as List } from 'react-window';
-
-// BASE DE DATOS FIREBASE
-const db = firebase.database();
-const ref = db.ref("data");
-
-// HOOK PARA OBTENER DATOS
-const getData = (callback: Function) => ref.once("value", (data: firebase.database.DataSnapshot) => callback(data))
+import { RouteComponentProps } from 'react-router-dom';
 
 // DATOS RESULTANTES
 const defData: Idata = { course: "", link: "", title: "", text: "", type: "", upload: "" };
@@ -67,25 +59,60 @@ const shareAction = (e: any) => {
       .then(() => console.log("Successfully share"))
       .catch((error: Error) => console.log("Error sharing", error));
   } else {
+    // COPIAR AL PORTAPAPELES SI NO ESTA DISPONIBLE SHARE API
     copy(e.target?.getAttribute("data-link"))
     showToasts();
   }
 }
 
 // COMPONENTE
-const Index: React.FC = () => {
+const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
   // EFECTO RIPPLE
   useRipples();
+
+  // OBETNER PATHNAME
+  const path = props.location.pathname.substr(1);
+
+  // BUSCAR STRING EN TODOS LOS ARCHIVOS
+  const searchFilter = (key: string) => {
+    // FORMATEAR LA ENTRADA
+    const res: string = key?.trim().toLowerCase();
+    let searchData: Idata[] = [];
+
+    // RECORRER CADA ARCHIVO DE LA COPIA
+    for (let i: number = 0; i < cData.length; i++) {
+      if (
+        copyD[i].course.includes(res) ||
+        copyD[i].link.includes(res) ||
+        copyD[i].text.includes(res) ||
+        copyD[i].title.includes(res) ||
+        copyD[i].type.includes(res)
+      ) searchData.push(copyD[i]);
+    }
+
+    // ACTUALIZAR LISTA
+    setData({ data: searchData })
+  }
 
   // ACTUALIZAR ESTADO CON DATOS OBTENIDOS
   const [data, setData]: [State, Dispatch<SetStateAction<State>>] = useState({ data: [defData] });
 
   if (count === 0) getData((data: firebase.database.DataSnapshot) => {
+    //OBTENER DATOS DE FIREBASE
     const dataS: Idata[] = data.val();
+
+    // LISTA VARIABLE
     cData = dataS;
+
+    // LISTA FIJA
     copyD = dataS;
+
+    // ACTUALIZAR LISTA
     count++;
     setData({ data: dataS })
+
+    // OBTENER TEXTO DE PATH
+    if (path) searchFilter(path);
   })
 
   // MOSTRAR LISTAS DE ARVHIVOS
@@ -109,22 +136,8 @@ const Index: React.FC = () => {
     )
   }
 
-
   // OBTENER TEXTO DE BUSQUEDA
-  const getVal = (val: string) => {
-    const res: string = val.trim().toLowerCase();
-    let searchData: Idata[] = [];
-    for (let i: number = 0; i < cData.length; i++) {
-      if (
-        copyD[i].course.includes(res) ||
-        copyD[i].link.includes(res) ||
-        copyD[i].text.includes(res) ||
-        copyD[i].title.includes(res) ||
-        copyD[i].type.includes(res)
-      ) searchData.push(copyD[i]);
-    }
-    setData({ data: searchData })
-  }
+  const getVal = (val: string) => searchFilter(val);
 
   useEffect(() => {
     //VISTA PREVIA Y VIEWPORT
@@ -148,6 +161,7 @@ const Index: React.FC = () => {
 
     // MOSTRAR ALERTA CUANDO RECUPERO LA CONEXION
     if (closeCount === 0) window.addEventListener("online", () => showToast(1));
+
     // MOSTRAR ALERTA CUANDO PERDIO LA CONEXION
     if (closeCount === 0) window.addEventListener("offline", () => showToast(0));
 

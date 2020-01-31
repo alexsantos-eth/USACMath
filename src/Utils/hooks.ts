@@ -1,3 +1,14 @@
+// FIREBASE
+import firebase from "../Keys/firebase";
+import "firebase/database";
+
+// BASE DE DATOS FIREBASE
+const db = firebase.database();
+const ref = db.ref("data");
+
+// HOOK PARA OBTENER DATOS
+export const getData = (callback: Function) => ref.once("value", (data: firebase.database.DataSnapshot) => callback(data))
+
 // EFECTO RIPPLE PARA TODOS LOS BOTONES
 export const useRipples = () => {
 
