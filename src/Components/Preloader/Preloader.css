@@ -82,3 +82,9 @@
     position: absolute;
     margin-right: 0;
 }
+
+@media screen and (max-width:350px) {
+    #preloader>div>i:nth-child(3) {
+        width: 130px;
+    }
+}

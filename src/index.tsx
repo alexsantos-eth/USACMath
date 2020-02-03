@@ -20,20 +20,33 @@ import * as serviceWorker from './serviceWorker';
 const online = navigator.onLine;
 
 // MOSTRAR ALERTA CUANDO RECUPERO LA CONEXION
-window.addEventListener("online", () => showToast(Strings.toast.text_1));
+window.addEventListener("online", () => showToast({ text: Strings.toast.text_1 }));
 
 // MOSTRAR ALERTA CUANDO PERDIO LA CONEXION
-window.addEventListener("offline", () => showToast(Strings.toast.text_2));
+window.addEventListener("offline", () => showToast({
+  text: Strings.toast.text_2,
+  actionText: Strings.toast.update_btn,
+  action: () => window.location.reload(),
+  fixed: true
+}));
 
 // DETECTAR CONEXION AL ENTRAR
-if (!online) showToast(Strings.toast.text_2);
+if (!online) showToast({
+  text: Strings.toast.text_2,
+  actionText: Strings.toast.update_btn,
+  action: () => window.location.reload(),
+  fixed: true
+});
+
 
 render(<App />, document.getElementById('root'));
 serviceWorker.register({
   onUpdate: () => {
-    showToast(Strings.toast.update)
-    setTimeout(() => {
-      window.location.reload();
-    }, 5300);
+    showToast({
+      text: Strings.toast.update,
+      actionText: Strings.toast.update_btn,
+      action: () => window.location.reload(),
+      fixed: true
+    })
   }
 });

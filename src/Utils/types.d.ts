@@ -6,6 +6,7 @@ interface Idata {
   type: string;
   upload: string;
 }
+
 type ShareData = {
   title?: string;
   text?: string;
@@ -16,22 +17,25 @@ interface Navigator {
   share: (data?: ShareData) => Promise<void>;
 }
 
-interface Strings {
-  application: {
+namespace Strings {
+  interface application {
     title: string;
     text: string;
     search: string;
-    advancedSearch: string
+    advancedSearch: string;
+    short: string[];
   };
-  share: {
+  interface share {
     text: string;
   };
-  toast: {
+  interface toast {
     text_1: string;
     text_2: string;
     share: string;
+    update: string;
+    update_btn: string;
   };
-  rights: {
+  interface rights {
     text_1: string;
     text_2: string;
   }

@@ -1,21 +1,19 @@
-import React from "react";
-
-// ESTILOS
+import React, { MouseEvent } from "react";
 import "./Files.css";
 
 // PROPIEDADES
 interface Props extends Idata {
 	index: number;
-	shareAction: (event: any) => void;
-	showPreview: (event: any) => void
+	shareAction: (event: MouseEvent<HTMLButtonElement>) => void;
+	showPreview: (str: string) => void
 }
 
 const File: React.FC<Props> = (props: Props) => {
 	// ENVIAR LINK A LA FUNCION DE VISTA PREVIA
-	const showPreview = (e: any) => {
+	const showPreview = (e: MouseEvent<HTMLButtonElement>) => {
 		const el = e.target as HTMLButtonElement;
 		const link = el?.getAttribute("data-link");
-		props.showPreview(link);
+		if (link) props.showPreview(link);
 	}
 
 	return (
@@ -25,6 +23,7 @@ const File: React.FC<Props> = (props: Props) => {
 					<h1>{props.title}</h1>
 					<p>{props.text[0]?.toUpperCase() + props.text.substr(1)}</p>
 				</div>
+
 				<div className="fileMiddle">
 					<ul>
 						<li>
@@ -41,6 +40,7 @@ const File: React.FC<Props> = (props: Props) => {
 						</li>
 					</ul>
 				</div>
+
 				<div className="fileBody">
 					<div className="actions">
 						<button onClick={showPreview} data-link={props.link} className="waves waves-dark action showPrev">

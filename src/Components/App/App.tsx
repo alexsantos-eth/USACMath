@@ -19,12 +19,14 @@ const App: React.FC = () => {
       <Router>
         <Switch>
           <Route
+            exact
             path='/'
-            render={(props: RouteComponentProps<any>) => <Index {...props} />}
+            render={(props: RouteComponentProps) => <Index {...props} />}
           />
           <Route
+            exact
             path='/buscar/:key'
-            render={(props: RouteComponentProps<any>) => <Index {...props} />}
+            render={(props: RouteComponentProps) => <Index {...props} />}
           />
         </Switch>
       </Router>

@@ -1,90 +1,109 @@
 body {
-    overscroll-behavior: none;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    --width: 1024px;
-    --white: #fff;
-    --dark: #455a64;
-    --buttons: #1976d2;
-    --primary: #607d8b;
-    --gray: #777;
-    --gray-light: #aaa;
-    margin: 0;
-    background-color: #eee;
-    box-sizing: border-box;
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
-    font-size: 15px;
+	overscroll-behavior: none;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	--width: 1024px;
+	--white: #fff;
+	--dark: #455a64;
+	--buttons: #1976d2;
+	--primary: #607d8b;
+	--gray: #777;
+	--gray-light: #aaa;
+	margin: 0;
+	background-color: #eee;
+	box-sizing: border-box;
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+	font-size: 15px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -ms-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-user-drag: none;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-drag: none;
 }
 
 input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 .waves {
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 }
 
 .ripple {
-    border-radius: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
-    position: absolute;
-    transform: scale(0);
-    z-index: -1;
+	border-radius: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	position: absolute;
+	transform: scale(0);
+	z-index: -1;
 }
 
 .ripple-dark {
-    background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .toast {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
-    background: #444;
-    padding: 20px;
-    z-index: 99;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	transform: translateY(100%);
+	transition: transform 0.3s ease-in-out;
+	background: #444;
+	padding: 23px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 99;
+}
+
+.actionToast {
+	padding: 10px 20px;
 }
 
 .toast>span {
-    font-size: 1.1em;
-    font-weight: 500;
-    color: var(--white);
+	font-size: 1.1em;
+	font-weight: 500;
+	color: var(--white);
+}
+
+.toast>button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: rgba(0, 0, 0, .4);
+	color: var(--white);
+	padding: 15px 25px;
+	text-transform: uppercase;
+	font-weight: 500;
+	border-radius: 5px;
 }
 
 @keyframes ripple {
-    to {
-        transform: scale(2.5);
-        opacity: 0;
-    }
+	to {
+		transform: scale(2.5);
+		opacity: 0;
+	}
 }
 
 @media screen and (max-width:380px) {
-    body {
-        font-size: 13px;
-    }
+	body {
+		font-size: 13px;
+	}
 }

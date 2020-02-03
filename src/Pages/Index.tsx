@@ -1,5 +1,5 @@
 // ESTILOS Y TIPOS
-import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useState, useEffect, MouseEvent } from 'react';
 import './Index.css';
 
 // COMPONENTES 
@@ -22,89 +22,106 @@ import { RouteComponentProps } from 'react-router-dom';
 // DATOS RESULTANTES
 const defData: Idata = { course: "", link: "", title: "", text: "", type: "", upload: "" };
 
-// MOSTRAR TEXTO AL COMPARTIR
-let showToasts = () => showToast(Strings.toast.share);
-
 // FUNCTION PARA PREVIUSALIZAR
 let showPreview = (str: string) => { };
 
 // LIMITAR LECTURAS Y DATOS
 let count: number = 0;
-let closeCount: number = 0;
-let cData: Idata[];
-let copyD: Idata[];
-
-interface State { data: Idata[]; showMore?: boolean; preview?: string }
-
-// LIMITAR SHARE API
 let shareCount: number = 0;
+let closeCount: number = 0;
+let h: number | undefined = undefined;
+let w: number | undefined = undefined;
+let currentData: Idata[];
+let copyData: Idata[];
+
+interface State { data: Idata[]; preview?: string }
 
 // FUNCION DE COMPARTIR
-const shareAction = (e: any) => {
-  if (navigator.share && shareCount === 0) {
+const shareAction = (e: MouseEvent<HTMLButtonElement>) => {
+  // OBTNER LINK DE BOTON
+  const el = e.target as HTMLButtonElement;
+  const url = el?.getAttribute("data-link");
+
+  // MOSTRAR MENSAJE DE SHRE API
+  if (navigator.share && shareCount === 0 && url) {
     navigator
       .share({
         title: Strings.application.title,
         text: Strings.share.text,
-        url: e.target?.getAttribute("data-link")
+        url
       })
       .then(() => console.log("Successfully share"))
       .catch((error: Error) => console.log("Error sharing", error));
-  } else {
+  } else if (url) {
     // COPIAR AL PORTAPAPELES SI NO ESTA DISPONIBLE SHARE API
-    copy(e.target?.getAttribute("data-link"))
-    showToasts();
+    copy(url);
+    showToast({ text: Strings.toast.share });
   }
 }
 
 // COMPONENTE
 const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
+  // ACTUALIZAR ESTADO CON DATOS OBTENIDOS
+  const [data, setData]: [State, Dispatch<SetStateAction<State>>] = useState({ data: [defData] });
+
   // OBETNER PATHNAME
   const path: string = props.location.pathname.substr(8);
 
   // BUSCAR STRING EN TODOS LOS ARCHIVOS
   const searchFilter = (key: string) => {
-    // FORMATEAR LA ENTRADA
-    const res: string = key?.trim().toLowerCase();
-    let searchData: Idata[] = [];
+    if (copyData && key.length > 0) {
+      // FORMATEAR LA ENTRADA
+      const res: string = key?.trim().toLowerCase();
+      let searchData: Idata[] = [];
 
-    // RECORRER CADA ARCHIVO DE LA COPIA
-    if (copyD) for (let i: number = 0; i < copyD.length; i++) {
-      if (
-        copyD[i].course.includes(res) ||
-        copyD[i].link.includes(res) ||
-        copyD[i].text.includes(res) ||
-        copyD[i].title.includes(res) ||
-        copyD[i].type.includes(res) ||
-        copyD[i].upload.includes(res)
-      ) searchData.push(copyD[i]);
+      // RECORRER CADA ARCHIVO
+      for (let i = 0, len = copyData.length; i < len; i++) {
+        if (
+          copyData[i].course.indexOf(res) > 0 ||
+          copyData[i].link.indexOf(res) > 0 ||
+          copyData[i].text.indexOf(res) > 0 ||
+          copyData[i].title.indexOf(res) > 0 ||
+          copyData[i].type.indexOf(res) > 0 ||
+          copyData[i].upload.indexOf(res) > 0
+        ) searchData.push(copyData[i]);
+      }
+
+      // ACTUALIZAR LISTA
+      currentData = searchData;
+      setData({ data: searchData })
     }
-
-    // ACTUALIZAR LISTA
-    cData = searchData;
-    setData({ data: searchData })
+    else if (copyData) setData({ data: copyData })
   }
 
-  // ACTUALIZAR ESTADO CON DATOS OBTENIDOS
-  const [data, setData]: [State, Dispatch<SetStateAction<State>>] = useState({ data: [defData] });
+  // OBETNER BUSQUEDS
+  const getVal = (val: string, update?: boolean) => {
+    if (update && val.length > 0) props.history.push(`/buscar/${val}`);
+    searchFilter(val)
+  }
 
-  if (count === 0) getData((data: firebase.database.DataSnapshot) => {
-    //OBTENER DATOS DE FIREBASE
-    const dataS: Idata[] = data.val();
-
-    // LISTA VARIABLE
-    cData = dataS;
-
-    // LISTA FIJA
-    copyD = dataS;
-
-    // ACTUALIZAR LISTA
-    count++;
-    setData({ data: dataS })
-
-    // OBTENER TEXTO DE PATH
-    if (path.length > 0) searchFilter(path);
+  // OBETNER DATOS DE FIREBASE
+  if (count === 0) getData(() => {
+    showToast({
+      text: Strings.toast.update,
+      actionText: Strings.toast.update_btn,
+      action: () => window.location.reload(),
+      fixed: true
+    })
   })
+    .then((data: Idata[]) => {
+      if (data) {
+        // ASIGNAR DATOS  
+        copyData = currentData = data;
+
+        // LIMITAR PETICIONES
+        count++;
+
+        // OBTENER TEXTO DE PATH SI EXISTE
+        if (path.length > 0) searchFilter(path);
+        else setData({ data })
+      }
+    })
+    .catch((e: Error) => console.log(e));
 
   // MOSTRAR LISTAS DE ARVHIVOS
   const Row = ({ index, style }: { index: number, style: React.CSSProperties }) => {
@@ -118,37 +135,44 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
     )
   }
 
-  // OBTENER TEXTO DE BUSQUEDA
-  const getVal = (val: string) => searchFilter(val)
-
   useEffect(() => {
-    //VISTA PREVIA Y VIEWPORT
-    const togglePreview: HTMLInputElement | null = document.getElementById("togglePreview") as HTMLInputElement;
-    const vp: HTMLMetaElement | null = document.getElementById("viewport") as HTMLMetaElement;
-    const closePrev: HTMLButtonElement | null = document.querySelector(".closePrev") as HTMLButtonElement;
+    if (closeCount === 0) {
+      //VISTA PREVIA Y VIEWPORT
+      const togglePreview: HTMLInputElement | null = document.getElementById("togglePreview") as HTMLInputElement;
+      const vp: HTMLMetaElement | null = document.getElementById("viewport") as HTMLMetaElement;
+      const closePrev: HTMLButtonElement | null = document.querySelector(".closePrev") as HTMLButtonElement;
 
-    // MOSTRAR VISTA PREVIA
-    showPreview = (link: string) => {
-      setTimeout(() => {
-        setData({ data: cData, preview: link })
-      }, 100);
-      togglePreview.checked = true;
-      vp?.setAttribute("content", "width=device-width, initial-scale=1")
+      // MOSTRAR VISTA PREVIA
+      showPreview = (link: string) => {
+        setTimeout(() => {
+          setData({ data: currentData, preview: link })
+        }, 100);
+        togglePreview.checked = true;
+        vp?.setAttribute("content", "width=device-width, initial-scale=1")
+      }
+
+      // QUITAR ZOOM
+      closePrev.addEventListener("click", () => {
+        vp?.setAttribute("content", "width=device-width, initial-scale=1, user-scalable=no")
+        setData({ data: currentData, preview: undefined })
+      })
+
+      // AGREGAR UN VALOR FIJO AL ALTO Y ANCHO DE LA LISTA
+      w = window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth;
+      h = window.innerHeight;
+
+      // LIMITAR RENDER 
+      closeCount++;
     }
-
-    // QUITAR ZOOM
-    if (closeCount === 0) closePrev.addEventListener("click", () => {
-      vp?.setAttribute("content", "width=device-width, initial-scale=1, user-scalable=no")
-      setData({ data: cData, preview: undefined })
-    })
-
-    // LIMITAR RENDER 
-    closeCount++;
   })
 
   return (
     <>
-      <Navbar {...Strings.application} getVal={getVal} />
+      <Navbar
+        {...Strings.application}
+        getVal={getVal}
+        defaultValue={closeCount === 0 ? path : undefined}
+      />
       <input type="checkbox" id="togglePreview" />
 
       <div className="App">
@@ -162,8 +186,8 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         </div>
 
         {data.data.length > 1 && <List
-          width={window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth}
-          height={window.innerHeight + 115}
+          width={w || (window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth)}
+          height={h || window.innerHeight}
           itemCount={data.data.length}
           itemSize={270}
         >{Row}
