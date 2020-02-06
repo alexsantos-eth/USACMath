@@ -4,16 +4,56 @@
 		"text": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, etc de cualquier curso del area matemática y profesional con todos los documentos más recientes publicados.",
 		"search": "Buscar archivos",
 		"advancedSearch": "Busqueda rapida",
+		"listTitle": "Palabras Frecuentes",
 		"short": [
-			"Matemática Básica 1",
-			"Matemática Básica 2",
-			"Matemática Intermedia 1",
-			"Matemática Intermedia 2",
-			"Matemática Intermedia 3",
-			"Matemática Aplicada 1",
-			"Matemática Aplicada 2",
-			"Matemática Aplicada 3",
-			"Matemática Aplicada 4"
+			{
+				"icon": "assignment",
+				"text": "Programa"
+			},
+			{
+				"icon": "create",
+				"text": "Proyecto"
+			},
+			{
+				"icon": "local_hotel",
+				"text": "Básica 1"
+			},
+			{
+				"icon": "accessibility",
+				"text": "Básica 2"
+			},
+			{
+				"icon": "directions_walk",
+				"text": "Intermedia 1"
+			},
+			{
+				"icon": "directions_run",
+				"text": "Intermedia 2"
+			},
+			{
+				"icon": "directions_bike",
+				"text": "Intermedia 3"
+			},
+			{
+				"icon": "motorcycle",
+				"text": "Aplicada 1"
+			},
+			{
+				"icon": "directions_car",
+				"text": "Aplicada 2"
+			},
+			{
+				"icon": "directions_bus",
+				"text": "Aplicada 3"
+			},
+			{
+				"icon": "directions_railway",
+				"text": "Aplicada 4"
+			},
+			{
+				"icon": "directions_boat",
+				"text": "Aplicada 5"
+			}
 		]
 	},
 	"share": {

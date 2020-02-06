@@ -11,8 +11,8 @@ interface Props extends Idata {
 const File: React.FC<Props> = (props: Props) => {
 	// ENVIAR LINK A LA FUNCION DE VISTA PREVIA
 	const showPreview = (e: MouseEvent<HTMLButtonElement>) => {
-		const el = e.target as HTMLButtonElement;
-		const link = el?.getAttribute("data-link");
+		const el: HTMLButtonElement = e.target as HTMLButtonElement;
+		const link: string | null = el?.getAttribute("data-link");
 		if (link) props.showPreview(link);
 	}
 

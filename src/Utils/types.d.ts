@@ -23,7 +23,11 @@ namespace Strings {
     text: string;
     search: string;
     advancedSearch: string;
-    short: string[];
+    listTitle: string;
+    short: {
+      icon: string;
+      text: string;
+    }[]
   };
   interface share {
     text: string;
@@ -39,4 +43,12 @@ namespace Strings {
     text_1: string;
     text_2: string;
   }
+}
+
+interface IToast {
+  text: string;
+  actionText?: string;
+  onHide?: Function;
+  action?: (e: MouseEvent) => void;
+  fixed?: boolean;
 }

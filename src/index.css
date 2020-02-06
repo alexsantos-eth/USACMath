@@ -4,13 +4,15 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	--width: 1024px;
+	--width: 900px;
 	--white: #fff;
 	--dark: #455a64;
 	--buttons: #1976d2;
 	--primary: #607d8b;
 	--gray: #777;
 	--gray-light: #aaa;
+	--appWidth: 450px;
+	--breakPoint: 900px;
 	margin: 0;
 	background-color: #eee;
 	box-sizing: border-box;
@@ -58,6 +60,14 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display: none;
 }
 
+::-moz-scrollbar {
+	display: none;
+}
+
+::scrollbar {
+	display: none;
+}
+
 .toast {
 	position: fixed;
 	bottom: 0;
@@ -79,7 +89,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 
 .toast>span {
 	font-size: 1.1em;
-	font-weight: 500;
+	font-weight: bold;
 	color: var(--white);
 }
 
@@ -91,8 +101,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	color: var(--white);
 	padding: 15px 25px;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: bold;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 @keyframes ripple {

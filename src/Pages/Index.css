@@ -129,12 +129,12 @@
     z-index: 3;
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width:900px) {
     .App {
         position: absolute;
         right: 0;
         top: 0;
-        width: 40%;
+        width: var(--appWidth);
         height: 100vh;
     }
 }

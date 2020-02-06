@@ -12,7 +12,7 @@ const Preloader: React.FC = () => {
     const randomize = () => span.forEach((el: HTMLSpanElement) => el.style.width = Math.random() * 100 + "%");
 
     // ANIMAR CADA 0.5S 
-    const ints = setInterval(randomize, 500);
+    const ints: NodeJS.Timeout = setInterval(randomize, 500);
     randomize();
 
     // BORRAR INTERVALO AL DESMONTAR

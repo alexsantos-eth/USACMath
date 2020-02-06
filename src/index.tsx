@@ -42,6 +42,7 @@ if (!online) showToast({
 render(<App />, document.getElementById('root'));
 serviceWorker.register({
   onUpdate: () => {
+    // MOSTRAR ALERTA EN ACTUALIZACION
     showToast({
       text: Strings.toast.update,
       actionText: Strings.toast.update_btn,

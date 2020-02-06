@@ -18,14 +18,14 @@ const Navbar: React.FC<Props> = (props: Props) => {
 	const input: RefObject<HTMLInputElement> = useRef(null);
 
 	// RETORNAR VALOR DEL INPUT
-	const setVal = () => props.getVal(input.current?.value)
+	const setVal = () => props.getVal(input.current?.value.trim().toLowerCase())
 
 	// ENVIAR BUSQUEDA RAPIDA
 	const shortVal = (event: MouseEvent<HTMLLIElement>) => {
 		const li: HTMLLIElement = event.target as HTMLLIElement;
 		if (li.textContent) {
-			props.getVal(li.textContent.substr(6), true);
-			if (input.current) input.current.value = li.textContent.substr(6);
+			props.getVal(li.textContent.substr(li.textContent.indexOf(" ") + 1).trim().toLowerCase(), true);
+			if (input.current) input.current.value = li.textContent.substr(li.textContent.indexOf(" ") + 1);
 		}
 	}
 
@@ -67,10 +67,11 @@ const Navbar: React.FC<Props> = (props: Props) => {
 				</label>
 				<label htmlFor="showList" id="search-list">
 					<ul>
+						<li>{props.listTitle}</li>
 						{
-							props.short.map((e: string, i: number) => (
+							props.short.map((e: { icon: string; text: string }, i: number) => (
 								<li key={i} onClick={shortVal}>
-									<i className="material-icons">styles</i>{e}
+									<i className="material-icons">{e.icon}</i> {e.text}
 								</li>
 							))
 						}

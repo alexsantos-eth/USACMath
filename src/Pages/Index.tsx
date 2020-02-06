@@ -26,21 +26,23 @@ const defData: Idata = { course: "", link: "", title: "", text: "", type: "", up
 let showPreview = (str: string) => { };
 
 // LIMITAR LECTURAS Y DATOS
+let currentData: Idata[];
+let copyData: Idata[];
+let h: number | undefined = undefined;
+let w: number | undefined = undefined;
 let count: number = 0;
 let shareCount: number = 0;
 let closeCount: number = 0;
-let h: number | undefined = undefined;
-let w: number | undefined = undefined;
-let currentData: Idata[];
-let copyData: Idata[];
+let breakPoint: number = 0;
+let appWidth: number = 0;
 
 interface State { data: Idata[]; preview?: string }
 
 // FUNCION DE COMPARTIR
 const shareAction = (e: MouseEvent<HTMLButtonElement>) => {
   // OBTNER LINK DE BOTON
-  const el = e.target as HTMLButtonElement;
-  const url = el?.getAttribute("data-link");
+  const el: HTMLButtonElement = e.target as HTMLButtonElement;
+  const url: string | null = el?.getAttribute("data-link");
 
   // MOSTRAR MENSAJE DE SHRE API
   if (navigator.share && shareCount === 0 && url) {
@@ -71,18 +73,17 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
   const searchFilter = (key: string) => {
     if (copyData && key.length > 0) {
       // FORMATEAR LA ENTRADA
-      const res: string = key?.trim().toLowerCase();
       let searchData: Idata[] = [];
 
       // RECORRER CADA ARCHIVO
       for (let i = 0, len = copyData.length; i < len; i++) {
         if (
-          copyData[i].course.indexOf(res) > 0 ||
-          copyData[i].link.indexOf(res) > 0 ||
-          copyData[i].text.indexOf(res) > 0 ||
-          copyData[i].title.indexOf(res) > 0 ||
-          copyData[i].type.indexOf(res) > 0 ||
-          copyData[i].upload.indexOf(res) > 0
+          copyData[i].course.indexOf(key) > 0 ||
+          copyData[i].link.indexOf(key) > 0 ||
+          copyData[i].text.indexOf(key) > 0 ||
+          copyData[i].title.indexOf(key) > 0 ||
+          copyData[i].type.indexOf(key) > 0 ||
+          copyData[i].upload.indexOf(key) > 0
         ) searchData.push(copyData[i]);
       }
 
@@ -117,7 +118,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         count++;
 
         // OBTENER TEXTO DE PATH SI EXISTE
-        if (path.length > 0) searchFilter(path);
+        if (path.length > 0) searchFilter(path.trim().toLowerCase());
         else setData({ data })
       }
     })
@@ -125,12 +126,9 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
 
   // MOSTRAR LISTAS DE ARVHIVOS
   const Row = ({ index, style }: { index: number, style: React.CSSProperties }) => {
-    let c: Idata = data.data[index];
-    let props = { shareAction, showPreview, index };
-
     return (
       <div id="filecontainer" style={style}>
-        <Files {...props} {...c} />
+        <Files {...{ shareAction, showPreview, index }} {...data.data[index]} />
       </div>
     )
   }
@@ -157,8 +155,12 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         setData({ data: currentData, preview: undefined })
       })
 
+      // ASIGNAR ALTO Y ANCHO DE LOS MEDIA QUERIES DE CSS
+      breakPoint = parseInt(getComputedStyle(document.body).getPropertyValue("--breakPoint").replace("px", ""))
+      appWidth = parseInt(getComputedStyle(document.body).getPropertyValue("--appWidth").replace("px", ""))
+
       // AGREGAR UN VALOR FIJO AL ALTO Y ANCHO DE LA LISTA
-      w = window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth;
+      w = window.innerWidth >= breakPoint ? appWidth : window.innerWidth;
       h = window.innerHeight;
 
       // LIMITAR RENDER 
@@ -186,7 +188,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         </div>
 
         {data.data.length > 1 && <List
-          width={w || (window.innerWidth >= 1024 ? (window.innerWidth - window.innerWidth * 0.6) - 40 : window.innerWidth)}
+          width={w || (window.innerWidth >= breakPoint ? appWidth : window.innerWidth)}
           height={h || window.innerHeight}
           itemCount={data.data.length}
           itemSize={270}

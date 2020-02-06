@@ -14,6 +14,7 @@ interface localData {
   id: number;
   list: Idata[];
 }
+
 export class localDB extends Dexie {
   // DECLARAR TABLAS
   list: Dexie.Table<localData, number>;
@@ -25,6 +26,7 @@ export class localDB extends Dexie {
   }
 }
 
+// INSTANCIA DE LA BASE LOCAL
 const localdb = new localDB();
 
 // HOOK PARA OBTENER DATOS
@@ -34,16 +36,13 @@ export const getData = async (onDataUpdate: Function) => {
 
   // VERIFICAR POR NUEVOS DATOS 
   setTimeout(() => {
-    ref.once("value")
-      .then((dataS: firebase.database.DataSnapshot) => {
-        // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
-        if (data[0]) if (JSON.stringify(dataS.val()) !== JSON.stringify(data[0].list)) {
-          localdb.list.put({ id: 1, list: dataS.val() })
-            .then(() => onDataUpdate(true))
-        }
-        // CERRAR CONEXION AL INSTANTE SI LA CONEXION NO ES RAPIDA
-        ref.off();
-      })
+    ref.on("value", (dataS: firebase.database.DataSnapshot) => {
+      // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
+      if (data[0] && navigator.onLine && JSON.stringify(dataS.val()) !== JSON.stringify(data[0].list)) {
+        localdb.list.put({ id: 1, list: dataS.val() })
+          .then(() => onDataUpdate(true))
+      }
+    })
   }, 3000);
 
   if (data[0]) {
@@ -103,14 +102,6 @@ export const useRipples = () => {
     }
   }
 };
-
-interface IToast {
-  text: string;
-  actionText?: string;
-  onHide?: Function;
-  action?: (e: MouseEvent) => void;
-  fixed?: boolean;
-}
 
 // MOSTRAR TOAST
 export const showToast = (data: IToast) => {
