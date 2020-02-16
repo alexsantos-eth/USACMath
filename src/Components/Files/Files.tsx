@@ -21,7 +21,7 @@ const File: React.FC<Props> = (props: Props) => {
 			<div key={props.index} className="file">
 				<div className="fileHead">
 					<h1>{props.title}</h1>
-					<p>{props.text[0]?.toUpperCase() + props.text.substr(1)}</p>
+					<p>{props.text}</p>
 				</div>
 
 				<div className="fileMiddle">

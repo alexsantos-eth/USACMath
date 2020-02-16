@@ -28,7 +28,7 @@
 .path {
   stroke-dasharray: 187;
   stroke-dashoffset: 0;
-  stroke: var(--primary);
+  stroke: var(--white);
   -webkit-transform-origin: center;
   transform-origin: center;
   -webkit-animation: dash 1.4s ease-in-out infinite;

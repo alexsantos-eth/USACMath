@@ -10,8 +10,12 @@ let count: number = 0;
 interface Props extends Strings.application {
 	getVal: Function;
 	getFocus?: Function;
+	fText: string;
 	defaultValue?: string;
 }
+
+// BUSQUEDA RAPIDA	
+let quickList: JSX.Element[];
 
 const Navbar: React.FC<Props> = (props: Props) => {
 	// INPUT DE BUSQUEDA
@@ -31,9 +35,18 @@ const Navbar: React.FC<Props> = (props: Props) => {
 
 	// ASIGNAR EL VALOR DEL PATH AL INPUT
 	useEffect(() => {
-		if (input.current && count === 0) {
-			if (props.defaultValue) input.current.value = props.defaultValue;
-			count++;
+		if (count === 0) {
+			if (input.current) {
+				if (props.defaultValue) input.current.value = props.defaultValue;
+				count++;
+			}
+
+			// RENDERIZAR LAS PALABRAS FRECUENTES
+			quickList = props.short.map((e: { icon: string; text: string }, i: number) => (
+				<li key={i} onClick={shortVal}>
+					<i className="material-icons">{e.icon}</i> {e.text}
+				</li>
+			))
 		}
 	})
 
@@ -43,9 +56,8 @@ const Navbar: React.FC<Props> = (props: Props) => {
 				<div id="headerText">
 					<div id="headerContent">
 						<h1>{props.title}</h1>
-						<p>{props.text}</p>
+						<p>{props.fText}</p>
 					</div>
-					<a href="https://github.com/alexsan-dev" title="linkToMyGithub" className="material-icons waves waves-dark">more_vert</a>
 				</div>
 
 				<div id="searchBox">
@@ -68,13 +80,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
 				<label htmlFor="showList" id="search-list">
 					<ul>
 						<li>{props.listTitle}</li>
-						{
-							props.short.map((e: { icon: string; text: string }, i: number) => (
-								<li key={i} onClick={shortVal}>
-									<i className="material-icons">{e.icon}</i> {e.text}
-								</li>
-							))
-						}
+						{quickList}
 					</ul>
 				</label>
 			</div>

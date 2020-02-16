@@ -41,7 +41,7 @@ const handler = (req: express.Request, res: express.Response) => {
                 // RETORNAR OBJETO COMPLETO
                 return {
                     title: anchor.text().toLowerCase().trim(),
-                    link: "http://mate.ingenieria.usac.edu.gt//" + anchor.children("a").attr("href"),
+                    link: "http://mate.ingenieria.usac.edu.gt/" + anchor.children("a").attr("href"),
                     text,
                     upload,
                     type,
@@ -51,7 +51,7 @@ const handler = (req: express.Request, res: express.Response) => {
 
             // ELIMINAR LA PRIMERA FILA Y ENVIAR
             cols.shift();
-            res.json(cols);
+            res.json(cols.reverse());
         })
         .catch((err: Error) => res.status(400).send(err))
 }

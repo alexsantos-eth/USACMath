@@ -4,10 +4,18 @@ import Dexie from "dexie";
 // FIREBASE
 import firebase from "../Keys/firebase";
 import "firebase/database";
+import "firebase/messaging";
 
 // BASE DE DATOS FIREBASE
 const db = firebase.database();
 const ref = db.ref("data");
+const tokens = db.ref("tokens");
+const messaging = firebase.messaging();
+
+// FIREBASE CLOUD MESSAGING
+messaging.usePublicVapidKey("BDRrwiV-l2TelBZMRvyTUJRe6MH984nEr473aLIQYsV9Sv7NnazLm78PwZ8fWKwz0WQQN5KANeMc95Lz3ripXJw");
+
+export { messaging }
 
 // BASE DE DATOS LOCAL
 interface localData {
@@ -29,6 +37,9 @@ export class localDB extends Dexie {
 // INSTANCIA DE LA BASE LOCAL
 const localdb = new localDB();
 
+// ENVIAR TOKEN A LA DB
+export const sendToken = (token: string, onComplete: ((a: Error | null) => any)) => tokens.push(token, onComplete);
+
 // HOOK PARA OBTENER DATOS
 export const getData = async (onDataUpdate: Function) => {
   // OBTENER DATOS LOCALES
@@ -37,8 +48,9 @@ export const getData = async (onDataUpdate: Function) => {
   // VERIFICAR POR NUEVOS DATOS 
   setTimeout(() => {
     ref.on("value", (dataS: firebase.database.DataSnapshot) => {
+
       // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
-      if (data[0] && navigator.onLine && JSON.stringify(dataS.val()) !== JSON.stringify(data[0].list)) {
+      if (data[0] && navigator.onLine && JSON.stringify(dataS.val().reverse()) !== JSON.stringify(data[0].list)) {
         localdb.list.put({ id: 1, list: dataS.val() })
           .then(() => onDataUpdate(true))
       }
@@ -54,7 +66,7 @@ export const getData = async (onDataUpdate: Function) => {
     console.log("Read data from Firebase");
     const fb: firebase.database.DataSnapshot = await ref.once("value");
     const fbData: Idata[] = fb.val();
-    await localdb.list.put({ id: 1, list: fbData });
+    await localdb.list.put({ id: 1, list: fbData.reverse() });
     ref.off();
     return fbData;
   }
@@ -90,7 +102,10 @@ export const useRipples = () => {
       el.appendChild(circle);
 
       // ELIMINAR CIRCULO LUEGO DE *TIME* SEGUNDOS
-      setTimeout(() => el.removeChild(circle), time * 1000);
+      setTimeout(() => {
+        try { el.removeChild(circle) }
+        catch { }
+      }, time * 1000);
     }
   }
 
@@ -120,7 +135,18 @@ export const showToast = (data: IToast) => {
   // AGREGAR TEXTOS Y ACCIONES
   span.textContent = data.text;
   btn.textContent = data.actionText || "";
-  if (data.action) btn.addEventListener("click", data.action);
+
+  // EVENTO DE CLICK EN EL BOTON ACCION
+  btn.addEventListener("click", (e: MouseEvent) => {
+    if (data.action) data.action(e);
+    div.style.transform = "translateY(100%)";
+    setTimeout(() => {
+      try {
+        document.body.removeChild(div);
+      } catch{ }
+      if (data.onHide) data.onHide();
+    }, 5300);
+  });
 
   // AGREGAR DIV AL BODY
   div.appendChild(span);
@@ -142,5 +168,50 @@ export const showToast = (data: IToast) => {
       document.body.removeChild(div);
       if (data.onHide) data.onHide();
     }, 5300);
+  }
+}
+
+// CAMBIAR COLORES
+interface changeColors {
+  white: string | null;
+  primary: string;
+  dark: string | null;
+  filesHead: string | null;
+  files: string | null;
+  back: string;
+}
+
+const changeColors = (props: changeColors) => {
+  const metaThemeColor = document.querySelector("meta[name=theme-color]");
+  const b = document.body;
+  b.style.setProperty("--white", props.white)
+  b.style.setProperty("--primary", props.primary)
+  b.style.setProperty("--dark", props.dark)
+  b.style.setProperty("--files", props.files)
+  b.style.backgroundColor = props.back;
+  b.style.setProperty("--filesHead", props.filesHead)
+
+  if (metaThemeColor) metaThemeColor.setAttribute("content", props.primary);
+}
+
+export const changeTheme = () => {
+  if (window.localStorage.getItem("theme") === "light") {
+    changeColors({
+      primary: "#455a64",
+      white: "#fff",
+      dark: "#263238",
+      files: "#555",
+      filesHead: "#fff",
+      back: "#aaa"
+    })
+  } else {
+    changeColors({
+      primary: "#607d8b",
+      white: "#fff",
+      dark: "#455a64",
+      files: "#fff",
+      filesHead: "rgba(0, 0, 0, .8)",
+      back: "#eee"
+    })
   }
 }

@@ -1,0 +1,72 @@
+#toolbar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  z-index: 3;
+  top: 0;
+  width: var(--toolbar);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 70px);
+  align-items: center;
+  justify-items: center;
+  list-style: none;
+  transform: translateX(calc(var(--toolbar) * -1));
+  background-color: var(--dark);
+  transition: transform 0.3s ease-in-out;
+}
+
+#showToolbar {
+  position: fixed;
+  appearance: none;
+  border: none;
+  outline: none;
+  color: var(--white);
+  background: none;
+  padding: 20px;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+#toolbarShadow {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#toolbar>li {
+  color: var(--white);
+  height: 10px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#toolbar>li:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+#toolbar>li>i {
+  font-size: 2em;
+}
+
+@media screen and (min-width: 500px) {
+  #toolbar {
+    transform: translateX(0);
+  }
+  #toolbarShadow {
+    display: none;
+  }
+  #showToolbar {
+    display: none;
+  }
+}

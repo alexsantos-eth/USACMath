@@ -4,6 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    transition: transform 0.7s ease-in-out;
     display: block;
 }
 
@@ -21,7 +22,6 @@
 .navbar>#navContent {
     position: relative;
     width: 100%;
-    max-width: var(--width);
     padding: 30px;
 }
 
@@ -41,17 +41,6 @@
     display: inline-block;
     position: relative;
     top: -2px;
-}
-
-.navbar>#navContent>#headerText>a {
-    text-decoration: none;
-    color: #fff;
-    display: inline-block;
-    position: absolute;
-    top: 0px;
-    right: 1.5px;
-    padding: 15px;
-    border-radius: 100%;
 }
 
 .navbar>#navContent>#headerText>#headerContent {
@@ -139,7 +128,7 @@
 }
 
 .navbar>#navContent>#search-list>ul {
-    background: var(--white);
+    background: var(--files);
     padding: 5px 20px;
     list-style: none;
     position: absolute;
@@ -161,12 +150,13 @@
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     font-weight: 600;
-    color: rgba(100, 100, 100, 0.6);
+    color: var(--filesHead);
     display: flex;
     align-items: center;
     padding: 13px;
     width: 100%;
     font-size: 0.8em;
+    opacity: 0.6;
 }
 
 .navbar>#navContent>#search-list>ul>li>i {
@@ -174,23 +164,35 @@
 }
 
 .navbar>#navContent>#search-list>ul>li:first-child {
-    color: rgba(100, 100, 100, 0.9);
+    color: var(--filesHead);
     font-size: 0.9em;
+    opacity: 0.8;
 }
 
 .navbar>#navContent>#search-list>ul>li:last-child {
     border: none;
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width:500px) {
     .navbar {
-        width: calc(100% - var(--appWidth));
+        left: var(--toolbar);
+        width: calc(100% - var(--toolbar));
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .navbar {
+        left: var(--toolbar);
+        width: calc(100% - var(--appWidth) - var(--toolbar));
         height: 100vh;
     }
+}
+
+@media screen and (min-width: 1200px) {
     .navbar>#navContent>#search-list>ul {
         transform: none;
-        left: 30px;
-        top: 260px;
+        left: 100px;
+        top: 320px;
         height: 300px;
     }
     .navbar>#navContent>#search-list {
@@ -199,13 +201,13 @@
     .navbar>#navContent>#search-list::after {
         content: "";
         position: absolute;
-        top: 243px;
+        top: 302px;
         z-index: 2;
-        left: 47px;
+        left: 120px;
         width: 0;
         height: 0;
         border-left: 18px solid transparent;
         border-right: 18px solid transparent;
-        border-bottom: 18px solid var(--white);
+        border-bottom: 18px solid var(--files);
     }
 }

@@ -21,6 +21,7 @@ namespace Strings {
   interface application {
     title: string;
     text: string;
+    text_2: string;
     search: string;
     advancedSearch: string;
     listTitle: string;

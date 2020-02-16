@@ -5,7 +5,10 @@ body {
 	left: 0;
 	width: 100%;
 	--width: 900px;
+	--toolbar: 70px;
 	--white: #fff;
+	--files: #fff;
+	--filesHead: rgba(0, 0, 0, .8);
 	--dark: #455a64;
 	--buttons: #1976d2;
 	--primary: #607d8b;
@@ -116,5 +119,11 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 @media screen and (max-width:380px) {
 	body {
 		font-size: 13px;
+	}
+}
+
+@media screen and (min-width:600px) {
+	body {
+		font-size: 18px;
 	}
 }

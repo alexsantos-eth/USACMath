@@ -8,7 +8,7 @@
 }
 
 .file {
-  background: var(--white);
+  background: var(--files);
   box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
   padding: 0 20px;
   border-radius: 10px;
@@ -23,15 +23,23 @@
 
 .file>.fileHead>h1 {
   font-size: 1.3em;
-  text-transform: capitalize;
-  color: rgba(0, 0, 0, .8);
+  color: var(--filesHead);
+}
+
+.file>.fileHead>h1::first-letter {
+  text-transform: uppercase;
 }
 
 .file>.fileHead>p {
   margin-top: 10px;
   font-size: 0.9em;
-  color: rgba(0, 0, 0, .6);
+  color: var(--filesHead);
   text-overflow: ellipsis;
+  opacity: 0.8;
+}
+
+.file>.fileHead>p::first-letter {
+  text-transform: uppercase;
 }
 
 .file>.fileMiddle {
@@ -53,13 +61,14 @@
 .file>.fileMiddle>ul>li>i {
   font-style: normal;
   margin-right: 5px;
-  color: rgba(0, 0, 0, .55);
+  color: var(--filesHead);
   font-weight: 450;
 }
 
 .file>.fileMiddle>ul>li>span {
-  color: rgba(0, 0, 0, .4);
+  color: var(--filesHead);
   display: block;
+  opacity: 0.6;
   text-transform: capitalize;
 }
 
@@ -90,7 +99,9 @@
 .action>i, .action>label {
   position: relative;
   margin-top: 3px;
-  color: rgba(0, 0, 0, .7);
+  color: var(--filesHead);
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .file>.prevBtn {
@@ -129,5 +140,11 @@
   #filecontainer {
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
+  }
+}
+
+@media screen and (min-width:600px) {
+  .file {
+    height: 290px;
   }
 }

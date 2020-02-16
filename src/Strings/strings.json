@@ -1,14 +1,15 @@
 {
 	"application": {
 		"title": "Matemática - FIUSAC",
-		"text": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, etc de cualquier curso del area matemática y profesional con todos los documentos más recientes publicados.",
+		"text": "Bienvenido al buscador del departamento de matemática de la facultad de ingeniería.",
+		"text_2": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad.",
 		"search": "Buscar archivos",
 		"advancedSearch": "Busqueda rapida",
 		"listTitle": "Palabras Frecuentes",
 		"short": [
 			{
 				"icon": "assignment",
-				"text": "Programa"
+				"text": "Programa m"
 			},
 			{
 				"icon": "create",

@@ -1,6 +1,7 @@
 {
   "short_name": "Mate FIUSAC",
   "name": "Departamento de Matemática",
+  "gcm_sender_id": "671038474128",
   "icons": [
     {
       "src": "./images/logo.png",

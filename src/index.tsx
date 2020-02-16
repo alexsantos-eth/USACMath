@@ -1,8 +1,7 @@
 // REACT AND APP
 import React from 'react';
+import ReactDOM from "react-dom";
 import App from './Components/App/App';
-//@ts-ignore
-import { render } from "react-snapshot";
 
 // ESTILOS
 import './index.css';
@@ -38,16 +37,17 @@ if (!online) showToast({
   fixed: true
 });
 
-
-render(<App />, document.getElementById('root'));
+// REGISTRAR SERVICE WORKER
 serviceWorker.register({
-  onUpdate: () => {
+  onUpdate: (sw:ServiceWorkerRegistration) => {
     // MOSTRAR ALERTA EN ACTUALIZACION
     showToast({
       text: Strings.toast.update,
       actionText: Strings.toast.update_btn,
-      action: () => window.location.reload(),
+      action: () =>  window.location.reload(),
       fixed: true
     })
   }
 });
+
+ReactDOM.render(<App />, document.getElementById('root'));
