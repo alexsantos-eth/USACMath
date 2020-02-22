@@ -1,5 +1,48 @@
-#pdfObject {
+.preview {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transform: scale(0);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: rgb(82, 86, 89);
+  transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
+}
+
+.preview>.closePrev {
+  color: var(--white);
+  border-radius: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 15px;
+  padding: 15px;
+  overflow: hidden;
+  z-index: 4;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  cursor: pointer;
+}
+
+.preview>.closePrev::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  background: #444;
+}
+
+.preview>iframe {
+  opacity: 1;
+  animation: iframe 1s ease-in-out 1;
+  position: relative;
+  z-index: 3;
 }

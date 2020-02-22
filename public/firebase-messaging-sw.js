@@ -19,7 +19,8 @@ messaging.setBackgroundMessageHandler(function (payload) {
   const notificationTitle = 'Departamento de Matemática';
   const notificationOptions = {
     body: payload.data.message,
-    icon: '/images/icon.png'
+    icon: '/images/icon.png',
+    badge: '/images/badge.png'
   };
 
   return self.registration.showNotification(notificationTitle,

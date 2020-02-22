@@ -118,6 +118,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
 
   // OBETNER DATOS DE FIREBASE
   if (count === 0) getData(() => {
+    // ENVIAR ALERTA SI HAY ACTUALIZACION
     showToast({
       text: Strings.toast.update,
       actionText: Strings.toast.update_btn,
@@ -135,6 +136,10 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
 
         // LIMITAR PETICIONES
         count++;
+
+        // MOSTRAR PREVIEW
+        const preview: HTMLDivElement = document.querySelector(".preview") as HTMLDivElement;
+        preview.style.display = "flex";
 
         // OBTENER TEXTO DE PATH SI EXISTE
         if (path.length > 0) searchFilter(path.trim().toLowerCase());
@@ -189,7 +194,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         fText={fText}
       />
 
-      <input type="checkbox" id="togglePreview" />
+      <input type="checkbox" id="togglePreview" value="false"/>
 
       <div className="App">
         <div id="prels">

@@ -53,14 +53,16 @@ export function register(config?: Config) {
 
 function registerValidSW(swUrl: string, config?: Config) {
   navigator.serviceWorker
-    .register("./firebase-messaging-sw.js")
+    .register("./firebase-messaging-sw.js", {
+      updateViaCache: "none"
+    })
     .then(function (registration) {
       console.log("Registration successful, scope is:", registration.scope);
     })
     .catch(function (err) {
       console.log("Service worker registration failed, error:", err);
     });
-    
+
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {

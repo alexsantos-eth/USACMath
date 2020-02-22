@@ -51,7 +51,7 @@ export const getData = async (onDataUpdate: Function) => {
 
       // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
       if (data[0] && navigator.onLine && JSON.stringify(dataS.val().reverse()) !== JSON.stringify(data[0].list)) {
-        localdb.list.put({ id: 1, list: dataS.val() })
+        localdb.list.put({ id: 1, list: dataS.val().reverse() })
           .then(() => onDataUpdate(true))
       }
     })
