@@ -145,6 +145,12 @@
 
 @media screen and (min-width:600px) {
   .file {
-    height: 290px;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width:1500px) {
+  .file {
+    height: 330px;
   }
 }

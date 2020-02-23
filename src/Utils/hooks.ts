@@ -47,15 +47,19 @@ export const getData = async (onDataUpdate: Function) => {
 
   // VERIFICAR POR NUEVOS DATOS 
   setTimeout(() => {
-    ref.on("value", (dataS: firebase.database.DataSnapshot) => {
-
-      // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
-      if (data[0] && navigator.onLine && JSON.stringify(dataS.val().reverse()) !== JSON.stringify(data[0].list)) {
-        localdb.list.put({ id: 1, list: dataS.val().reverse() })
-          .then(() => onDataUpdate(true))
-      }
-    })
-  }, 3000);
+    const connectedRef = firebase.database().ref(".info/connected");
+    connectedRef.on("value", (snap) => {
+      if (snap.val() === true) {
+        ref.on("value", (dataS: firebase.database.DataSnapshot) => {
+          // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
+          if (data[0] && navigator.onLine && JSON.stringify(dataS.val().reverse()) !== JSON.stringify(data[0].list)) {
+            localdb.list.put({ id: 1, list: dataS.val().reverse() })
+              .then(() => onDataUpdate(true))
+          }
+        })
+      } else console.log("Error en la conexión a internet, no se pueden acceder a las actualizaciones.");
+    });
+  }, 1000);
 
   if (data[0]) {
     // LEER DATOS DEL LOCAL SI EXISTE

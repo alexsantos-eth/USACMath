@@ -127,3 +127,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 		font-size: 18px;
 	}
 }
+
+@media screen and (min-width:1500px) {
+	body {
+		font-size: 20px;
+	}
+}

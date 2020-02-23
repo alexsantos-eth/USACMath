@@ -98,3 +98,9 @@
         height: 100vh;
     }
 }
+
+@media screen and (min-width:1700px) {
+    .App {
+        width: calc(var(--appWidth) + 100px);
+    }
+}

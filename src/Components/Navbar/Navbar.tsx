@@ -2,6 +2,7 @@ import React, { MouseEvent, useRef, RefObject, useEffect } from "react";
 
 // ESTILOS
 import "./Navbar.css";
+import { changeTheme } from "../../Utils/hooks";
 
 // LIMITES
 let count: number = 0;
@@ -30,6 +31,21 @@ const Navbar: React.FC<Props> = (props: Props) => {
 		if (li.textContent) {
 			props.getVal(li.textContent.substr(li.textContent.indexOf(" ") + 1).trim().toLowerCase(), true);
 			if (input.current) input.current.value = li.textContent.substr(li.textContent.indexOf(" ") + 1);
+		}
+	}
+
+	// CAMBIAR TEMA
+	const switchTheme = () => {
+		// CAMBIAR A MODO OSCURO
+		if (window.localStorage.getItem("theme") === "light") {
+			window.localStorage.setItem("theme", "dark");
+			changeTheme()
+		}
+
+		// CAMBIAR A MODO CLARO
+		else {
+			window.localStorage.setItem("theme", "light");
+			changeTheme()
 		}
 	}
 
@@ -77,6 +93,8 @@ const Navbar: React.FC<Props> = (props: Props) => {
 				<label htmlFor="showList" id="showSearchList">
 					<i className="material-icons">flash_on</i>{props.advancedSearch}
 				</label>
+				<button className="material-icons darkMode" onClick={switchTheme}>brightness_medium</button>
+
 				<label htmlFor="showList" id="search-list">
 					<ul>
 						<li>{props.listTitle}</li>

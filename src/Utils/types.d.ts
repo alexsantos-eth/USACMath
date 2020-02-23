@@ -19,6 +19,8 @@ interface Navigator {
 
 namespace Strings {
   interface application {
+    toolbarTitle: string;
+    toolbarText: string;
     title: string;
     text: string;
     text_2: string;

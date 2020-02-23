@@ -4,15 +4,16 @@
   left: 0;
   z-index: 3;
   top: 0;
-  width: var(--toolbar);
+  width: 250px;
+  padding: 10px 20px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 70px);
+  grid-template-rows: repeat(7, 42px);
   align-items: center;
-  justify-items: center;
+  justify-items: flex-start;
   list-style: none;
-  transform: translateX(calc(var(--toolbar) * -1));
-  background-color: var(--dark);
+  transform: translateX(-250px);
+  background-color: var(--files);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -42,12 +43,53 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+#toolbar>h1 {
+  font-size: 1.3em;
+  color: var(--filesHead);
+}
+
+#toolbar>p {
+  position: relative;
+  top: -5px;
+  color: var(--filesHead);
+  opacity: 0.9;
+}
+
 #toolbar>li {
   color: var(--white);
-  height: 10px;
+  height: auto;
+  width: 100%;
   opacity: 0.8;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px 0;
+  color: var(--filesHead);
+  font-size: 1.1em;
+}
+
+.normalTooltip {
+  display: inline-block;
+  margin-left: 20px;
+  color: var(--filesHead);
+  font-weight: bold;
+}
+
+.desktopTooltip {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.3s ease-in-out;
+  background: var(--files);
+  padding: 10px;
+  margin-left: 40px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: var(--filesHead);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 #toolbar>li:hover {
@@ -56,17 +98,37 @@
 }
 
 #toolbar>li>i {
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+@media screen and (min-width:380px) {
+  #toolbar>p {
+    font-size: 0.9em;
+  }
 }
 
 @media screen and (min-width: 500px) {
   #toolbar {
+    padding: 5px 23px;
     transform: translateX(0);
+    background: var(--dark);
+    width: var(--toolbar);
+    grid-template-rows: repeat(7, 60px);
+  }
+  #toolbar>li {
+    color: var(--white);
+    padding: 0;
   }
   #toolbarShadow {
     display: none;
   }
   #showToolbar {
     display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #toolbar {
+    padding: 5px 20px;
   }
 }

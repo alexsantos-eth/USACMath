@@ -39,12 +39,22 @@ if (!online) showToast({
 
 // REGISTRAR SERVICE WORKER
 serviceWorker.register({
-  onUpdate: (sw:ServiceWorkerRegistration) => {
+  onUpdate: (registration: ServiceWorkerRegistration) => {
     // MOSTRAR ALERTA EN ACTUALIZACION
     showToast({
       text: Strings.toast.update,
       actionText: Strings.toast.update_btn,
-      action: () =>  window.location.reload(),
+      action: () => {
+        const waitingServiceWorker = registration.waiting
+
+        if (waitingServiceWorker) {
+          waitingServiceWorker.addEventListener("statechange", (event: any) => {
+            if (event.target && event.target.state === "activated")
+              window.location.reload();
+          });
+          waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
+        }
+      },
       fixed: true
     })
   }

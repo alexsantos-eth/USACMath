@@ -81,6 +81,25 @@
     margin: 0;
 }
 
+.navbar>#navContent>.darkMode {
+    position: relative;
+    background: var(--files);
+    border: none;
+    outline: none;
+    appearance: none;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px;
+    top: 4.5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: var(--filesHead);
+    filter: invert(75%);
+    opacity: 0.8;
+    font-size: 1.4em;
+}
+
 .navbar>#navContent>#showSearchList {
     color: var(--white);
     font-weight: bold;
@@ -178,6 +197,15 @@
         left: var(--toolbar);
         width: calc(100% - var(--toolbar));
     }
+    .navbar>#navContent>.darkMode {
+        top: 5px;
+    }
+}
+
+@media screen and (min-width:600px) {
+    .navbar>#navContent>.darkMode {
+        top: 5.5px;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -209,5 +237,11 @@
         border-left: 18px solid transparent;
         border-right: 18px solid transparent;
         border-bottom: 18px solid var(--files);
+    }
+}
+
+@media screen and (min-width:1700px) {
+    .navbar {
+        width: calc(100% - var(--appWidth) - var(--toolbar) - 100px);
     }
 }

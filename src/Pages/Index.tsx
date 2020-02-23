@@ -27,7 +27,7 @@ import { RouteComponentProps } from 'react-router-dom';
 const defData: Idata = { course: "", link: "", title: "", text: "", type: "", upload: "" };
 
 // FUNCTION PARA PREVIUSALIZAR
-let showPreview = (str: string) => { };
+let showPreview = (str: string) => { console.log(str) };
 
 // LIMITAR LECTURAS Y DATOS
 const vpstr = "width=device-width, initial-scale=1";
@@ -41,9 +41,11 @@ let closeCount: number = 0;
 const breakPoint: boolean = window.innerWidth >= 900 ? true : false;
 const breakPointMid: boolean = window.innerWidth >= 500 ? true : false;
 const breakPointMid2: boolean = window.innerWidth >= 600 ? true : false;
+const breakPointLarge: boolean = window.innerWidth >= 1500 ? true : false;
+const breakPointLarge2: boolean = window.innerWidth >= 1700 ? true : false;
 const dH: number = window.innerHeight;
-const dW: number = breakPoint ? 450 : breakPointMid ? window.innerWidth - 70 : window.innerWidth;
-const fH: number = breakPointMid2 ? 310 : 270;
+const dW: number = breakPointLarge2 ? 550 : breakPoint ? 450 : breakPointMid ? window.innerWidth - 70 : window.innerWidth;
+const fH: number = breakPointMid2 ? breakPointLarge ? 350 : 320 : 270;
 const fText: string = breakPoint ? Strings.application.text_2 : Strings.application.text;
 
 interface State { data: Idata[]; preview?: string }
@@ -194,7 +196,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         fText={fText}
       />
 
-      <input type="checkbox" id="togglePreview" value="false"/>
+      <input type="checkbox" id="togglePreview" value="false" />
 
       <div className="App">
         <div id="prels">

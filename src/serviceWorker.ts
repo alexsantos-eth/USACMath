@@ -30,10 +30,12 @@ export function register(config?: Config) {
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const fcm = `${process.env.PUBLIC_URL}/firebase-messasing-sw.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
+        checkValidServiceWorker(fcm, config);
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
@@ -53,17 +55,6 @@ export function register(config?: Config) {
 
 function registerValidSW(swUrl: string, config?: Config) {
   navigator.serviceWorker
-    .register("./firebase-messaging-sw.js", {
-      updateViaCache: "none"
-    })
-    .then(function (registration) {
-      console.log("Registration successful, scope is:", registration.scope);
-    })
-    .catch(function (err) {
-      console.log("Service worker registration failed, error:", err);
-    });
-
-  navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
@@ -80,11 +71,11 @@ function registerValidSW(swUrl: string, config?: Config) {
               console.log(
                 'New content is available and will be used when all ' +
                 'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
-              );
+                , navigator.serviceWorker.controller);
 
               // Execute callback
-              if (config && config.onUpdate) {
-                //config.onUpdate(registration);
+              if (config && config.onUpdate && swUrl.includes("service-worker.js")) {
+                config.onUpdate(registration);
               }
             } else {
               // At this point, everything has been precached.
