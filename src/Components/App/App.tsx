@@ -8,11 +8,16 @@ import {
 } from "react-router-dom";
 
 // PAGINAS
-import Index from "../../Pages/Index";
+import Index from "../../Pages/index/Index";
+import Schedule from "../../Pages/schedule/Schedule";
 
 // ICONOS
 import "../../Icons/style.css";
 import { showToast, messaging, sendToken, changeTheme } from '../../Utils/hooks';
+import Toolbar from "../Toolbar/Toolbar";
+
+// ASIGNAR LAS VARIABLES GLOBALES
+window.localStorage.setItem("limiters", "0,0,0,0");
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -46,6 +51,7 @@ const App: React.FC = () => {
   return (
     <>
       <Router>
+        <Toolbar />
         <Switch>
           <Route
             exact
@@ -56,6 +62,11 @@ const App: React.FC = () => {
             exact
             path='/buscar/:key'
             render={(props: RouteComponentProps) => <Index {...props} />}
+          />
+          <Route
+            exact
+            path='/horarios'
+            component={Schedule}
           />
         </Switch>
       </Router>

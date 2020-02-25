@@ -76,6 +76,14 @@ export const getData = async (onDataUpdate: Function) => {
   }
 }
 
+// CAMBIAR VARIABLES GLOBALES
+export const asign = (value: number, index: number) => {
+  const vars = window.localStorage.getItem("limiters");
+  if (vars) window.localStorage.setItem("limiters", vars.substr(0, index) + value + vars.substr(index + 1));
+}
+
+export const getScope = (index: number) => parseInt(window.localStorage.getItem("limiters")?.charAt(index) || "")
+
 // EFECTO RIPPLE PARA TODOS LOS BOTONES
 export const useRipples = () => {
 
@@ -147,7 +155,7 @@ export const showToast = (data: IToast) => {
     setTimeout(() => {
       try {
         document.body.removeChild(div);
-      } catch{ }
+      } catch (e) { }
       if (data.onHide) data.onHide();
     }, 5300);
   });
@@ -169,10 +177,82 @@ export const showToast = (data: IToast) => {
     }, 5000);
 
     setTimeout(() => {
-      document.body.removeChild(div);
+      try {
+        document.body.removeChild(div);
+      } catch (e) { }
       if (data.onHide) data.onHide();
     }, 5300);
   }
+}
+
+// MOSTRAR ALERTAS
+interface AlertProps {
+  type: string;
+  onHide?: Function;
+  onConfirm?: Function;
+  title: string;
+  body: string;
+  confirmBtn?: string;
+  cancelBtn?: string;
+}
+
+export const showAlert = (props: AlertProps) => {
+  // CREAR ELEMENTOS
+  const alertContainer: HTMLDivElement = document.createElement("div");
+  const alertShadow: HTMLDivElement = document.createElement("div");
+  const alertContent: HTMLDivElement = document.createElement("div");
+  const actions: HTMLUListElement = document.createElement("ul");
+  const liCancel: HTMLLIElement = document.createElement("li");
+  const liConfirm: HTMLLIElement = document.createElement("li");
+  const h1: HTMLHeadingElement = document.createElement("h1");
+  const p: HTMLParagraphElement = document.createElement("p");
+  const cancelBtn: HTMLButtonElement = document.createElement("button");
+  const confirmBtn: HTMLButtonElement = document.createElement("button");
+
+  // ASIGNAR CLASES
+  alertContainer.classList.add("alertContainer");
+  alertShadow.classList.add("alertShadow");
+  alertContent.classList.add("alertContent");
+  cancelBtn.classList.add("cancelBtn", "waves", "waves-dark");
+  confirmBtn.classList.add("confirmBtn", "waves");
+
+  // ASIGNAR TEXTOS
+  h1.textContent = props.title;
+  p.textContent = props.body;
+  cancelBtn.textContent = props.cancelBtn || "Cancelar";
+  confirmBtn.textContent = props.confirmBtn || "Aceptar";
+
+  // ASIGNAR EVENTOS
+  const hideAlert = () => {
+    alertContainer.style.opacity = "0";
+    setTimeout(() => {
+      try {
+        document.body.removeChild(alertContainer);
+        if (props.onHide) props.onHide();
+      } catch (err) { }
+    }, 400);
+  }
+
+  alertShadow.addEventListener("click", hideAlert);
+  cancelBtn.addEventListener("click", hideAlert);
+  confirmBtn.addEventListener("click", () => {
+    if (props.onConfirm) props.onConfirm();
+    hideAlert();
+  });
+
+  if (props.type === "confirm") cancelBtn.style.display = "block";
+
+  // ASIGNAR AL DOM
+  liConfirm.appendChild(confirmBtn);
+  liCancel.appendChild(cancelBtn);
+  actions.appendChild(liCancel);
+  actions.appendChild(liConfirm);
+  alertContent.appendChild(h1);
+  alertContent.appendChild(p);
+  alertContent.appendChild(actions);
+  alertContainer.appendChild(alertShadow);
+  alertContainer.appendChild(alertContent);
+  document.body.appendChild(alertContainer);
 }
 
 // CAMBIAR COLORES
@@ -198,6 +278,7 @@ const changeColors = (props: changeColors) => {
   if (metaThemeColor) metaThemeColor.setAttribute("content", props.primary);
 }
 
+// CAMBIAR TEMA
 export const changeTheme = () => {
   if (window.localStorage.getItem("theme") === "light") {
     changeColors({
@@ -219,3 +300,4 @@ export const changeTheme = () => {
     })
   }
 }
+

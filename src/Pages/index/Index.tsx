@@ -3,25 +3,24 @@ import React, { Dispatch, SetStateAction, useState, useEffect, MouseEvent } from
 import './Index.css';
 
 // COMPONENTES 
-import Navbar from "../Components/Navbar/Navbar";
-import Files from "../Components/Files/Files";
-import Preloader from "../Components/Preloader/Preloader";
-import Spinner from "../Components/Spinner/Spinner";
-import Toolbar from "../Components/Toolbar/Toolbar"
+import Navbar from "../../Components/Navbar/Navbar";
+import Files from "../../Components/Files/Files";
+import Preloader from "../../Components/Preloader/Preloader";
+import Spinner from "../../Components/Spinner/Spinner";
 
 // TEXTOS
-import Strings from "../Strings/strings.json";
+import Strings from "../../Strings/strings.json";
 
 // COPIAR TEXTO
 import copy from 'copy-to-clipboard';
 
 // VER ARCHIVOS PDF
-import PdfViewer from "../Components/PDFViewer/PDFViewer";
+import PdfViewer from "../../Components/PDFViewer/PDFViewer";
 
 // ICONOS, EFECTOS Y HOOKS
-import { getData, showToast } from '../Utils/hooks';
+import { getData, showToast, asign, getScope } from '../../Utils/hooks';
 import { FixedSizeList as List } from 'react-window';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, useLocation } from 'react-router-dom';
 
 // DATOS RESULTANTES
 const defData: Idata = { course: "", link: "", title: "", text: "", type: "", upload: "" };
@@ -33,9 +32,6 @@ let showPreview = (str: string) => { console.log(str) };
 const vpstr = "width=device-width, initial-scale=1";
 let currentData: Idata[];
 let copyData: Idata[];
-let count: number = 0;
-let shareCount: number = 0;
-let closeCount: number = 0;
 
 // PROPIEDADES DEL RENDER
 const breakPoint: boolean = window.innerWidth >= 900 ? true : false;
@@ -46,7 +42,7 @@ const breakPointLarge2: boolean = window.innerWidth >= 1700 ? true : false;
 const dH: number = window.innerHeight;
 const dW: number = breakPointLarge2 ? 550 : breakPoint ? 450 : breakPointMid ? window.innerWidth - 70 : window.innerWidth;
 const fH: number = breakPointMid2 ? breakPointLarge ? 350 : 320 : 270;
-const fText: string = breakPoint ? Strings.application.text_2 : Strings.application.text;
+const fText: string = breakPoint ? Strings.application.general.main_2 : Strings.application.general.main;
 
 interface State { data: Idata[]; preview?: string }
 
@@ -57,10 +53,10 @@ const shareAction = (e: MouseEvent<HTMLButtonElement>) => {
   const url: string | null = el?.getAttribute("data-link");
 
   // MOSTRAR MENSAJE DE SHRE API
-  if (navigator.share && shareCount === 0 && url) {
+  if (navigator.share && getScope(4) === 0 && url) {
     navigator
       .share({
-        title: Strings.application.title,
+        title: Strings.application.general.title,
         text: Strings.share.text,
         url
       })
@@ -71,6 +67,7 @@ const shareAction = (e: MouseEvent<HTMLButtonElement>) => {
     copy(url);
     showToast({ text: Strings.toast.share });
   }
+  console.log("ds");
 }
 
 // COMPONENTE
@@ -78,8 +75,10 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
   // ACTUALIZAR ESTADO CON DATOS OBTENIDOS
   const [data, setData]: [State, Dispatch<SetStateAction<State>>] = useState({ data: [defData] });
 
-  // OBETNER PATHNAME
-  const path: string = props.location.pathname.substr(8);
+  // OBETNER PATHNAME Y VARIABLES GLOBALES
+  const count: number = getScope(0);
+  const closeCount: number = getScope(2);
+  const path: string = useLocation().pathname.substr(8);
   const defValue: string | undefined = closeCount === 0 ? path : undefined;
 
   // BUSCAR STRING EN TODOS LOS ARCHIVOS
@@ -125,7 +124,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
       text: Strings.toast.update,
       actionText: Strings.toast.update_btn,
       action: () => {
-        count = 0;
+        asign(0, 0);
         setData({ data: currentData });
       },
       fixed: true
@@ -137,7 +136,7 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
         copyData = currentData = data;
 
         // LIMITAR PETICIONES
-        count++;
+        asign(1, 0);
 
         // MOSTRAR PREVIEW
         const preview: HTMLDivElement = document.querySelector(".preview") as HTMLDivElement;
@@ -182,13 +181,12 @@ const Index: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
       })
 
       // LIMITAR RENDER 
-      closeCount++;
+      asign(1, 2);
     }
   })
 
   return (
     <>
-      <Toolbar />
       <Navbar
         {...Strings.application}
         getVal={getVal}

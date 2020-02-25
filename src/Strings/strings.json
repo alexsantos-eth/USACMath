@@ -1,63 +1,73 @@
 {
 	"application": {
-		"toolbarTitle": "MateFIUSAC® v1.3",
-		"toolbarText": "Desarollada por Alex Santos 2020, todos los derechos reservados.",
-		"title": "Matemática - FIUSAC",
-		"text": "Bienvenido al buscador del departamento de matemática de la facultad de ingeniería.",
-		"text_2": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad.",
-		"search": "Buscar archivos",
-		"advancedSearch": "Busqueda rapida",
-		"listTitle": "Palabras Frecuentes",
-		"short": [
-			{
-				"icon": "assignment",
-				"text": "Programa m"
-			},
-			{
-				"icon": "create",
-				"text": "Proyecto"
-			},
-			{
-				"icon": "local_hotel",
-				"text": "Básica 1"
-			},
-			{
-				"icon": "accessibility",
-				"text": "Básica 2"
-			},
-			{
-				"icon": "directions_walk",
-				"text": "Intermedia 1"
-			},
-			{
-				"icon": "directions_run",
-				"text": "Intermedia 2"
-			},
-			{
-				"icon": "directions_bike",
-				"text": "Intermedia 3"
-			},
-			{
-				"icon": "motorcycle",
-				"text": "Aplicada 1"
-			},
-			{
-				"icon": "directions_car",
-				"text": "Aplicada 2"
-			},
-			{
-				"icon": "directions_bus",
-				"text": "Aplicada 3"
-			},
-			{
-				"icon": "directions_railway",
-				"text": "Aplicada 4"
-			},
-			{
-				"icon": "directions_boat",
-				"text": "Aplicada 5"
-			}
-		]
+		"toolbar": {
+			"title": "MateFIUSAC® v1.3",
+			"text": "Desarollada por Alex Santos 2020, todos los derechos reservados."
+		},
+		"general": {
+			"title": "Matemática - FIUSAC",
+			"main": "Bienvenido al buscador del departamento de matemática de la facultad de ingeniería.",
+			"main_2": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad."
+		},
+		"placeholders": {
+			"search": "Buscar archivos"
+		},
+		"buttons": {
+			"advancedSearch": "Busqueda rapida"
+		},
+		"short": {
+			"listTitle": "Palabras Frecuentes",
+			"buttons": [
+				{
+					"icon": "assignment",
+					"text": "Programa m"
+				},
+				{
+					"icon": "create",
+					"text": "Proyecto"
+				},
+				{
+					"icon": "local_hotel",
+					"text": "Básica 1"
+				},
+				{
+					"icon": "accessibility",
+					"text": "Básica 2"
+				},
+				{
+					"icon": "directions_walk",
+					"text": "Intermedia 1"
+				},
+				{
+					"icon": "directions_run",
+					"text": "Intermedia 2"
+				},
+				{
+					"icon": "directions_bike",
+					"text": "Intermedia 3"
+				},
+				{
+					"icon": "motorcycle",
+					"text": "Aplicada 1"
+				},
+				{
+					"icon": "directions_car",
+					"text": "Aplicada 2"
+				},
+				{
+					"icon": "directions_bus",
+					"text": "Aplicada 3"
+				},
+				{
+					"icon": "directions_railway",
+					"text": "Aplicada 4"
+				},
+				{
+					"icon": "directions_boat",
+					"text": "Aplicada 5"
+				}
+			]
+		}
 	},
 	"share": {
 		"text": "Te comparto este archivo desde el Departamento de Matemática"
@@ -68,6 +78,13 @@
 		"share": "Copiado al portapapeles",
 		"update": "Actualización disponible",
 		"update_btn": "Recargar"
+	},
+	"alerts": {
+		"update": {
+			"button": "Actualizar",
+			"title": "Nueva actualización",
+			"text": "Hay una nueva version de la aplicación con mejoras, ¿Deseas actualizar?"
+		}
 	},
 	"rights": {
 		"text_1": "OpenSource MIT LICENSE",

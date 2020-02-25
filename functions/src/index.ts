@@ -21,16 +21,21 @@ exports.showPush = functions.database.ref("/data").onUpdate(async (snap: functio
     const tokenList: admin.database.DataSnapshot = await admin.database().ref("tokens").once("value");
     const tokens: string[] = Object.values(tokenList.val());
 
-    // PAYLOAD DE LA NOTIFICACION
-    const payload = {
-        notification: {
-            title: "Departamento de Matemática",
-            body: `Nuevo contenido disponible: ${dataFeed[dataFeed.length - 1].title}`,
-            icon: "https://mate.ingenieria.usac.app/images/icon.png"
+    const message: admin.messaging.MulticastMessage = {
+        data: {
+            title: dataFeed[dataFeed.length - 1].title,
+            message: dataFeed[dataFeed.length - 1].text,
+            url: dataFeed[dataFeed.length - 1].link
+        },
+        tokens: tokens,
+        webpush: {
+            fcmOptions: {
+                link: "https://mate.ingenieria.usac.app/#news"
+            }
         }
     }
 
     // ENVIAR A LOS DISPOSITIVOS
-    const fcm = await admin.messaging().sendToDevice(tokens, payload);
-    console.log(fcm.results);
+    const fcm = await admin.messaging().sendMulticast(message);
+    console.log(fcm);
 })

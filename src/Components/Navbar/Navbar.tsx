@@ -2,10 +2,7 @@ import React, { MouseEvent, useRef, RefObject, useEffect } from "react";
 
 // ESTILOS
 import "./Navbar.css";
-import { changeTheme } from "../../Utils/hooks";
-
-// LIMITES
-let count: number = 0;
+import { changeTheme, asign, getScope } from "../../Utils/hooks";
 
 // PROPIEDADES
 interface Props extends Strings.application {
@@ -19,6 +16,9 @@ interface Props extends Strings.application {
 let quickList: JSX.Element[];
 
 const Navbar: React.FC<Props> = (props: Props) => {
+	// OBTENER VARIABLE GLOBAL DEL NAVBAR
+	const count: number = getScope(6);
+
 	// INPUT DE BUSQUEDA
 	const input: RefObject<HTMLInputElement> = useRef(null);
 
@@ -54,11 +54,12 @@ const Navbar: React.FC<Props> = (props: Props) => {
 		if (count === 0) {
 			if (input.current) {
 				if (props.defaultValue) input.current.value = props.defaultValue;
-				count++;
+				// CERRAR VARIBEL GLOBAL
+				asign(1, 6);
 			}
 
 			// RENDERIZAR LAS PALABRAS FRECUENTES
-			quickList = props.short.map((e: { icon: string; text: string }, i: number) => (
+			quickList = props.short.buttons.map((e: { icon: string; text: string }, i: number) => (
 				<li key={i} onClick={shortVal}>
 					<i className="material-icons">{e.icon}</i> {e.text}
 				</li>
@@ -71,7 +72,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
 			<div id="navContent">
 				<div id="headerText">
 					<div id="headerContent">
-						<h1>{props.title}</h1>
+						<h1>{props.general.title}</h1>
 						<p>{props.fText}</p>
 					</div>
 				</div>
@@ -83,21 +84,23 @@ const Navbar: React.FC<Props> = (props: Props) => {
 						type="search"
 						id="search"
 						name="search"
-						placeholder={props.search}
+						placeholder={props.placeholders.search}
 						onChange={setVal}
 					/>
 				</div>
 
 				<input type="checkbox" id="showList"></input>
 
-				<label htmlFor="showList" id="showSearchList">
-					<i className="material-icons">flash_on</i>{props.advancedSearch}
-				</label>
-				<button className="material-icons darkMode" onClick={switchTheme}>brightness_medium</button>
+				<div id="navTools">
+					<label htmlFor="showList" id="showSearchList">
+						<i className="material-icons">flash_on</i>{props.buttons.advancedSearch}
+					</label>
+					<button className="darkMode" onClick={switchTheme}><i className="material-icons ">brightness_medium</i></button>
+				</div>
 
 				<label htmlFor="showList" id="search-list">
 					<ul>
-						<li>{props.listTitle}</li>
+						<li>{props.short.listTitle}</li>
 						{quickList}
 					</ul>
 				</label>

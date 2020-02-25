@@ -2,17 +2,17 @@
   height: 100vh;
   position: fixed;
   left: 0;
-  z-index: 3;
+  z-index: 10;
   top: 0;
-  width: 250px;
-  padding: 10px 20px;
+  width: 300px;
+  padding: 20px 30px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(7, 42px);
+  grid-template-rows: repeat(8, 45px);
   align-items: center;
   justify-items: flex-start;
   list-style: none;
-  transform: translateX(-250px);
+  transform: translateX(-300px);
   background-color: var(--files);
   transition: transform 0.3s ease-in-out;
 }
@@ -27,7 +27,7 @@
   padding: 20px;
   top: 0;
   right: 0;
-  z-index: 3;
+  z-index: 10;
 }
 
 #toolbarShadow {
@@ -50,30 +50,39 @@
 
 #toolbar>p {
   position: relative;
-  top: -5px;
+  top: -10px;
   color: var(--filesHead);
   opacity: 0.9;
 }
 
-#toolbar>li {
+#toolbar>a {
+  text-decoration: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#toolbar>a>li, #toolbar>li {
   color: var(--white);
   height: auto;
-  width: 100%;
+  width: calc(100% + 30px);
   opacity: 0.8;
   cursor: pointer;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: 5px;
-  padding: 10px 0;
+  padding: 10px 15px;
   color: var(--filesHead);
-  font-size: 1.1em;
+  margin-left: -15px;
+  font-size: 1em;
 }
 
 .normalTooltip {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 25px;
   color: var(--filesHead);
   font-weight: bold;
 }
@@ -92,13 +101,28 @@
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
-#toolbar>li:hover {
-  opacity: 1;
-  transform: scale(1.2);
+#toolbar>a>li>i, #toolbar>li>i {
+  font-size: 1.5em;
+  color: var(--filesHead);
 }
 
-#toolbar>li>i {
-  font-size: 1.5em;
+.pathActive {
+  opacity: 1!important;
+  background: var(--buttons);
+}
+
+.pathActive>i {
+  color: var(--white)!important;
+}
+
+.pathActive>span {
+  color: var(--white)!important;
+}
+
+@media screen and (max-width:360px) {
+  #toolbar {
+    width: 250px;
+  }
 }
 
 @media screen and (min-width:380px) {
@@ -115,15 +139,24 @@
     width: var(--toolbar);
     grid-template-rows: repeat(7, 60px);
   }
-  #toolbar>li {
-    color: var(--white);
-    padding: 0;
-  }
   #toolbarShadow {
     display: none;
   }
   #showToolbar {
     display: none;
+  }
+  #toolbar>a>li:hover, #toolbar>li:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  #toolbar>a>li>i, #toolbar>li>i {
+    font-size: 1.5em;
+    color: var(--white);
+  }
+  .pathActive {
+    margin-left: -1px!important;
+    width: 100%!important;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   }
 }
 

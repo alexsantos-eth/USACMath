@@ -19,18 +19,28 @@ interface Navigator {
 
 namespace Strings {
   interface application {
-    toolbarTitle: string;
-    toolbarText: string;
-    title: string;
-    text: string;
-    text_2: string;
-    search: string;
-    advancedSearch: string;
-    listTitle: string;
-    short: {
-      icon: string;
+    toolbar: {
+      title: string;
       text: string;
-    }[]
+    };
+    general: {
+      title: string;
+      main: string;
+      main_2: string;
+    }
+    placeholders: {
+      search: string;
+    };
+    buttons: {
+      advancedSearch: string;
+    };
+    short: {
+      listTitle: string;
+      buttons: {
+        icon: string;
+        text: string;
+      }[]
+    }
   };
   interface share {
     text: string;
@@ -42,6 +52,13 @@ namespace Strings {
     update: string;
     update_btn: string;
   };
+  interface alerts {
+    update: {
+      button: string;
+      title: string;
+      text: string;
+    }
+  }
   interface rights {
     text_1: string;
     text_2: string;

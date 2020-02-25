@@ -16,13 +16,39 @@ const messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function (payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
-  const notificationTitle = 'Departamento de Matemática';
+  const title = payload.data.title;
+  const notificationTitle = `${title.charAt(0).toUpperCase()}${title.substr(1)}`;
   const notificationOptions = {
     body: payload.data.message,
     icon: '/images/icon.png',
-    badge: '/images/badge.png'
+    badge: '/images/badge.png',
+    data: {
+      url: payload.data.url
+    },
+    actions: [
+      {
+        action: 'seeFile',
+        title: "Ver archivo",
+        icon: "/images/eye.png"
+      },
+      {
+        action: 'downloadFile',
+        title: "Descargar",
+        icon: "/images/download.png"
+      }
+    ],
+    vibrate: [200, 200, 200]
   };
 
   return self.registration.showNotification(notificationTitle,
     notificationOptions);
 });
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  if (event.action === 'downloadFile') {
+    clients.openWindow(event.notification.data.url)
+  } else {
+    clients.openWindow('/');
+  }
+})

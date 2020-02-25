@@ -10,7 +10,7 @@ import './index.css';
 import Strings from "./Strings/strings.json";
 
 // HOOK DE TOAST
-import { showToast } from './Utils/hooks';
+import { showToast, showAlert } from './Utils/hooks';
 
 // SERVICE WORKERS
 import * as serviceWorker from './serviceWorker';
@@ -41,10 +41,12 @@ if (!online) showToast({
 serviceWorker.register({
   onUpdate: (registration: ServiceWorkerRegistration) => {
     // MOSTRAR ALERTA EN ACTUALIZACION
-    showToast({
-      text: Strings.toast.update,
-      actionText: Strings.toast.update_btn,
-      action: () => {
+    showAlert({
+      type: "confirm",
+      title: Strings.alerts.update.title,
+      body: Strings.alerts.update.text,
+      confirmBtn: Strings.alerts.update.button,
+      onConfirm: () => {
         const waitingServiceWorker = registration.waiting
 
         if (waitingServiceWorker) {
@@ -54,8 +56,7 @@ serviceWorker.register({
           });
           waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
         }
-      },
-      fixed: true
+      }
     })
   }
 });
