@@ -63,6 +63,12 @@ namespace Strings {
     text_1: string;
     text_2: string;
   }
+  interface login {
+    title: string;
+    text: string;
+    logoutTitle: string;
+    logoutText: string;
+  }
 }
 
 interface IToast {

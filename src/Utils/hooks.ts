@@ -5,6 +5,7 @@ import Dexie from "dexie";
 import firebase from "../Keys/firebase";
 import "firebase/database";
 import "firebase/messaging";
+import "firebase/auth";
 
 // BASE DE DATOS FIREBASE
 const db = firebase.database();
@@ -75,6 +76,29 @@ export const getData = async (onDataUpdate: Function) => {
     return fbData;
   }
 }
+
+// LOGINS
+let fbProvider: firebase.auth.AuthProvider;
+let gProvider: firebase.auth.AuthProvider;
+export const setProviders = () => {
+  fbProvider = new firebase.auth.FacebookAuthProvider();
+  gProvider = new firebase.auth.GoogleAuthProvider();
+}
+
+export const fbLogin = () => {
+  firebase.auth().signInWithRedirect(fbProvider);
+}
+
+export const gLogin = () => {
+  firebase.auth().signInWithRedirect(gProvider);
+}
+
+export const useLogin = (callback: (user: firebase.User | null) => any, err: (a: firebase.auth.Error) => any) => {
+  firebase.auth().onAuthStateChanged(callback, err);
+}
+
+export const logout = () => firebase.auth().signOut();
+
 
 // CAMBIAR VARIABLES GLOBALES
 export const asign = (value: number, index: number) => {
@@ -187,13 +211,14 @@ export const showToast = (data: IToast) => {
 
 // MOSTRAR ALERTAS
 interface AlertProps {
-  type: string;
+  type: "confirm" | "alert" | "error" | "window";
   onHide?: Function;
   onConfirm?: Function;
   title: string;
   body: string;
   confirmBtn?: string;
   cancelBtn?: string;
+  customElements?: Node;
 }
 
 export const showAlert = (props: AlertProps) => {
@@ -241,6 +266,7 @@ export const showAlert = (props: AlertProps) => {
   });
 
   if (props.type === "confirm") cancelBtn.style.display = "block";
+  if (props.type === "window") confirmBtn.style.display = "none";
 
   // ASIGNAR AL DOM
   liConfirm.appendChild(confirmBtn);
@@ -249,6 +275,7 @@ export const showAlert = (props: AlertProps) => {
   actions.appendChild(liConfirm);
   alertContent.appendChild(h1);
   alertContent.appendChild(p);
+  if (props.customElements) alertContent.appendChild(props.customElements);
   alertContent.appendChild(actions);
   alertContainer.appendChild(alertShadow);
   alertContainer.appendChild(alertContent);

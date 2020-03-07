@@ -89,5 +89,11 @@
 	"rights": {
 		"text_1": "OpenSource MIT LICENSE",
 		"text_2": "Alex Santos ® 2020"
+	},
+	"login": {
+		"title": "Iniciar Sesión",
+		"text": "Puedes iniciar sesión o crear una cuenta nueva para la aplicación, es GRATIS.",
+		"logoutTitle": "Cerrar sesión",
+		"logoutText": "Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a inciar con cualquier cuenta cuando quieras."
 	}
 }

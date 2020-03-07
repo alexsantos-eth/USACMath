@@ -101,9 +101,20 @@
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+#toolbar #logBtn .desktopTooltip {
+  width: 120px;
+  text-align: center;
+}
+
 #toolbar>a>li>i, #toolbar>li>i {
   font-size: 1.5em;
   color: var(--filesHead);
+}
+
+#toolbar>li>img {
+  height: 28px;
+  margin-left: -6px;
+  border-radius: 100%;
 }
 
 .pathActive {
@@ -115,8 +126,55 @@
   color: var(--white)!important;
 }
 
-.pathActive>span {
+.pathActive>.normalTooltip {
+  display: block;
   color: var(--white)!important;
+}
+
+.pathActive>.desktopTooltip {
+  display: block;
+  color: var(--filesHead)!important;
+}
+
+#logsContainer {
+  display: none;
+  margin-top: 20px;
+}
+
+#logsContainer>button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  appearance: none;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 13px 10px;
+  cursor: pointer;
+  font-size: 1em;
+  color: var(--white);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#logsContainer .flogin {
+  background: #4267B2;
+}
+
+#logsContainer .flogin>img {
+  filter: invert(100%);
+}
+
+#logsContainer button>img {
+  height: 18px;
+  margin-right: 10px;
+}
+
+#logsContainer .glogin {
+  color: #333;
+  background: #eee;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (max-width:360px) {
@@ -138,6 +196,9 @@
     background: var(--dark);
     width: var(--toolbar);
     grid-template-rows: repeat(7, 60px);
+  }
+  #toolbar>li>img {
+    height: 40px;
   }
   #toolbarShadow {
     display: none;

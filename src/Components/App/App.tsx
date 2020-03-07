@@ -13,7 +13,7 @@ import Schedule from "../../Pages/schedule/Schedule";
 
 // ICONOS
 import "../../Icons/style.css";
-import { showToast, messaging, sendToken, changeTheme } from '../../Utils/hooks';
+import { showToast, messaging, sendToken, changeTheme, setProviders } from '../../Utils/hooks';
 import Toolbar from "../Toolbar/Toolbar";
 
 // ASIGNAR LAS VARIABLES GLOBALES
@@ -46,6 +46,9 @@ const App: React.FC = () => {
     // SELECCIONAR TEMAS
     if (!window.localStorage.getItem("theme")) window.localStorage.setItem("theme", "dark")
     else changeTheme();
+
+    // AGREGAR AUTH
+    setProviders();
   })
 
   return (
