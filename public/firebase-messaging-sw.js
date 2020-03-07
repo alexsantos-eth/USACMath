@@ -25,7 +25,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
     data: {
       url: payload.data.url
     },
-    actions: [
+    actions: payload.data.url === "noFile" ? undefined : [
       {
         action: 'seeFile',
         title: "Ver archivo",
