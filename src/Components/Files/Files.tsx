@@ -4,8 +4,9 @@ import "./Files.css";
 // PROPIEDADES
 interface Props extends Idata {
 	index: number;
-	shareAction: (event: MouseEvent<HTMLButtonElement>) => void;
-	showPreview: (str: string) => void
+	shareAction: (event: MouseEvent<HTMLButtonElement>) => any;
+	showPreview: (str: string) => void;
+	showComments: (event: MouseEvent<HTMLButtonElement>) => any;
 }
 
 const File: React.FC<Props> = (props: Props) => {
@@ -48,6 +49,9 @@ const File: React.FC<Props> = (props: Props) => {
 						</button>
 						<button onClick={props.shareAction} data-link={props.link} className="waves waves-dark action">
 							<i data-link={props.link} className="material-icons">share</i>
+						</button>
+						<button onClick={props.showComments} data-file={props.title} className="waves waves-dark action">
+							<i data-file={props.title} className="material-icons">comment</i>
 						</button>
 					</div>
 

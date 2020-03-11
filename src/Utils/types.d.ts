@@ -7,6 +7,17 @@ interface Idata {
   upload: string;
 }
 
+interface IComments {
+  points: number[];
+  comment: string[];
+  file: string;
+  author: {
+    photo: string;
+    name: string;
+  }[]
+  upload: string[];
+}
+
 type ShareData = {
   title?: string;
   text?: string;
@@ -30,6 +41,7 @@ namespace Strings {
     }
     placeholders: {
       search: string;
+      comment: string;
     };
     buttons: {
       advancedSearch: string;
@@ -57,6 +69,10 @@ namespace Strings {
       button: string;
       title: string;
       text: string;
+    },
+    comments: {
+      notFound: string;
+      notFounText: string;
     }
   }
   interface rights {
@@ -69,6 +85,11 @@ namespace Strings {
     logoutTitle: string;
     logoutText: string;
   }
+  interface comments {
+    points: string;
+    button: string;
+    setPoints: string;
+  }
 }
 
 interface IToast {
@@ -77,4 +98,15 @@ interface IToast {
   onHide?: Function;
   action?: (e: MouseEvent) => void;
   fixed?: boolean;
+}
+
+
+interface CourseProps {
+  title: string;
+  code: number;
+  seccion: string;
+  horario: string;
+  salon: string;
+  cat: string;
+  aux: string;
 }

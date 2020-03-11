@@ -1,0 +1,209 @@
+{
+  "basica": {
+    "subarea": "Matemática Básica",
+    "boss": "Miguel Castillo",
+    "courses": [
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "A",
+        "horario": "07:10 - 8:50",
+        "salon": "407 S-12",
+        "cat": "Benjamin Piedrasanta",
+        "aux": "Manuel Garcia"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "B",
+        "horario": "07:10 - 8:50",
+        "salon": "401 S-12",
+        "cat": "Mayra Castillo",
+        "aux": "Andres Divas"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "F",
+        "horario": "07:10 - 8:50",
+        "salon": "405 S-12",
+        "cat": "Alejandro Estrada",
+        "aux": "Cesar Lopez"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "G",
+        "horario": "07:10 - 8:50",
+        "salon": "106 S-12",
+        "cat": "Ericka Cano",
+        "aux": "Jouse Juarez"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "K",
+        "horario": "07:10 - 8:50",
+        "salon": "312 T-3",
+        "cat": "Miguel Castillo",
+        "aux": "Jorge Castañeda"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "L",
+        "horario": "07:10 - 8:50",
+        "salon": "107 T-3",
+        "cat": "Oscar Martinez",
+        "aux": "Erick Lool"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "M",
+        "horario": "07:10 - 8:50",
+        "salon": "411 S-12",
+        "cat": "Fabiola Ramirez",
+        "aux": "Jorge Paredes"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "Z",
+        "horario": "07:10 - 8:50",
+        "salon": "404 T-3",
+        "cat": "Mario Rivera",
+        "aux": "Marco Gomez"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "C",
+        "horario": "09:00 - 10:40",
+        "salon": "305 T-3",
+        "cat": "Mario de Leon",
+        "aux": "Gilberto Arauz"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "D",
+        "horario": "09:00 - 10:40",
+        "salon": "411 S-12",
+        "cat": "Renato Ponciano",
+        "aux": "Manuel Osorio"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "E",
+        "horario": "09:00 - 10:40",
+        "salon": "405 S-12",
+        "cat": "Gustavo Santos",
+        "aux": "Jose Sic"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "H",
+        "horario": "09:00 - 10:40",
+        "salon": "108 S-12",
+        "cat": "Alberto Boy",
+        "aux": "Herber Sandoval"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "I",
+        "horario": "09:00 - 10:40",
+        "salon": "409 S-12",
+        "cat": "Francisco de la Rosa",
+        "aux": "Daniel Gómez"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "J",
+        "horario": "09:00 - 10:40",
+        "salon": "410 S-12",
+        "cat": "Carlos Bolaños",
+        "aux": "Jackelin Tavico"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "X",
+        "horario": "09:00 - 10:40",
+        "salon": "302 S-12",
+        "cat": "Erick Agustin",
+        "aux": "Lucia Ardon"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "O",
+        "horario": "12:20 - 14:00",
+        "salon": "410 T-3",
+        "cat": "Francisco de la Rosa",
+        "aux": "STAFF STAFF "
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "N",
+        "horario": "14:50 - 16:30",
+        "salon": "404 T-3",
+        "cat": "Mario de Leon",
+        "aux": "Katelyn Pérez"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "P",
+        "horario": "14:50 - 16:30",
+        "salon": "301 T-7",
+        "cat": "Cesar Ovalle",
+        "aux": "Juan Carlos Figueroa"
+      },
+      {
+        "title": "Matemática Básica 1",
+        "code": 101,
+        "seccion": "U",
+        "horario": "18:10 - 19:50",
+        "salon": "L-II-2 T-1",
+        "cat": "Cesar Ovalle",
+        "aux": "Juan Carlos Figueroa"
+      }
+    ]
+  },
+  "intermedia": {
+    "subarea": "Matemática Intermedia",
+    "boss": "Vera Marroquin",
+    "courses": [
+      {
+        "title": "Matemática Intermedia 1",
+        "code": 101,
+        "seccion": "A",
+        "horario": "07:10 - 8:50",
+        "salon": "407 S-12",
+        "cat": "Benjamin Piedrasanta",
+        "aux": "Manuel Garcia"
+      }
+    ]
+  },
+  "aplicada": {
+    "subarea": "Matemática Aplicada",
+    "boss": "Alfonso Velasquez",
+    "courses": [
+      {
+        "title": "Matemática Aplicada 1",
+        "code": 101,
+        "seccion": "A",
+        "horario": "07:10 - 8:50",
+        "salon": "407 S-12",
+        "cat": "Benjamin Piedrasanta",
+        "aux": "Manuel Garcia"
+      }
+    ]
+  }
+}

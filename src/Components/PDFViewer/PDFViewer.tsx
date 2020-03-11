@@ -13,7 +13,7 @@ const PdfViewer: React.FC<Props> = (props: Props) => {
         width="100%"
         height="100%"
         title={props.title}
-        src={`https://docs.google.com/gview?key=AIzaSyAwfxDJGqe8LU3HFu4HhyWYlUJtoYYBF5g&embedded=true&url=${props.src}`}
+        src={props.src}
       />
     </>
   )

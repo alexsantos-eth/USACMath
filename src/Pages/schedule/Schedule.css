@@ -1,0 +1,132 @@
+#schedulePage {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 20px 30px 30px calc(var(--toolbar) + 30px);
+  overflow: scroll;
+  color: var(--filesHead);
+  height: 100vh;
+}
+
+#courses>.list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+#courses>.coursesTitle {
+  background: var(--primary);
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+  color: var(--white);
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+}
+
+#courses>.coursesTitle span {
+  font-size: 2.3em;
+  margin-right: 10px;
+}
+
+#courses>.coursesTitle h1 {
+  opacity: 0.9;
+  font-size: 1.5em;
+}
+
+#courses>.coursesTitle p {
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+#scheduleBanner {
+  background: linear-gradient(to top, var(--buttons), var(--buttonsDark));
+  color: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+  width: 50%;
+  margin: 0 auto;
+}
+
+#scheduleBanner h1 {
+  margin-bottom: 5px;
+}
+
+#schWave {
+  position: absolute;
+  top: 0;
+  transform: scale(2);
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1260px) {
+  #courses>.list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #courses>.list {
+    grid-template-columns: 1fr;
+  }
+  #scheduleBanner {
+    width: 70%;
+  }
+  #schWave {
+    transform: scale(3, 4.3);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #scheduleBanner {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #courses>.coursesTitle {
+    margin: 30px 0;
+  }
+  #schWave {
+    transform: scale(3, 4);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #schedulePage {
+    padding-left: 30px;
+  }
+  #scheduleBanner {
+    width: 100%;
+  }
+  #schWave {
+    transform: scale(20);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #courses>.coursesTitle {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #scheduleBanner {
+    font-size: 0.9em;
+  }
+  #courses>.coursesTitle div h1 {
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #scheduleBanner {
+    font-size: 0.85em;
+  }
+}

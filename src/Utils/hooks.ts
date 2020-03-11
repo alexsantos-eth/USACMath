@@ -10,6 +10,7 @@ import "firebase/auth";
 // BASE DE DATOS FIREBASE
 const db = firebase.database();
 const ref = db.ref("data");
+const commentsRef = db.ref("comments");
 const tokens = db.ref("tokens");
 const messaging = firebase.messaging();
 
@@ -24,14 +25,21 @@ interface localData {
   list: Idata[];
 }
 
+interface localComments {
+  id: number;
+  comments: IComments[];
+}
+
 export class localDB extends Dexie {
   // DECLARAR TABLAS
   list: Dexie.Table<localData, number>;
+  comments: Dexie.Table<localComments, number>;
 
   constructor() {
     super("localDB");
-    this.version(1).stores({ list: "id, list" });
+    this.version(1).stores({ list: "id, list", comments: "id, comments" });
     this.list = this.table("list");
+    this.comments = this.table("comments");
   }
 }
 
@@ -41,10 +49,17 @@ const localdb = new localDB();
 // ENVIAR TOKEN A LA DB
 export const sendToken = (token: string, onComplete: ((a: Error | null) => any)) => tokens.push(token, onComplete);
 
+// EMVIAR UN COMENTARIO
+export const addComment = async (data: IComments, index: number, onComplete?: (a: Error | null) => any) => {
+  const commentsRefs = db.ref(`comments/${index}`);
+  commentsRefs.set(data, onComplete)
+}
+
 // HOOK PARA OBTENER DATOS
 export const getData = async (onDataUpdate: Function) => {
   // OBTENER DATOS LOCALES
   const data: localData[] = await localdb.list.toArray();
+  const comments: localComments[] = await localdb.comments.toArray();
 
   // VERIFICAR POR NUEVOS DATOS 
   setTimeout(() => {
@@ -58,47 +73,69 @@ export const getData = async (onDataUpdate: Function) => {
               .then(() => onDataUpdate(true))
           }
         })
+
+        commentsRef.on("value", (dataS: firebase.database.DataSnapshot) => {
+          // SI EXISTE UNA NUEVA VERSION DE LOS ARCHIVOS, ACTUALIZAR
+          if (comments[0] && navigator.onLine && JSON.stringify(dataS.val()) !== JSON.stringify(comments[0].comments)) {
+            localdb.comments.put({ id: 1, comments: dataS.val() })
+          }
+        })
+
       } else console.log("Error en la conexión a internet, no se pueden acceder a las actualizaciones.");
     });
   }, 1000);
 
-  if (data[0]) {
+  if (data[0] && comments[0]) {
     // LEER DATOS DEL LOCAL SI EXISTE
     console.log("Read data from localDB");
-    return data[0].list;
+    return {
+      data: data[0].list,
+      comments: comments[0].comments
+    }
   } else {
     // SINO LEER DE FIREBASE "SOLO UNA VEZ"
     console.log("Read data from Firebase");
+    // ARCHIVOS
     const fb: firebase.database.DataSnapshot = await ref.once("value");
     const fbData: Idata[] = fb.val();
+
+    // COMENTARIOS
+    const fbComments: firebase.database.DataSnapshot = await commentsRef.once("value");
+    const fbDataComments: IComments[] = fbComments.val();
+
     await localdb.list.put({ id: 1, list: fbData.reverse() });
+    await localdb.comments.put({ id: 1, comments: fbDataComments });
+
+    // APAGAR CONEXION
     ref.off();
-    return fbData;
+    return {
+      data: fbData,
+      comments: fbDataComments
+    };
   }
 }
 
-// LOGINS
+// PROVEEDORES DE INICIO DE SESION
 let fbProvider: firebase.auth.AuthProvider;
 let gProvider: firebase.auth.AuthProvider;
+
+// AGREGAR PROVEEDORES
 export const setProviders = () => {
   fbProvider = new firebase.auth.FacebookAuthProvider();
   gProvider = new firebase.auth.GoogleAuthProvider();
 }
 
-export const fbLogin = () => {
-  firebase.auth().signInWithRedirect(fbProvider);
-}
+// INICIAR SESION CON FACEBOOK
+export const fbLogin = () => firebase.auth().signInWithRedirect(fbProvider);
 
-export const gLogin = () => {
-  firebase.auth().signInWithRedirect(gProvider);
-}
+// INICIAR SESION CON GOOGLE
+export const gLogin = () => firebase.auth().signInWithRedirect(gProvider);
 
-export const useLogin = (callback: (user: firebase.User | null) => any, err: (a: firebase.auth.Error) => any) => {
-  firebase.auth().onAuthStateChanged(callback, err);
-}
+// VER CAMVIOS DE USUARIO
+export const useLogin = (callback: (user: firebase.User | null) => any, err: (a: firebase.auth.Error) => any) => firebase.auth().onAuthStateChanged(callback, err);
 
+// CERRAR SESION
 export const logout = () => firebase.auth().signOut();
-
 
 // CAMBIAR VARIABLES GLOBALES
 export const asign = (value: number, index: number) => {

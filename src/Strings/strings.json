@@ -10,7 +10,8 @@
 			"main_2": "Bienvenido al buscador del departamento de matemática, aquí podras buscar parciales, claves, proyectos, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad."
 		},
 		"placeholders": {
-			"search": "Buscar archivos"
+			"search": "Buscar archivos",
+			"comment": "Escribir comentario"
 		},
 		"buttons": {
 			"advancedSearch": "Busqueda rapida"
@@ -28,11 +29,11 @@
 				},
 				{
 					"icon": "local_hotel",
-					"text": "Básica 1"
+					"text": "Basica 1"
 				},
 				{
 					"icon": "accessibility",
-					"text": "Básica 2"
+					"text": "Basica 2"
 				},
 				{
 					"icon": "directions_walk",
@@ -84,6 +85,10 @@
 			"button": "Actualizar",
 			"title": "Nueva actualización",
 			"text": "Hay una nueva version de la aplicación con mejoras, ¿Deseas actualizar?"
+		},
+		"comments": {
+			"notFound": "Sin comentarios",
+			"notFoundText": "Se el primero en enviar un comentario y calificar este documento."
 		}
 	},
 	"rights": {
@@ -94,6 +99,17 @@
 		"title": "Iniciar Sesión",
 		"text": "Puedes iniciar sesión o crear una cuenta nueva para la aplicación, es GRATIS.",
 		"logoutTitle": "Cerrar sesión",
-		"logoutText": "Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a inciar con cualquier cuenta cuando quieras."
+		"logoutText": "¿Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a inciar con cualquier cuenta cuando quieras."
+	},
+	"comments": {
+		"points": "Puntuación: ",
+		"button": "Enviar",
+		"setPoints": "Puntuar: "
+	},
+	"schedule": {
+		"banner": {
+			"title": "Horarios de Cursos",
+			"text": "Aquí están los horarios oficiales, de todos los salones del Área de matemática con su respectiva información: curso, sección, horario, código, salón, catedrático y auxiliar."
+		}
 	}
 }

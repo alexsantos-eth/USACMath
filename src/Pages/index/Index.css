@@ -72,6 +72,160 @@
     z-index: 1;
 }
 
+.commentBox>div:nth-child(1) {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.commentBox>div:nth-child(1) span {
+    margin-right: 10px;
+    font-size: 0.6em;
+    font-weight: bold;
+    color: var(--filesHead);
+}
+
+.commentBox>div:nth-child(1) ul {
+    position: relative;
+    top: -3.5px;
+}
+
+.commentBox>div:nth-child(1) ul li i {
+    font-size: 0.9em;
+}
+
+.commentBox>div:nth-child(1) ul li .fillStar {
+    color: yellow;
+}
+
+.commentBox>div:nth-child(1) ul li .emptyStar {
+    color: var(--filesHead);
+}
+
+.commentBox>div:nth-child(2) {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.commentBox>div:nth-child(2)>div {
+    display: flex;
+    align-items: flex-start;
+}
+
+.commentBox>div:nth-child(2)>div {
+    margin-bottom: 10px;
+}
+
+.commentBox>div:nth-child(2)>div>div>h3 {
+    font-size: 0.7em;
+    color: var(--filesHead);
+    opacity: 0.7;
+}
+
+.commentBox>div:nth-child(2)>div>div p {
+    font-size: 0.9em;
+    margin: 0;
+    color: var(--filesHead);
+    margin-top: -2px;
+}
+
+.commentBox>div:nth-child(2)>div>div span {
+    font-size: 0.6em;
+    display: block;
+    color: var(--filesHead);
+    opacity: 0.5;
+}
+
+.commentBox>div:nth-child(2)>div>img {
+    height: 50px;
+    border-radius: 100%;
+    display: block;
+    margin-right: 10px;
+}
+
+.commentBox>div:nth-child(3) div button {
+    position: absolute;
+    right: 0;
+    top: -6px;
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 0.9em;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: var(--white);
+    background: var(--gray);
+    opacity: 0.8;
+    cursor: not-allowed;
+    transition: all 0.3s ease-in-out;
+}
+
+.commentBox>div:nth-child(3)>div {
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.commentBox>div:nth-child(3)>div:nth-child(1) {
+    align-items: center;
+    height: 50px;
+    margin-top: 13px;
+}
+
+.commentBox>div:nth-child(3)>div:nth-child(1) label {
+    color: var(--filesHead);
+    margin-right: -23px;
+    position: relative;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.commentBox>div:nth-child(3)>div img {
+    height: 100%;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.commentBox>div:nth-child(3)>div span {
+    color: var(--filesHead);
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-right: 10px;
+}
+
+.commentBox>div:nth-child(3)>div input {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    color: var(--filesHead);
+    font-size: 1em;
+    padding: 10px 10px 10px 30px;
+    outline: none;
+    border-bottom: 2px solid var(--filesHead);
+    opacity: 0.7;
+}
+
+.commentBox>div:nth-child(3)>div input::placeholder {
+    color: var(--filesHead);
+    opacity: 0.7;
+}
+
+.commentBox>div:nth-child(3)>div ul {
+    position: relative;
+    top: -1px;
+}
+
+.commentBox>div:nth-child(3)>div ul li {
+    cursor: pointer;
+}
+
+.commentBox>div:nth-child(3)>div ul li i {
+    color: yellow;
+}
+
 @keyframes iframe {
     from {
         opacity: 0;

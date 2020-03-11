@@ -211,6 +211,9 @@ const Toolbar: React.FC = () => {
           }
         </li>
         <Link to="/"><li onClick={selectMod} data-tooltip="Archivos"><i className="material-icons">style</i></li></Link>
+        <Link to="/horarios"><li onClick={selectMod} data-tooltip="Horarios"><i className="material-icons">event</i></li></Link>
+        <li onClick={selectMod} data-mod="mainPage" data-tooltip="Departamento"><i data-mod="mainPage" className="material-icons">devices</i></li>
+
         {/* <Link to="/horarios"><li onClick={selectMod} data-tooltip="Horarios"><i className="material-icons">event</i></li></Link>
         <li onClick={selectMod} data-mod="programas" data-tooltip="Programas"><i data-mod="programas" className="material-icons">assignment</i></li>
         <li onClick={selectMod} data-mod="olimpiada" data-tooltip="Olimpiada"><i data-mod="olimpiada" className="material-icons">all_inclusive</i></li>
