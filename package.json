@@ -1,0 +1,42 @@
+{
+  "name": "fiusacmath",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "typescript": "~3.9.7"
+  },
+  "scripts": {
+    "start": "onchange './src/Lang/Strings.json' -- quicktype ./src/Lang/Strings.json -o ./src/LocalGlobals/Strings.ts --just-types & yarn dev",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "addLinter": "yarn add --dev quicktype onchange prettier node-sass @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-plugin-jest eslint-config-prettier eslint-plugin-prettier",
+    "dev": "react-scripts start",
+    "predeploy": "yarn build",
+    "deploy": "firebase deploy",
+    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
