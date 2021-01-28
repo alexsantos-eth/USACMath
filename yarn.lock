@@ -2235,6 +2235,11 @@
     "@typescript-eslint/types" "4.4.1"
     eslint-visitor-keys "^2.0.0"
 
+"@weareluastudio/lualert@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@weareluastudio/lualert/-/lualert-1.4.1.tgz#98382b14266d0936d2f94aa7434d0afcd5669390"
+  integrity sha512-SMR+IC6geNHwDHYVA3Mi7Dgmal2T0mThu8Tqa6E9PEvGRafpKp3u7sLn4qNgMbJsM59oUVT9InfXG2k6kSR6kw==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"

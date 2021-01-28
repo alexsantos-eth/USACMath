@@ -1,36 +1,27 @@
 // REACT
 import React from 'react'
 
-// STRINGS
-import Strings from 'Lang/Strings.json'
-
-// CONTEXTO
-import StringsContext from 'Context/StringsContext'
-
-// INTERFACE
-import { Es } from 'Env/Strings'
-
 // ROUTER
 import Router from 'Router/Router'
 
-// ESTADO
-interface AppState {
-	langCode: string
-	lang: Es
-}
+// PROVIDERS
+import StringsProvider from 'Providers/Strings'
+import DarkmodeProvider from 'Providers/Darkmode'
 
-// ESTADO POR DEFECTO
-const DefState: AppState = {
-	langCode: 'ES',
-	lang: Strings.es,
-}
+// ALERTAS
+import withAlerts from '@weareluastudio/lualert'
 
 const App: React.FC = () => {
 	return (
-		<StringsContext.Provider value={{ ...DefState }}>
-			<Router />
-		</StringsContext.Provider>
+		<StringsProvider>
+			<DarkmodeProvider>
+				<Router />
+			</DarkmodeProvider>
+		</StringsProvider>
 	)
 }
 
-export default App
+export default withAlerts(App, {
+	blurred: true,
+	zIndex: 10,
+})

@@ -13,10 +13,8 @@
 }
 
 body {
-	--white: #fff;
 	font-size: 15px;
 	overflow-x: hidden;
-	background: var(--white);
 }
 
 /* LISTAS */
