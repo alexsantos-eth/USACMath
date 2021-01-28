@@ -9,6 +9,7 @@
 		"@types/react-router-dom": "^5.1.5",
 		"@weareluastudio/lualert": "^1.4.1",
 		"firebase": "^8.2.4",
+		"node-sass": "4.14.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.2.0",
@@ -48,7 +49,6 @@
 		"eslint-config-prettier": "^7.2.0",
 		"eslint-plugin-jest": "^24.1.3",
 		"eslint-plugin-prettier": "^3.3.1",
-		"node-sass": "^5.0.0",
 		"onchange": "^7.1.0",
 		"prettier": "^2.2.1",
 		"quicktype": "^15.0.258"

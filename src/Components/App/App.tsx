@@ -4,6 +4,9 @@ import React from 'react'
 // ROUTER
 import Router from 'Router/Router'
 
+// ICONOS
+import 'Icons/style.css'
+
 // PROVIDERS
 import StringsProvider from 'Providers/Strings'
 import DarkmodeProvider from 'Providers/Darkmode'
