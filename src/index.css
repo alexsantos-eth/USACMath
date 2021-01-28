@@ -1,20 +1,43 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	user-select: none;
-	outline: none;
-	-webkit-user-drag: none;
-	-webkit-tap-highlight-color: transparent;
-}
-
-*:focus {
-	outline: none;
-}
-
 body {
+	overscroll-behavior: none;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	--width: 900px;
+	--toolbar: 70px;
+	--white: #fff;
+	--files: #fff;
+	--filesHead: rgba(0, 0, 0, 0.8);
+	--dark: #455a64;
+	--buttons: #1976d2;
+	--buttonsDark: hsl(187, 79%, 40%);
+	--primary: #607d8b;
+	--gray: #777;
+	--gray-light: #aaa;
+	--appWidth: 450px;
+	--breakPoint: 900px;
+	margin: 0;
+	background-color: #eee;
+	box-sizing: border-box;
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
 	font-size: 15px;
-	overflow-x: hidden;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-drag: none;
 }
 
 /* LISTAS */
