@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Strings from 'Lang/Strings.json'
 
 // CONTEXTO
-import MainContext from 'Context/MainContext'
+import StringsContext from 'Context/StringsContext'
 
 // PAGINAS
 import Index from 'Pages/Index/Index'
@@ -30,13 +30,13 @@ const DefState: AppState = {
 
 const App: React.FC = () => {
 	return (
-		<MainContext.Provider value={{ ...DefState }}>
+		<StringsContext.Provider value={{ ...DefState }}>
 			<BrowserRouter>
 				<Switch>
 					<Route exact path='/' component={Index} />
 				</Switch>
 			</BrowserRouter>
-		</MainContext.Provider>
+		</StringsContext.Provider>
 	)
 }
 

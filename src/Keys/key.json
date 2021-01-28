@@ -1,0 +1,10 @@
+{
+	"apiKey": "AIzaSyAT8k-pXCuE7pkwBhtFq8jUJH5CgZQRYwg",
+	"authDomain": "usacmath.web.app",
+	"databaseURL": "https://usacmath.firebaseio.com",
+	"projectId": "usacmath",
+	"storageBucket": "usacmath.appspot.com",
+	"messagingSenderId": "671038474128",
+	"appId": "1:671038474128:web:47bdaf85939e0ec5169515",
+	"measurementId": "G-Z5S1GTNTDS"
+}

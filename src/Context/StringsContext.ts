@@ -16,6 +16,6 @@ interface ContextProps {
 const DefContext: ContextProps = { lang: Strings.es, langCode: 'ES' }
 
 // CONTEXTO
-const MainContext: Context<ContextProps> = createContext(DefContext)
+const StringsContext: Context<ContextProps> = createContext(DefContext)
 
-export default MainContext
+export default StringsContext

@@ -1,0 +1,209 @@
+{
+	"basica": {
+		"subarea": "Matemática Básica",
+		"boss": "Miguel Castillo",
+		"courses": [
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "A",
+				"time": "07:10 - 8:50",
+				"room": "407 S-12",
+				"educator": "Benjamin Piedrasanta",
+				"aux": "Manuel Garcia"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "B",
+				"time": "07:10 - 8:50",
+				"room": "401 S-12",
+				"educator": "Mayra Castillo",
+				"aux": "Andres Divas"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "F",
+				"time": "07:10 - 8:50",
+				"room": "405 S-12",
+				"educator": "Alejandro Estrada",
+				"aux": "Cesar Lopez"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "G",
+				"time": "07:10 - 8:50",
+				"room": "106 S-12",
+				"educator": "Ericka Cano",
+				"aux": "Jouse Juarez"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "K",
+				"time": "07:10 - 8:50",
+				"room": "312 T-3",
+				"educator": "Miguel Castillo",
+				"aux": "Jorge Castañeda"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "L",
+				"time": "07:10 - 8:50",
+				"room": "107 T-3",
+				"educator": "Oscar Martinez",
+				"aux": "Erick Lool"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "M",
+				"time": "07:10 - 8:50",
+				"room": "411 S-12",
+				"educator": "Fabiola Ramirez",
+				"aux": "Jorge Paredes"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "Z",
+				"time": "07:10 - 8:50",
+				"room": "404 T-3",
+				"educator": "Mario Rivera",
+				"aux": "Marco Gomez"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "C",
+				"time": "09:00 - 10:40",
+				"room": "305 T-3",
+				"educator": "Mario de Leon",
+				"aux": "Gilberto Arauz"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "D",
+				"time": "09:00 - 10:40",
+				"room": "411 S-12",
+				"educator": "Renato Ponciano",
+				"aux": "Manuel Osorio"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "E",
+				"time": "09:00 - 10:40",
+				"room": "405 S-12",
+				"educator": "Gustavo Santos",
+				"aux": "Jose Sic"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "H",
+				"time": "09:00 - 10:40",
+				"room": "108 S-12",
+				"educator": "Alberto Boy",
+				"aux": "Herber Sandoval"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "I",
+				"time": "09:00 - 10:40",
+				"room": "409 S-12",
+				"educator": "Francisco de la Rosa",
+				"aux": "Daniel Gómez"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "J",
+				"time": "09:00 - 10:40",
+				"room": "410 S-12",
+				"educator": "Carlos Bolaños",
+				"aux": "Jackelin Tavico"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "X",
+				"time": "09:00 - 10:40",
+				"room": "302 S-12",
+				"educator": "Erick Agustin",
+				"aux": "Lucia Ardon"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "O",
+				"time": "12:20 - 14:00",
+				"room": "410 T-3",
+				"educator": "Francisco de la Rosa",
+				"aux": "STAFF STAFF "
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "N",
+				"time": "14:50 - 16:30",
+				"room": "404 T-3",
+				"educator": "Mario de Leon",
+				"aux": "Katelyn Pérez"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "P",
+				"time": "14:50 - 16:30",
+				"room": "301 T-7",
+				"educator": "Cesar Ovalle",
+				"aux": "Juan Carlos Figueroa"
+			},
+			{
+				"title": "Matemática Básica 1",
+				"code": 101,
+				"section": "U",
+				"time": "18:10 - 19:50",
+				"room": "L-II-2 T-1",
+				"educator": "Cesar Ovalle",
+				"aux": "Juan Carlos Figueroa"
+			}
+		]
+	},
+	"intermedia": {
+		"subarea": "Matemática Intermedia",
+		"boss": "Vera Marroquin",
+		"courses": [
+			{
+				"title": "Matemática Intermedia 1",
+				"code": 101,
+				"section": "A",
+				"time": "07:10 - 8:50",
+				"room": "407 S-12",
+				"educator": "Benjamin Piedrasanta",
+				"aux": "Manuel Garcia"
+			}
+		]
+	},
+	"aplicada": {
+		"subarea": "Matemática Aplicada",
+		"boss": "Alfonso Velasquez",
+		"courses": [
+			{
+				"title": "Matemática Aplicada 1",
+				"code": 101,
+				"section": "A",
+				"time": "07:10 - 8:50",
+				"room": "407 S-12",
+				"educator": "Benjamin Piedrasanta",
+				"aux": "Manuel Garcia"
+			}
+		]
+	}
+}
