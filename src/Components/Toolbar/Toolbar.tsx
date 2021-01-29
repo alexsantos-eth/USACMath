@@ -23,10 +23,16 @@ const Toolbar: React.FC = () => {
 
 	return (
 		<>
-			<button className={Styles.showToolbar}>
+			<input
+				className={Styles.showToolbar}
+				id='showToolbar'
+				type='checkbox'
+				style={{ display: 'none' }}
+			/>
+			<label htmlFor='showToolbar' className={Styles.showToolbar}>
 				<i className='material-icons'>more_vert</i>
-			</button>
-			<div className={Styles.toolbarShadow}></div>
+			</label>
+			<label htmlFor='showToolbar' className={Styles.toolbarShadow}></label>
 			<ul className={Styles.toolbar}>
 				{!isDesktop ? (
 					<>
@@ -36,27 +42,25 @@ const Toolbar: React.FC = () => {
 				) : (
 					''
 				)}
-				<li className={Styles.logBtn} data-mod='login' data-tooltip={'Iniciar sesión'}>
-					{
-						<i data-mod='login' className='material-icons'>
-							person
-						</i>
-					}
+				<li className={Styles.logBtn} data-mod='login'>
+					<i className='material-icons'>person</i>
+					<span>Iniciar sesión</span>
 				</li>
 				<Link to='/'>
-					<li data-tooltip='Archivos'>
+					<li>
 						<i className='material-icons'>style</i>
+						<span>Archivos</span>
 					</li>
 				</Link>
 				<Link to='/horarios'>
-					<li data-tooltip='Horarios'>
+					<li>
 						<i className='material-icons'>event</i>
+						<span>Horarios</span>
 					</li>
 				</Link>
-				<li data-mod='mainPage' data-tooltip='Departamento'>
-					<i data-mod='mainPage' className='material-icons'>
-						devices
-					</i>
+				<li>
+					<i className='material-icons'>devices</i>
+					<span>Departamento</span>
 				</li>
 			</ul>
 			<div className={Styles.logsContainer}>

@@ -12,7 +12,6 @@
 }
 
 .toolbarShadow {
-	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -21,6 +20,7 @@
 	background-color: rgba(0, 0, 0, 0.8);
 	z-index: 10;
 	opacity: 0;
+	pointer-events: none;
 	transition: opacity 0.3s ease-in-out;
 }
 
@@ -39,7 +39,7 @@
 	justify-items: flex-start;
 	list-style: none;
 	transform: translateX(-300px);
-	background: var(--blueGrayBlueDarkGray);
+	background: var(--whiteBlueDarkGray);
 	transition: transform 0.3s ease-in-out;
 	font-size: 1.2em;
 
@@ -51,16 +51,16 @@
 	}
 
 	h1 {
-		font-size: 1.3em;
-		color: var(--whiteBlack);
+		font-size: 1.2em;
+		color: var(--blackWhite);
 	}
 
 	p {
 		position: relative;
-		top: -10px;
-
-		color: var(--whiteBlack);
+		top: -8px;
+		color: var(--blackWhite);
 		opacity: 0.9;
+		line-height: 1.2;
 	}
 
 	a {
@@ -82,12 +82,13 @@
 
 .toolbar > a > li,
 .toolbar > li {
-	color: var(--whiteBlack);
+	position: relative;
+	color: var(--blackWhite);
 	height: auto;
 	width: calc(100% + 30px);
 	opacity: 0.8;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+	transition: background 0.2s ease-in-out;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -100,6 +101,34 @@
 		font-size: 1.5em;
 		color: var(--blackWhite);
 	}
+
+	&:hover {
+		background: var(--blue);
+		opacity: 1;
+
+		i,
+		span {
+			color: var(--white);
+		}
+	}
+
+	span {
+		font-weight: bold;
+		font-size: 0.9em;
+		margin-left: 20px;
+		opacity: 1;
+		pointer-events: none;
+		transition: opacity 0.2s ease-in-out;
+	}
+}
+
+.showToolbar:checked ~ .toolbar {
+	transform: translateX(0);
+}
+
+.showToolbar:checked ~ .toolbarShadow {
+	opacity: 1;
+	pointer-events: all;
 }
 
 // RESPONSIVE
@@ -114,13 +143,12 @@
 	opacity: 0;
 	position: absolute;
 	transition: opacity 0.3s ease-in-out;
-	background: var(--blueGrayBlueDarkGray);
+	background: var(--white);
 	padding: 10px;
 	margin-left: 40px;
 	border-radius: 5px;
 	font-weight: bold;
 	font-size: 0.8em;
-	color: var(--blackWhite);
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -193,7 +221,7 @@
 @media screen and (min-width: 380px) {
 	.toolbar {
 		p {
-			font-size: 0.9em;
+			font-size: 0.8em;
 		}
 	}
 }
@@ -206,9 +234,26 @@
 		width: var(--toolbar);
 		grid-template-rows: repeat(7, 60px);
 
-		li {
+		li,
+		a > li {
+			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
 			img {
 				height: 40px;
+			}
+
+			span {
+				opacity: 0;
+				pointer-events: none;
+				padding: 10px;
+				position: absolute;
+				border-radius: 5px;
+				font-size: 0.7em;
+				width: max-content;
+				margin-left: 40px;
+				background: var(--whiteDarkGray);
+				color: var(--darkGrayWhite) !important;
+				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 			}
 		}
 	}
@@ -224,6 +269,12 @@
 	.toolbar > li:hover {
 		opacity: 1;
 		transform: scale(1.2);
+		background: transparent;
+
+		& > span {
+			opacity: 1;
+			pointer-events: all;
+		}
 	}
 	.toolbar > a > li > i,
 	.toolbar > li > i {
