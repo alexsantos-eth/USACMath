@@ -14,19 +14,12 @@ export interface Es {
 }
 
 export interface Alerts {
-    update:   Update;
     comments: AlertsComments;
 }
 
 export interface AlertsComments {
     notFound:     string;
     notFoundText: string;
-}
-
-export interface Update {
-    button: string;
-    title:  string;
-    text:   string;
 }
 
 export interface Application {
@@ -94,9 +87,7 @@ export interface Share {
 }
 
 export interface Toast {
-    text_1:     string;
-    text_2:     string;
-    share:      string;
-    update:     string;
-    update_btn: string;
+    text_1: string;
+    text_2: string;
+    share:  string;
 }

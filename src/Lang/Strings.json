@@ -77,16 +77,9 @@
 		"toast": {
 			"text_1": "De nuevo en línea",
 			"text_2": "Sin conexión a internet",
-			"share": "Copiado al portapapeles",
-			"update": "Actualización disponible",
-			"update_btn": "Recargar"
+			"share": "Copiado al portapapeles"
 		},
 		"alerts": {
-			"update": {
-				"button": "Actualizar",
-				"title": "Nueva actualización",
-				"text": "Hay una nueva version de la aplicación con mejoras, ¿Deseas actualizar?"
-			},
 			"comments": {
 				"notFound": "Sin comentarios",
 				"notFoundText": "Se el primero en enviar un comentario y calificar este documento."

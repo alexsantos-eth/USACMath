@@ -21,13 +21,6 @@ export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown) =>
 		setState(currentDark)
 	}, [setState])
 
-// HOOK DE ACTUALIZACIONES
-export const useUpdate = () => {
-	useEffect(() => {
-		import('Utils/Tools').then(({ updateApp }) => updateApp())
-	}, [])
-}
-
 // USAR TITULO Y DESCRIPCIÓN
 export const useMetaTitle = (title: string) => {
 	useEffect(() => {
