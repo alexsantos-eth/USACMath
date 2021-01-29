@@ -1,0 +1,245 @@
+.showToolbar {
+	position: fixed;
+	appearance: none;
+	border: none;
+	outline: none;
+	color: var(--white);
+	background: none;
+	padding: 20px;
+	top: 0;
+	right: 0;
+	z-index: 9;
+}
+
+.toolbarShadow {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 10;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.toolbar {
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	z-index: 10;
+	top: 0;
+	width: 300px;
+	padding: 20px 30px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(8, 45px);
+	align-items: center;
+	justify-items: flex-start;
+	list-style: none;
+	transform: translateX(-300px);
+	background: var(--blueGrayBlueDarkGray);
+	transition: transform 0.3s ease-in-out;
+	font-size: 1.2em;
+
+	.logBtn {
+		.desktopTooltip {
+			width: 120px;
+			text-align: center;
+		}
+	}
+
+	h1 {
+		font-size: 1.3em;
+		color: var(--whiteBlack);
+	}
+
+	p {
+		position: relative;
+		top: -10px;
+
+		color: var(--whiteBlack);
+		opacity: 0.9;
+	}
+
+	a {
+		text-decoration: none;
+		appearance: none;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	li {
+		img {
+			height: 28px;
+			margin-left: -6px;
+			border-radius: 100%;
+		}
+	}
+}
+
+.toolbar > a > li,
+.toolbar > li {
+	color: var(--whiteBlack);
+	height: auto;
+	width: calc(100% + 30px);
+	opacity: 0.8;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	border-radius: 5px;
+	padding: 10px 15px;
+	margin-left: -15px;
+	font-size: 1em;
+
+	i {
+		font-size: 1.5em;
+		color: var(--blackWhite);
+	}
+}
+
+// RESPONSIVE
+.normalTooltip {
+	display: inline-block;
+	margin-left: 25px;
+	color: var(--blackWhite);
+	font-weight: bold;
+}
+
+.desktopTooltip {
+	opacity: 0;
+	position: absolute;
+	transition: opacity 0.3s ease-in-out;
+	background: var(--blueGrayBlueDarkGray);
+	padding: 10px;
+	margin-left: 40px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: var(--blackWhite);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pathActive {
+	opacity: 1 !important;
+	background: var(--blue);
+
+	i {
+		color: var(--white) !important;
+	}
+
+	.normalTooltip {
+		display: block;
+		color: var(--white) !important;
+	}
+
+	.desktopTooltip {
+		display: block;
+		color: var(--black) !important;
+	}
+}
+
+.logsContainer {
+	display: none;
+	margin-top: 20px;
+
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		appearance: none;
+		border: none;
+		outline: none;
+		margin-bottom: 10px;
+		padding: 13px 10px;
+		cursor: pointer;
+		font-size: 1em;
+		color: var(--white);
+		border-radius: 5px;
+		font-weight: bold;
+
+		img {
+			height: 18px;
+			margin-right: 10px;
+		}
+	}
+
+	.fLogin {
+		background: 0.4267b2;
+
+		img {
+			filter: invert(100%);
+		}
+	}
+
+	.gLogin {
+		color: 0.333;
+		background: #eee;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.toolbar {
+		width: 250px;
+	}
+}
+
+@media screen and (min-width: 380px) {
+	.toolbar {
+		p {
+			font-size: 0.9em;
+		}
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.toolbar {
+		padding: 5px 23px;
+		transform: translateX(0);
+		background: var(--blueDarkGrayBlueDeepGray);
+		width: var(--toolbar);
+		grid-template-rows: repeat(7, 60px);
+
+		li {
+			img {
+				height: 40px;
+			}
+		}
+	}
+
+	.toolbarShadow {
+		display: none;
+	}
+	.showToolbar {
+		display: none;
+	}
+
+	.toolbar > a > li:hover,
+	.toolbar > li:hover {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	.toolbar > a > li > i,
+	.toolbar > li > i {
+		font-size: 1.5em;
+		color: var(--white);
+	}
+
+	.pathActive {
+		margin-left: -1px !important;
+		width: 100% !important;
+		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.toolbar {
+		padding: 5px 20px;
+	}
+}

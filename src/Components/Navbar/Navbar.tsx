@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
 	const lang = useStrings()
 
 	// DARKMODE
-	const setDarkmodeCtx: (darkmode: boolean) => unknown = useSetDarkmode()
+	const setDarkmodeCtx: (darkmode: boolean) => void = useSetDarkmode()
 	const darkmode: boolean = useDarkmode()
 
 	// CAMBIAR DARKMODE

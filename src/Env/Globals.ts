@@ -14,6 +14,7 @@ const primaryColors: IPColor[] = [
 	{ name: '--blueGray', value: '#607d8b' },
 	{ name: '--lightBlue', value: 'hsl(187, 79%, 40%)' },
 	{ name: '--blueDarkGray', value: '#455a64' },
+	{ name: '--blueDeepGray', value: '#263238' },
 	{ name: '--black', value: 'rgba(0, 0, 0, 0.8)' },
 	{ name: '--white', value: '#fff' },
 	{ name: '--darkGray', value: '#555' },

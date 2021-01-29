@@ -6,15 +6,6 @@ body {
 	width: 100%;
 	--width: 900px;
 	--toolbar: 70px;
-	--white: #fff;
-	--files: #fff;
-	--filesHead: rgba(0, 0, 0, 0.8);
-	--dark: #455a64;
-	--buttons: #1976d2;
-	--buttonsDark: hsl(187, 79%, 40%);
-	--primary: #607d8b;
-	--gray: #777;
-	--gray-light: #aaa;
 	--appWidth: 450px;
 	--breakPoint: 900px;
 	margin: 0;
