@@ -12,7 +12,7 @@ const changeColor = (selectedColor: IColor, dark: boolean) => {
 // CAMBIAR TODOS
 export const toggleDarkMode = () => {
 	// LEER VARIABLE GLOBAL
-	const darkValue: boolean = window.localStorage.getItem('darkMode') === '1'
+	const darkValue: boolean = window.localStorage.getItem('darkmode') === '1'
 
 	// RECORRER CAMBIOS
 	colors.forEach((color: IColor) => changeColor(color, darkValue))

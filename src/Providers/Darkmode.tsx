@@ -17,7 +17,7 @@ const DarkmodeProvider = (props: React.ComponentProps<'div'>) => {
 
 	// ACTUALIZAR DARKMODE
 	const toggleStateDarkmode = () => {
-		window.localStorage.setItem('darkMode', darkmode ? '0' : '1')
+		window.localStorage.setItem('darkmode', darkmode ? '0' : '1')
 		toggleDarkMode()
 		setDarkmode(!darkmode)
 	}

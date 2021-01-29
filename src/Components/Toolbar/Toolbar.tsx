@@ -5,7 +5,7 @@ import React from 'react'
 import Styles from './Toolbar.module.scss'
 
 // TIPOS
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 // ICONOS
 import G from 'Assets/icons/gicon.png'
@@ -16,10 +16,15 @@ import { useStrings } from 'Hooks/Context'
 
 // GRID
 import { isDesktop } from 'Grids/Breakpoints'
+import { ROUTES } from 'Env/Routes'
 
 const Toolbar: React.FC = () => {
 	// STRING
 	const lang = useStrings()
+
+	// HISTORY
+	const history = useHistory()
+	const path: string = history.location.pathname
 
 	return (
 		<>
@@ -46,14 +51,14 @@ const Toolbar: React.FC = () => {
 					<i className='material-icons'>person</i>
 					<span>Iniciar sesión</span>
 				</li>
-				<Link to='/'>
-					<li>
+				<Link to={ROUTES.files}>
+					<li className={path === ROUTES.files ? Styles.pathActive : ''}>
 						<i className='material-icons'>style</i>
 						<span>Archivos</span>
 					</li>
 				</Link>
-				<Link to='/horarios'>
-					<li>
+				<Link to={ROUTES.schedule}>
+					<li className={path === ROUTES.schedule ? Styles.pathActive : ''}>
 						<i className='material-icons'>event</i>
 						<span>Horarios</span>
 					</li>

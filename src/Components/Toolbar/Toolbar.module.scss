@@ -131,44 +131,9 @@
 	pointer-events: all;
 }
 
-// RESPONSIVE
-.normalTooltip {
-	display: inline-block;
-	margin-left: 25px;
-	color: var(--blackWhite);
-	font-weight: bold;
-}
-
-.desktopTooltip {
-	opacity: 0;
-	position: absolute;
-	transition: opacity 0.3s ease-in-out;
-	background: var(--white);
-	padding: 10px;
-	margin-left: 40px;
-	border-radius: 5px;
-	font-weight: bold;
-	font-size: 0.8em;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-}
-
 .pathActive {
+	background: var(--blue) !important;
 	opacity: 1 !important;
-	background: var(--blue);
-
-	i {
-		color: var(--white) !important;
-	}
-
-	.normalTooltip {
-		display: block;
-		color: var(--white) !important;
-	}
-
-	.desktopTooltip {
-		display: block;
-		color: var(--black) !important;
-	}
 }
 
 .logsContainer {
@@ -283,9 +248,10 @@
 	}
 
 	.pathActive {
-		margin-left: -1px !important;
-		width: 100% !important;
-		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+		background: var(--blue) !important;
+		opacity: 1 !important;
+		width: 59px !important;
+		left: 15px;
 	}
 }
 

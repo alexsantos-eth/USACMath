@@ -44,9 +44,5 @@ primaryColors.forEach((pColor: IPColor) => {
 // COLORES FINALES
 const colors: IColor[] = baseColors.concat(colorPer)
 
-// DARKMODE
-export const isDark: boolean =
-	window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-
 // EXPORTACIONES
 export { colors }

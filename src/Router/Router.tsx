@@ -7,11 +7,14 @@ import Index from 'Pages/Index/Index'
 // ROUTER
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
+// RUTAS
+import { ROUTES } from 'Env/Routes'
+
 const Router = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path='/' component={Index} />
+				<Route exact path={ROUTES.files} component={Index} />
 			</Switch>
 		</BrowserRouter>
 	)
