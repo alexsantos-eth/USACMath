@@ -9,14 +9,14 @@ interface IPColor {
 // COLORES PRIMARIOS
 const primaryColors: IPColor[] = [
 	{ name: '--blue', value: '#1976d2' },
-	{ name: '--grayLight', value: '#aaa' },
+	{ name: '--lightGray', value: '#aaa' },
 	{ name: '--gray', value: '#777' },
 	{ name: '--blueGray', value: '#607d8b' },
 	{ name: '--lightBlue', value: 'hsl(187, 79%, 40%)' },
-	{ name: '--blueGrayDark', value: '#455a64' },
+	{ name: '--blueDarkGray', value: '#455a64' },
 	{ name: '--black', value: 'rgba(0, 0, 0, 0.8)' },
 	{ name: '--white', value: '#fff' },
-	{ name: '--white', value: '#fff' },
+	{ name: '--darkGray', value: '#555' },
 ]
 
 // COLORES INMUTABLES

@@ -22,3 +22,9 @@ export const useDarkmode = () => {
 	const { darkmode } = useContext(DarkModeContext)
 	return darkmode
 }
+
+// DARKMODE
+export const useSetDarkmode = () => {
+	const { setDarkmode } = useContext(DarkModeContext)
+	return setDarkmode
+}

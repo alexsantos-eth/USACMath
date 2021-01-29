@@ -5,16 +5,28 @@ import React, { useState } from 'react'
 import DarkModeContext from 'Context/Darkmode'
 
 // HOOKS
-import { useDarkmode } from 'Hooks/Fx'
+import { useLoadDarkmode } from 'Hooks/Fx'
+import { toggleDarkMode } from 'Utils/Tools'
 
 const DarkmodeProvider = (props: React.ComponentProps<'div'>) => {
 	// ESTADO
 	const [darkmode, setDarkmode] = useState<boolean>(false)
 
 	// HOOKS
-	useDarkmode(setDarkmode)
+	useLoadDarkmode(setDarkmode)
 
-	return <DarkModeContext.Provider value={{ darkmode }}>{props.children}</DarkModeContext.Provider>
+	// ACTUALIZAR DARKMODE
+	const toggleStateDarkmode = () => {
+		window.localStorage.setItem('darkMode', darkmode ? '0' : '1')
+		toggleDarkMode()
+		setDarkmode(!darkmode)
+	}
+
+	return (
+		<DarkModeContext.Provider value={{ darkmode, setDarkmode: toggleStateDarkmode }}>
+			{props.children}
+		</DarkModeContext.Provider>
+	)
 }
 
 export default DarkmodeProvider

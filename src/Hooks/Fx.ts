@@ -6,7 +6,7 @@ import { toggleDarkMode } from 'Utils/Tools'
 import { isDark } from 'Env/Globals'
 
 // DARK MODE
-export const useDarkmode = (setState: (darkMode: boolean) => unknown) =>
+export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown) =>
 	useEffect(() => {
 		// OBTENER VALOR ACTUAL
 		const currentDark: boolean = window.localStorage.getItem('darkmode') === '1'
