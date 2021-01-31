@@ -37,7 +37,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
 
 				<div className={Style.fileBody}>
 					<div className={Style.actions}>
-						<button data-link={course.link} className={`${Style.action} ${Style.prevBtn}`}>
+						<button data-link={course.link} className={Style.action}>
 							<i data-link={course.link} className='material-icons'>
 								visibility
 							</i>

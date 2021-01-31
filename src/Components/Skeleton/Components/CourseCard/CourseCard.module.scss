@@ -23,46 +23,46 @@
 	animation: sp 2s ease-in-out infinite;
 	margin: 10px 0;
 
+	div {
+		display: flex;
+		justify-content: flex-start;
+		width: 100%;
+
+		i {
+			background: var(--black);
+			height: 40px;
+			position: relative;
+			border-radius: 5px;
+			opacity: 0.4;
+			margin-right: 10px;
+
+			&:nth-child(1) {
+				width: 40px;
+				justify-self: flex-start;
+			}
+
+			&:nth-child(2) {
+				width: 40px;
+				justify-self: flex-start;
+			}
+
+			&:nth-child(3) {
+				width: 150px;
+				right: 20px;
+				position: absolute;
+				margin-right: 0;
+			}
+		}
+	}
+
 	span {
 		width: 100%;
 		display: block;
-		background: var(--blackWhite);
+		background: var(--black);
 		height: 10px;
 		border-radius: 100px;
 		transition: width 1s ease-in-out;
 		margin-bottom: 10px;
-
-		div {
-			display: flex;
-			justify-content: flex-start;
-			width: 100%;
-
-			i {
-				background: var(--blackWhite);
-				height: 40px;
-				position: relative;
-				border-radius: 5px;
-				opacity: 0.4;
-				margin-right: 10px;
-
-				&:nth-child(1) {
-					width: 40px;
-					justify-self: flex-start;
-				}
-
-				&:nth-child(2) {
-					width: 40px;
-					justify-self: flex-start;
-				}
-
-				&:nth-child(3) {
-					width: 150px;
-					right: 20px;
-					position: absolute;
-					margin-right: 0;
-				}
-			}
-		}
 
 		&:nth-child(1) {
 			opacity: 0.4;

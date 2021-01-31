@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // ESTILOS
 import Style from './CourseCard.module.scss'
 
 const CourseCard: React.FC = () => {
+	// ESTADO
+	const [widths, setWidths] = useState<number[]>([100, 100, 100, 100])
+
 	useEffect(() => {
-		// OBTENER TODOS LOS LOADERS
-		const span: NodeListOf<HTMLSpanElement> = document.querySelectorAll('.loader')
-
-		// AGREGAR ANCHO ALEATORIO
-		const randomize = () =>
-			span.forEach((el: HTMLSpanElement) => (el.style.width = Math.random() * 100 + '%'))
-
 		// ANIMAR CADA 0.5S
-		const intervals: NodeJS.Timeout = setInterval(randomize, 500)
-		randomize()
+		const intervals: NodeJS.Timeout = setInterval(() => {
+			setWidths(
+				Array(4)
+					.fill(null)
+					.map(() => Math.random() * 100)
+			)
+		}, 500)
 
 		// BORRAR INTERVALO AL DESMONTAR
 		return () => clearInterval(intervals)
@@ -22,10 +23,9 @@ const CourseCard: React.FC = () => {
 
 	return (
 		<div className={Style.preloader}>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
+			{widths.map((width: number, index: number) => (
+				<span key={`skeleton_${index}`} style={{ width: `${width}%` }}></span>
+			))}
 			<div>
 				<i></i>
 				<i></i>

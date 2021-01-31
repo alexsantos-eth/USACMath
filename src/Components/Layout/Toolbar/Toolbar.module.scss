@@ -30,7 +30,7 @@
 	left: 0;
 	z-index: 10;
 	top: 0;
-	width: 300px;
+	width: 250px;
 	padding: 20px 30px;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -63,10 +63,11 @@
 		}
 
 		p {
-			margin-top: 5px;
+			margin-top: 10px;
 			color: var(--blackWhite);
 			opacity: 0.9;
 			line-height: 1.2;
+			font-size: 0.68em;
 		}
 	}
 
@@ -189,16 +190,14 @@
 	}
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (min-width: 360px) {
 	.toolbar {
-		width: 250px;
-	}
-}
+		width: 300px;
 
-@media screen and (min-width: 380px) {
-	.toolbar {
-		p {
-			font-size: 0.8em;
+		.toolbarHeader {
+			p {
+				font-size: 0.8em;
+			}
 		}
 	}
 }

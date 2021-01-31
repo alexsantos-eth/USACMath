@@ -15,6 +15,7 @@
 	height: 250px;
 	display: grid;
 	grid-template-columns: 1fr;
+	font-size: 1em;
 
 	.fileHead {
 		padding-top: 20px;
@@ -34,6 +35,10 @@
 			color: var(--blackWhite);
 			text-overflow: ellipsis;
 			opacity: 0.8;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
 
 			&::first-letter {
 				text-transform: uppercase;
@@ -49,11 +54,12 @@
 			list-style: none;
 			padding: 10px 0 20px 0;
 			font-size: 0.8em;
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(3, auto);
+			justify-content: flex-start;
+			column-gap: 20px;
 
 			li {
-				margin-right: 20px;
-
 				i {
 					font-style: normal;
 					margin-right: 5px;
@@ -89,16 +95,17 @@
 			position: relative;
 			color: var(--white);
 			font-size: 0.9em;
-			padding: 15px 25px;
+			padding: 15px;
 			font-weight: bold;
 			border-radius: 5px;
 			overflow: hidden;
 			text-transform: uppercase;
+			display: flex;
+			align-items: center;
 
 			i {
 				position: relative;
-				margin-top: -10px;
-				top: 5.5px;
+				margin-right: 5px;
 			}
 
 			&::before {
@@ -137,9 +144,27 @@
 	}
 }
 
+@media screen and (min-width: 380px) {
+	.file {
+		font-size: 1em;
+
+		.fileBody {
+			a {
+				padding: 15px 25px;
+			}
+		}
+	}
+}
+
 @media screen and (min-width: 600px) {
 	.file {
 		height: 300px;
+		font-size: 1em;
+
+		.fileHead,
+		.fileMiddle {
+			font-size: 1.2em;
+		}
 	}
 }
 

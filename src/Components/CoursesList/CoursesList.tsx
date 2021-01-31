@@ -40,7 +40,12 @@ const CoursesList = () => {
 				</List>
 			</div>
 		)
-	else return <Skeleton />
+	else
+		return (
+			<div className={Style.container}>
+				<Skeleton />
+			</div>
+		)
 }
 
 export default CoursesList
