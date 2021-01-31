@@ -6,7 +6,12 @@ import Styles from './Navbar.module.scss'
 // HOOKS
 import { useSetDarkmode, useStrings, useDarkmode } from 'Hooks/Context'
 
-const Navbar: React.FC = () => {
+// PROPIEDADES
+interface NavbarProps {
+	onSearch: (ev: React.ChangeEvent<HTMLInputElement>) => unknown
+}
+
+const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
 	// STRINGS
 	const lang = useStrings()
 
@@ -39,6 +44,7 @@ const Navbar: React.FC = () => {
 						className={Styles.search}
 						id='search'
 						name='search'
+						onChange={props.onSearch}
 						placeholder={lang.application.placeholders.search}
 					/>
 				</div>

@@ -32,10 +32,9 @@
 			height: 100vh;
 			background: rgba(0, 0, 0, 0.7);
 			opacity: 0;
-			transform: scale(0);
-			transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
+			pointer-events: none;
+			transition: opacity 0.2s ease-in-out;
 			overflow: hidden;
-			backdrop-filter: blur(3px);
 
 			ul {
 				background: var(--whiteDarkGray);
@@ -56,7 +55,7 @@
 				li {
 					height: 55px;
 					border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-					transition: all 0.3s ease-in-out;
+					transition: all 0.2s ease-in-out;
 					cursor: pointer;
 					font-weight: 600;
 					color: var(--blackWhite);
@@ -154,9 +153,9 @@
 			display: none;
 
 			&:checked ~ .searchList {
-				transition: opacity 0.3s ease-in-out, transform 0s linear 0s;
+				transition: opacity 0.2s ease-in-out;
 				opacity: 1;
-				transform: scale(1);
+				pointer-events: all;
 			}
 		}
 
@@ -165,6 +164,8 @@
 			max-width: 750px;
 
 			input {
+				-webkit-appearance: none;
+				appearance: none;
 				margin-top: 20px;
 				outline: none;
 				border: none;
@@ -176,6 +177,13 @@
 				border-radius: 100px;
 				width: 100%;
 				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+
+				&::-webkit-search-decoration,
+				&::-webkit-search-cancel-button,
+				&::-webkit-search-results-button,
+				&::-webkit-search-results-decoration {
+					display: none;
+				}
 			}
 
 			label {
@@ -241,19 +249,6 @@
 	.navbar {
 		left: var(--toolbar);
 		width: calc(100% - var(--toolbar));
-
-		.navContent {
-			.headerText {
-				.headerContent {
-					.headerIntroD {
-						display: block;
-					}
-					.headerIntroM {
-						display: none;
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -272,6 +267,19 @@
 		left: var(--toolbar);
 		width: calc(100% - var(--appWidth) - var(--toolbar));
 		height: 100vh;
+
+		.navContent {
+			.headerText {
+				.headerContent {
+					.headerIntroD {
+						display: block;
+					}
+					.headerIntroM {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 }
 

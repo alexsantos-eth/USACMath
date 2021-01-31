@@ -9,13 +9,13 @@
 
 .file {
 	background: var(--whiteDarkGray);
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 	padding: 0 20px;
 	border-radius: 10px;
 	height: 250px;
 	display: grid;
 	grid-template-columns: 1fr;
 	font-size: 1em;
+	animation: op 0.2s ease-in-out;
 
 	.fileHead {
 		padding-top: 20px;
@@ -146,7 +146,7 @@
 
 @media screen and (min-width: 380px) {
 	.file {
-		font-size: 1em;
+		font-size: 1.1em;
 
 		.fileBody {
 			a {

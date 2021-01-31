@@ -1,0 +1,19 @@
+.container {
+	& > img {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: var(--white);
+		padding: 50px;
+		width: 100%;
+		height: 70vh;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.container {
+		& > img {
+			height: 100%;
+		}
+	}
+}

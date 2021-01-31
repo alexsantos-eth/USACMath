@@ -4,6 +4,7 @@ export interface Strings {
 
 export interface Es {
     application: Application;
+    course:      Course;
     share:       Share;
     toast:       Toast;
     alerts:      Alerts;
@@ -64,6 +65,11 @@ export interface EsComments {
     points:    string;
     button:    string;
     setPoints: string;
+}
+
+export interface Course {
+    labels:   string[];
+    download: string;
 }
 
 export interface Login {

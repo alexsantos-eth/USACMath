@@ -71,6 +71,10 @@
 				]
 			}
 		},
+		"course": {
+			"labels": ["Subido", "Curso", "Tipo"],
+			"download": "Descargar"
+		},
 		"share": {
 			"text": "Te comparto este archivo desde el Departamento de Matemática"
 		},

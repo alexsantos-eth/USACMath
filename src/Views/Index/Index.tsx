@@ -1,5 +1,5 @@
 // REACT
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 
 // COMPONENTES
 import Navbar from 'Components/Layout/Navbar/Navbar'
@@ -10,12 +10,18 @@ import Skeleton from 'Components/Skeleton/Skeleton'
 const CoursesList = lazy(() => import('Components/CoursesList/CoursesList'))
 
 const IndexView = () => {
+	// SEARCH
+	const [search, setSearch] = useState<string>('')
+
+	// CAMBIAR ESTADO
+	const handleSearch = (ev: React.ChangeEvent<HTMLInputElement>) => setSearch(ev.target.value)
+
 	return (
 		<main>
 			<Toolbar />
-			<Navbar />
+			<Navbar onSearch={handleSearch} />
 			<Suspense fallback={<Skeleton />}>
-				<CoursesList />
+				<CoursesList search={search} />
 			</Suspense>
 		</main>
 	)

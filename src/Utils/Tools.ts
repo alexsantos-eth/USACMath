@@ -17,3 +17,13 @@ export const toggleDarkMode = () => {
 	// RECORRER CAMBIOS
 	colors.forEach((color: IColor) => changeColor(color, darkValue))
 }
+
+// NORMALIZAR ENTRADAS
+
+export const nfd = (str: string) => {
+	return str
+		.toLowerCase()
+		.trim()
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+}

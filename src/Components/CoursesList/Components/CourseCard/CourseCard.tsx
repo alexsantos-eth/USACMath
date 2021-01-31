@@ -4,12 +4,18 @@ import React from 'react'
 // ESTILOS
 import Style from './CourseCard.module.scss'
 
+// HOOKS
+import { useStrings } from 'Hooks/Context'
+
 // PROPIEDADES
 interface CourseCardProps {
 	course: CourseFile
 }
 
 const CourseCard = ({ course }: CourseCardProps) => {
+	// STRINGS
+	const lang = useStrings()
+
 	return (
 		<>
 			<div className={Style.file}>
@@ -21,15 +27,15 @@ const CourseCard = ({ course }: CourseCardProps) => {
 				<div className={Style.fileMiddle}>
 					<ul>
 						<li>
-							<i>Subido:</i>
+							<i>{lang.course.labels[0]}:</i>
 							<span>{course.upload}</span>
 						</li>
 						<li>
-							<i>Curso:</i>
+							<i>{lang.course.labels[1]}:</i>
 							<span>{course.course}</span>
 						</li>
 						<li>
-							<i>Tipo:</i>
+							<i>{lang.course.labels[2]}:</i>
 							<span>{course.type}</span>
 						</li>
 					</ul>
@@ -55,7 +61,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
 					</div>
 
 					<a href={course.link} title={course.title} download>
-						<i className='material-icons'>arrow_downward</i> Descargar
+						<i className='material-icons'>arrow_downward</i> {lang.course.download}
 					</a>
 				</div>
 			</div>
