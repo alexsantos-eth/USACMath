@@ -75,6 +75,10 @@
 			"labels": ["Subido", "Curso", "Tipo"],
 			"download": "Descargar"
 		},
+		"notFound": {
+			"title": "Recurso no encontrado",
+			"text": "No se encontró ninguno documento con tu búsqueda intenta nuevamente con otra palabra."
+		},
 		"share": {
 			"text": "Te comparto este archivo desde el Departamento de Matemática"
 		},

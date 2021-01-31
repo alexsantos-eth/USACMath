@@ -19,10 +19,15 @@
 
 	.fileHead {
 		padding-top: 20px;
+		overflow: hidden;
 
 		h1 {
 			font-size: 1.3em;
 			color: var(--blackWhite);
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 
 			&::first-letter {
 				text-transform: uppercase;

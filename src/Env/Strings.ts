@@ -5,6 +5,7 @@ export interface Strings {
 export interface Es {
     application: Application;
     course:      Course;
+    notFound:    NotFound;
     share:       Share;
     toast:       Toast;
     alerts:      Alerts;
@@ -24,7 +25,7 @@ export interface AlertsComments {
 }
 
 export interface Application {
-    toolbar:      Toolbar;
+    toolbar:      NotFound;
     general:      General;
     placeholders: Placeholders;
     buttons:      Buttons;
@@ -56,7 +57,7 @@ export interface Button {
     text: string;
 }
 
-export interface Toolbar {
+export interface NotFound {
     title: string;
     text:  string;
 }
@@ -85,7 +86,7 @@ export interface Rights {
 }
 
 export interface Schedule {
-    banner: Toolbar;
+    banner: NotFound;
 }
 
 export interface Share {
