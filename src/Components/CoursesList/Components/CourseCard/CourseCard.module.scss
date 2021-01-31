@@ -1,0 +1,149 @@
+@keyframes op {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.file {
+	background: var(--files);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+	padding: 0 20px;
+	border-radius: 10px;
+	height: 250px;
+	display: grid;
+	grid-template-columns: 1fr;
+
+	.fileHead {
+		padding-top: 20px;
+
+		h1 {
+			font-size: 1.3em;
+			color: var(--filesHead);
+
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+
+		p {
+			margin-top: 10px;
+			font-size: 0.9em;
+			color: var(--filesHead);
+			text-overflow: ellipsis;
+			opacity: 0.8;
+
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.fileMiddle {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		align-self: flex-end;
+
+		ul {
+			list-style: none;
+			padding: 10px 0 20px 0;
+			font-size: 0.8em;
+			display: flex;
+
+			li {
+				margin-right: 20px;
+
+				i {
+					font-style: normal;
+					margin-right: 5px;
+					color: var(--filesHead);
+					font-weight: 450;
+				}
+
+				span {
+					color: var(--filesHead);
+					display: block;
+					opacity: 0.6;
+					text-transform: capitalize;
+				}
+			}
+		}
+	}
+
+	.fileBody {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		align-items: center;
+		position: relative;
+		z-index: 5;
+
+		.actions {
+			position: relative;
+			z-index: 5;
+		}
+
+		a {
+			text-decoration: none;
+			position: relative;
+			color: var(--white);
+			font-size: 0.9em;
+			padding: 15px 25px;
+			font-weight: bold;
+			border-radius: 5px;
+			text-transform: uppercase;
+
+			i {
+				position: relative;
+				margin-top: -10px;
+				top: 5.5px;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+				background: var(--buttons);
+			}
+		}
+	}
+	.prevBtn {
+		display: none;
+	}
+}
+
+.action {
+	appearance: none;
+	border: none;
+	outline: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	background: none;
+
+	i,
+	label {
+		position: relative;
+		margin-top: 3px;
+		color: var(--filesHead);
+		opacity: 0.8;
+		cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.file {
+		height: 300px;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.file {
+		height: 330px;
+	}
+}

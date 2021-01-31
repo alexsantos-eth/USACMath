@@ -6,9 +6,6 @@ import Styles from './Navbar.module.scss'
 // HOOKS
 import { useSetDarkmode, useStrings, useDarkmode } from 'Hooks/Context'
 
-// GRIDS
-import { breakPoint } from 'Grids/Breakpoints'
-
 const Navbar: React.FC = () => {
 	// STRINGS
 	const lang = useStrings()
@@ -27,7 +24,8 @@ const Navbar: React.FC = () => {
 				<div className={Styles.headerText}>
 					<div className={Styles.headerContent}>
 						<h1>{lang.application.general.title}</h1>
-						<p>{breakPoint ? lang.application.general.main_2 : lang.application.general.main}</p>
+						<p className={Styles.headerIntroD}>{lang.application.general.main_2}</p>
+						<p className={Styles.headerIntroM}>{lang.application.general.main}</p>
 					</div>
 				</div>
 

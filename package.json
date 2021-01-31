@@ -7,6 +7,7 @@
 		"@types/react": "^16.9.0",
 		"@types/react-dom": "^16.9.0",
 		"@types/react-router-dom": "^5.1.5",
+		"@types/react-window": "^1.8.2",
 		"@weareluastudio/lualert": "^1.4.1",
 		"firebase": "^8.2.4",
 		"node-sass": "4.14.1",
@@ -14,6 +15,7 @@
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "3.4.1",
+		"react-window": "^1.8.6",
 		"typescript": "~3.9.7"
 	},
 	"scripts": {

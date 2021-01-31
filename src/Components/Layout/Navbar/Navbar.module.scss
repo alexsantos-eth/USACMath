@@ -199,6 +199,10 @@
 			.headerContent {
 				text-align: left;
 
+				.headerIntroD {
+					display: none;
+				}
+
 				p {
 					font-size: 1em;
 					color: var(--white);
@@ -237,6 +241,19 @@
 	.navbar {
 		left: var(--toolbar);
 		width: calc(100% - var(--toolbar));
+
+		.navContent {
+			.headerText {
+				.headerContent {
+					.headerIntroD {
+						display: block;
+					}
+					.headerIntroM {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 }
 

@@ -15,7 +15,6 @@ import F from 'Assets/icons/ficon.png'
 import { useStrings } from 'Hooks/Context'
 
 // GRID
-import { isDesktop } from 'Grids/Breakpoints'
 import { ROUTES } from 'Env/Routes'
 
 const Toolbar: React.FC = () => {
@@ -39,14 +38,10 @@ const Toolbar: React.FC = () => {
 			</label>
 			<label htmlFor='showToolbar' className={Styles.toolbarShadow}></label>
 			<ul className={Styles.toolbar}>
-				{!isDesktop ? (
-					<>
-						<h1>{lang.application.toolbar.title}</h1>
-						<p>{lang.application.toolbar.text}</p>
-					</>
-				) : (
-					''
-				)}
+				<div className={Styles.toolbarHeader}>
+					<h1>{lang.application.toolbar.title}</h1>
+					<p>{lang.application.toolbar.text}</p>
+				</div>
 				<li className={Styles.logBtn} data-mod='login'>
 					<i className='material-icons'>person</i>
 					<span>Iniciar sesión</span>

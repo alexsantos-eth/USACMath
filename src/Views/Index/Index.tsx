@@ -2,15 +2,15 @@
 import React from 'react'
 
 // COMPONENTES
-import Navbar from 'Components/Navbar/Navbar'
-import Toolbar from 'Components/Toolbar/Toolbar'
+import Navbar from 'Components/Layout/Navbar/Navbar'
+import Toolbar from 'Components/Layout/Toolbar/Toolbar'
 
 const IndexView = () => {
 	return (
-		<div>
+		<main>
 			<Toolbar />
 			<Navbar />
-		</div>
+		</main>
 	)
 }
 

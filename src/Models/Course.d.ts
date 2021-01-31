@@ -16,3 +16,9 @@ interface CourseProps {
 	educator: string
 	aux: string
 }
+
+interface CourseArea {
+	subarea: string
+	boss: string
+	courses: CourseProps[]
+}
