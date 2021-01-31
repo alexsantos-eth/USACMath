@@ -8,7 +8,7 @@
 }
 
 .file {
-	background: var(--files);
+	background: var(--whiteDarkGray);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 	padding: 0 20px;
 	border-radius: 10px;
@@ -21,7 +21,7 @@
 
 		h1 {
 			font-size: 1.3em;
-			color: var(--filesHead);
+			color: var(--blackWhite);
 
 			&::first-letter {
 				text-transform: uppercase;
@@ -31,7 +31,7 @@
 		p {
 			margin-top: 10px;
 			font-size: 0.9em;
-			color: var(--filesHead);
+			color: var(--blackWhite);
 			text-overflow: ellipsis;
 			opacity: 0.8;
 
@@ -57,12 +57,12 @@
 				i {
 					font-style: normal;
 					margin-right: 5px;
-					color: var(--filesHead);
+					color: var(--blackWhite);
 					font-weight: 450;
 				}
 
 				span {
-					color: var(--filesHead);
+					color: var(--blackWhite);
 					display: block;
 					opacity: 0.6;
 					text-transform: capitalize;
@@ -92,6 +92,7 @@
 			padding: 15px 25px;
 			font-weight: bold;
 			border-radius: 5px;
+			overflow: hidden;
 			text-transform: uppercase;
 
 			i {
@@ -108,7 +109,7 @@
 				z-index: -1;
 				width: 100%;
 				height: 100%;
-				background: var(--buttons);
+				background: var(--blue);
 			}
 		}
 	}
@@ -130,7 +131,7 @@
 	label {
 		position: relative;
 		margin-top: 3px;
-		color: var(--filesHead);
+		color: var(--blackWhite);
 		opacity: 0.8;
 		cursor: pointer;
 	}

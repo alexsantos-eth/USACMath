@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useState } from 'react'
 
 // ESTILOS
 import Style from './CoursesList.module.scss'
@@ -10,24 +10,37 @@ import { itemHeight, listHeight, listWidth } from './Helpers/ListSize'
 
 // COMPONENTES
 import CourseCard from './Components/CourseCard/CourseCard'
+import Skeleton from 'Components/Skeleton/Skeleton'
 
-// PROPIEDADES
-interface CoursesListProps {
-	courses: CourseFile[]
-}
+// HOOKS
+import { useCourseFiles } from 'Hooks/Courses'
 
-const CoursesList = ({ courses }: CoursesListProps) => {
-	return (
-		<List width={listWidth} height={listHeight} itemCount={courses.length} itemSize={itemHeight}>
-			{({ style, index }: ListChildComponentProps) => {
-				return (
-					<div className={Style.fileContainer} style={style}>
-						<CourseCard course={courses[index]} />
-					</div>
-				)
-			}}
-		</List>
-	)
+const CoursesList = () => {
+	// ESTADOS
+	const [courseFiles, setCourseFiles] = useState<CourseFile[]>([])
+
+	// HOOK DE ARCHIVOS
+	useCourseFiles(setCourseFiles)
+
+	if (courseFiles.length > 0)
+		return (
+			<div className={Style.container}>
+				<List
+					width={listWidth}
+					height={listHeight}
+					itemCount={courseFiles.length}
+					itemSize={itemHeight}>
+					{({ style, index }: ListChildComponentProps) => {
+						return (
+							<div className={Style.itemContainer} style={style}>
+								<CourseCard course={courseFiles[index]} />
+							</div>
+						)
+					}}
+				</List>
+			</div>
+		)
+	else return <Skeleton />
 }
 
 export default CoursesList

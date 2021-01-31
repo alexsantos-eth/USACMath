@@ -9,6 +9,7 @@ interface IPColor {
 // COLORES PRIMARIOS
 const primaryColors: IPColor[] = [
 	{ name: '--blue', value: '#1976d2' },
+	{ name: '--light', value: '#eee' },
 	{ name: '--lightGray', value: '#aaa' },
 	{ name: '--gray', value: '#777' },
 	{ name: '--blueGray', value: '#607d8b' },
