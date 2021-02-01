@@ -35,7 +35,7 @@ export const getAuth = async () => {
 		globalAuth = firebase.default.auth
 		globalAuth().languageCode = 'es-GT'
 
-		// PROVIDERS
+		// PROVIDERS ( GOOGLE SOLO PARA INGENIERÍA )
 		gProvider = new firebase.default.auth.GoogleAuthProvider()
 		gProvider.setCustomParameters({ hd: 'ingenieria.usac.edu.gt' })
 	}
