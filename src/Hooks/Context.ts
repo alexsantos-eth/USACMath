@@ -4,6 +4,7 @@ import { useContext } from 'react'
 // CONTEXTOS
 import StringsContext from 'Context/Strings'
 import DarkModeContext from 'Context/Darkmode'
+import AuthContext from 'Context/Auth'
 
 // STRINGS
 export const useStrings = () => {
@@ -27,4 +28,10 @@ export const useDarkmode = () => {
 export const useSetDarkmode = () => {
 	const { setDarkmode } = useContext(DarkModeContext)
 	return setDarkmode
+}
+
+// USER
+export const useUser = () => {
+	const { user } = useContext(AuthContext)
+	return user
 }

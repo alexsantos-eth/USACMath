@@ -8,8 +8,9 @@ import Router from 'Router/Router'
 import 'Icons/style.css'
 
 // PROVIDERS
-import StringsProvider from 'Providers/Strings'
 import DarkmodeProvider from 'Providers/Darkmode'
+import StringsProvider from 'Providers/Strings'
+import AuthProvider from 'Providers/Auth'
 
 // ALERTAS
 import withAlerts from '@weareluastudio/lualert'
@@ -18,7 +19,9 @@ const App: React.FC = () => {
 	return (
 		<StringsProvider>
 			<DarkmodeProvider>
-				<Router />
+				<AuthProvider>
+					<Router />
+				</AuthProvider>
 			</DarkmodeProvider>
 		</StringsProvider>
 	)
