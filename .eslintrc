@@ -31,6 +31,8 @@
 		"no-unused-vars": "off",
 		"no-shadow": 1,
 		"@typescript-eslint/no-unused-vars": "error",
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": ["warn"],
 		"no-useless-constructor": "off",
 		"@typescript-eslint/no-useless-constructor": "error",
 		"react/prop-types": 0,
