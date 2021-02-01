@@ -12,14 +12,23 @@ import G from 'Assets/icons/gicon.png'
 import F from 'Assets/icons/ficon.png'
 
 // HOOKS
-import { useStrings } from 'Hooks/Context'
+import { useStrings, useUser } from 'Hooks/Context'
 
 // GRID
 import { ROUTES } from 'Env/Routes'
 
+// HELPERS
+import { handleUserSession } from './Helpers/User'
+
 const Toolbar: React.FC = () => {
 	// STRING
 	const lang = useStrings()
+
+	// USER
+	const user = useUser()
+
+	// INICIAR/CERRAR SESSION
+	const sessionHandler = () => handleUserSession(user, lang)
 
 	// HISTORY
 	const history = useHistory()
@@ -42,9 +51,15 @@ const Toolbar: React.FC = () => {
 					<h1>{lang.application.toolbar.title}</h1>
 					<p>{lang.application.toolbar.text}</p>
 				</div>
-				<li className={Styles.logBtn} data-mod='login'>
-					<i className='material-icons'>person</i>
-					<span>Iniciar sesión</span>
+				<li className={Styles.logBtn} onClick={sessionHandler}>
+					{user ? (
+						<img src={user.picture || ''} alt='User pic' />
+					) : (
+						<>
+							<i className='material-icons'>person</i>
+							<span>Iniciar sesión</span>
+						</>
+					)}
 				</li>
 				<Link to={ROUTES.files}>
 					<li className={path === ROUTES.files ? Styles.pathActive : ''}>
