@@ -1,13 +1,51 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	overscroll-behavior: none;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	--width: 900px;
+	--toolbar: 70px;
+	--appWidth: 450px;
+	--breakPoint: 900px;
+	margin: 0;
+	background-color: #eee;
+	box-sizing: border-box;
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+	font-size: 15px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-drag: none;
+}
+
+/* LISTAS */
+
+ul,
+ol {
+	list-style: none;
+}
+
+/* LINK */
+
+a {
+	text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+	body {
+		font-size: 14px;
+	}
 }

@@ -1,0 +1,49 @@
+.container {
+	width: 100%;
+	max-width: var(--width);
+	margin: 0 auto;
+	background: var(--lightLightGray);
+
+	.itemContainer {
+		padding: 20px 20px 0 20px;
+		position: relative;
+		z-index: 2;
+		display: block;
+		width: 100%;
+		opacity: 1;
+		animation: op 0.2s ease-in-out 1;
+	}
+}
+
+@media screen and (min-width: 720px) {
+	.container {
+		.itemContainer {
+			grid-template-columns: 1fr 1fr;
+			column-gap: 20px;
+		}
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.container {
+		width: calc(100% - var(--toolbar));
+		margin-left: var(--toolbar);
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.container {
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin-left: unset;
+		width: var(--appWidth);
+		height: 100vh;
+	}
+}
+
+@media screen and (min-width: 1700px) {
+	.container {
+		width: calc(var(--appWidth) + 100px);
+	}
+}
