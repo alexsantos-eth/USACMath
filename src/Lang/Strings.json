@@ -80,7 +80,15 @@
 			"text": "No se encontró ninguno documento con tu búsqueda intenta nuevamente con otra palabra."
 		},
 		"share": {
-			"text": "Te comparto este archivo desde el Departamento de Matemática"
+			"text": "Te comparto este archivo desde el Departamento de Matemática",
+			"wait": {
+				"title": "Espera un momento",
+				"body": "Se esta intentando compartir el documento en tu dispositivo, esto no suele tardar mucho."
+			},
+			"success": {
+				"title": "Enlace copiado",
+				"body": "Se ha copiado exitosamente el enlace del documento al portapapeles de tu dispositivo."
+			}
 		},
 		"toast": {
 			"text_1": "De nuevo en línea",

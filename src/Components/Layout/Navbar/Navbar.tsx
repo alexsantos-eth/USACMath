@@ -5,6 +5,7 @@ import Styles from './Navbar.module.scss'
 
 // HOOKS
 import { useSetDarkmode, useStrings, useDarkmode } from 'Hooks/Context'
+import { sendQuickSearch } from './Helpers/Search'
 
 // PROPIEDADES
 interface NavbarProps {
@@ -15,12 +16,16 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
 	// STRINGS
 	const lang = useStrings()
 
-	// DARKMODE
+	// ASIGNAR DARKMODE
 	const setDarkmodeCtx: (darkmode: boolean) => void = useSetDarkmode()
+
 	const darkmode: boolean = useDarkmode()
 
 	// CAMBIAR DARKMODE
 	const toggleDarkmode = () => setDarkmodeCtx(!darkmode)
+
+	// ENVIAR BÚSQUEDAS RÁPIDAS
+	const handleQuickSearch = (word: string) => sendQuickSearch(word, props.onSearch)
 
 	return (
 		<div className={Styles.navbar}>
@@ -68,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
 					<ul>
 						<li>{lang.application.short.listTitle}</li>
 						{lang.application.short.buttons.map((e: { icon: string; text: string }, i: number) => (
-							<li key={`quickList_${i}`}>
+							<li onClick={handleQuickSearch(e.text)} key={`quickList_${i}`}>
 								<i className='material-icons'>{e.icon}</i> {e.text}
 							</li>
 						))}

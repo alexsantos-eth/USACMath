@@ -26,5 +26,8 @@ const App: React.FC = () => {
 
 export default withAlerts(App, {
 	blurred: true,
+	confirmText: 'Aceptar',
+	cancelText: 'Cancelar',
+	confirmColor: '#1976d2',
 	zIndex: 10,
 })

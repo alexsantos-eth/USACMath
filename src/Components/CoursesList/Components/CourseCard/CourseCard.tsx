@@ -6,6 +6,7 @@ import Style from './CourseCard.module.scss'
 
 // HOOKS
 import { useStrings } from 'Hooks/Context'
+import { shareFile } from './Helpers/Tools'
 
 // PROPIEDADES
 interface CourseCardProps {
@@ -15,6 +16,9 @@ interface CourseCardProps {
 const CourseCard = ({ course }: CourseCardProps) => {
 	// STRINGS
 	const lang = useStrings()
+
+	// COMPARTIR DOCUMENTO
+	const handleShareFile = (url: string) => () => shareFile(url, lang)
 
 	return (
 		<>
@@ -48,7 +52,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
 								visibility
 							</i>
 						</button>
-						<button data-link={course.link} className={Style.action}>
+						<button onClick={handleShareFile(course.link)} className={Style.action}>
 							<i data-link={course.link} className='material-icons'>
 								share
 							</i>

@@ -90,7 +90,14 @@ export interface Schedule {
 }
 
 export interface Share {
-    text: string;
+    text:    string;
+    wait:    Success;
+    success: Success;
+}
+
+export interface Success {
+    title: string;
+    body:  string;
 }
 
 export interface Toast {
