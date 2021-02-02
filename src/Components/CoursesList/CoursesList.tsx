@@ -26,7 +26,7 @@ interface CoursesListProps {
 
 const CoursesList: React.FC<CoursesListProps> = ({ search }: CoursesListProps) => {
 	// ESTADOS
-	const [courseFiles, setCourseFiles] = useState<CourseFile[]>([])
+	const [courseFiles, setCourseFiles] = useState<CourseFile[] | null>(null)
 
 	// HOOK DE ARCHIVOS
 	useCourseFiles(setCourseFiles)
@@ -34,8 +34,13 @@ const CoursesList: React.FC<CoursesListProps> = ({ search }: CoursesListProps) =
 	// FILTRAR CURSOS
 	const nfdSearch: string = nfd(search)
 	const filteredFiles: CourseFile[] = []
-	for (let index = 0, { length } = courseFiles; index < length; index += 1) {
+	for (
+		let index = 0, length = courseFiles === null ? 0 : courseFiles.length;
+		index < length;
+		index += 1
+	) {
 		if (
+			courseFiles &&
 			nfd(
 				courseFiles[index].title +
 					courseFiles[index].text +
@@ -48,7 +53,7 @@ const CoursesList: React.FC<CoursesListProps> = ({ search }: CoursesListProps) =
 			filteredFiles.push(courseFiles[index])
 	}
 
-	if (courseFiles.length > 0)
+	if (courseFiles)
 		if (filteredFiles.length > 0)
 			return (
 				<div className={Style.container}>

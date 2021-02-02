@@ -2,12 +2,13 @@
 import getCollection from './DB'
 
 // OBTENER CURSOS
-const getCourses = async (): Promise<CourseFile[]> => {
+const getCourses = async (): Promise<CourseFile[] | null> => {
 	const coursesCol = await getCollection('files')
-	const courses = (await coursesCol.get()).docs
-		.map((doc) => doc.data().data)
-		.flat()
-		.sort((cFile: CourseFile, next: CourseFile) => {
+	const coursesDoc = coursesCol.doc('documents')
+	const coursesData = (await coursesDoc.get()).data() as CoursesDataContainer
+
+	if (coursesData) {
+		const courses = coursesData.data.sort((cFile: CourseFile, next: CourseFile) => {
 			// OBTENER FECHAS
 			const cUploads = cFile.upload.split('/')
 			const nextUploads = next.upload.split('/')
@@ -25,7 +26,9 @@ const getCourses = async (): Promise<CourseFile[]> => {
 			// ORDENAR
 			return nextDate.getTime() - currentDate.getTime()
 		}) as CourseFile[]
-	return courses
+		return courses
+	}
+	return null
 }
 
 export default getCourses

@@ -22,3 +22,6 @@ interface CourseArea {
 	boss: string
 	courses: CourseProps[]
 }
+interface CoursesDataContainer {
+	data: CourseFile[]
+}
