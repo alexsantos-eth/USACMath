@@ -1,5 +1,5 @@
 // REACT
-import React, { ComponentProps, useState } from 'react'
+import React, { ComponentProps, useCallback, useState } from 'react'
 
 // CONTEXT
 import AuthContext from 'Context/Auth'
@@ -11,10 +11,12 @@ const AuthProvider = ({ children }: ComponentProps<'div'>): JSX.Element => {
 	const [user, setUser] = useState<User | null>(null)
 
 	// HOOKS
-	useAuth((fireUser: firebase.default.User | null) => {
-		if (fireUser) getUser(fireUser.uid).then(setUser)
-		else setUser(null)
-	})
+	useAuth(
+		useCallback((fireUser: firebase.default.User | null) => {
+			if (fireUser) getUser(fireUser.uid).then(setUser)
+			else setUser(null)
+		}, [])
+	)
 
 	return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
 }
