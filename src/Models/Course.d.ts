@@ -5,6 +5,7 @@ interface CourseFile {
 	title: string
 	type: string
 	upload: string
+	id: number
 }
 
 interface CourseProps {

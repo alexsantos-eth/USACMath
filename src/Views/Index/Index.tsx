@@ -18,13 +18,13 @@ const IndexView: FC = () => {
 	const handleQuickSearch = (quickSearch: string) => setSearch(quickSearch)
 
 	return (
-		<main>
+		<>
 			<Toolbar />
 			<Navbar onSearch={handleSearch} onQuickSearch={handleQuickSearch} />
 			<Suspense fallback={<Skeleton />}>
 				<CoursesList search={search} />
 			</Suspense>
-		</main>
+		</>
 	)
 }
 

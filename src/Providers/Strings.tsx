@@ -23,7 +23,11 @@ const DefState: AppState = {
 }
 
 const StringsProvider: React.FC = ({ children }: React.ComponentProps<'div'>): JSX.Element => {
-	return <StringsContext.Provider value={{ ...DefState }}>{children}</StringsContext.Provider>
+	return (
+		<StringsContext.Provider value={{ ...DefState }}>
+			<main>{children}</main>
+		</StringsContext.Provider>
+	)
 }
 
 export default StringsProvider
