@@ -6,10 +6,10 @@ import { useStrings, useUser } from 'Hooks/Context'
 
 // UTILS
 import readComments from 'Utils/Comments'
+import sendComment from './Helpers/Comments'
 
 // ESTILOS
 import Styles from './CommentBox.module.scss'
-import sendComment from './Helpers/Comments'
 
 // PROPIEDADES
 interface CommentBoxProps {

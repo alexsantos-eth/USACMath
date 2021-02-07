@@ -6,6 +6,8 @@ import NotFoundSVG from 'Assets/general/not-found.svg'
 
 // HOOKS
 import { useStrings } from 'Hooks/Context'
+
+// ESTILOS
 import Style from './NotFound.module.scss'
 
 const NotFound: FC = () => {

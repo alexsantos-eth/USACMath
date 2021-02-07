@@ -5,10 +5,10 @@ import React, { useRef } from 'react'
 import Styles from './Navbar.module.scss'
 
 // COMPONENTES
-import Header from './Components/Header/Header'
-import SearchBox from './Components/SearchBox/SearchBox'
-import Drawer from './Components/Drawer/Drawer'
 import QuickList from './Components/QuickList/QuickList'
+import SearchBox from './Components/SearchBox/SearchBox'
+import Header from './Components/Header/Header'
+import Drawer from './Components/Drawer/Drawer'
 
 // PROPIEDADES
 interface NavbarProps {

@@ -8,7 +8,7 @@ import { useStrings } from 'Hooks/Context'
 import Styles from './QuickList.module.scss'
 
 // HELPERS
-import sendQuickSearch from '../../Helpers/Search'
+import sendQuickSearch from './Helpers/Search'
 
 // PROPIEDADES
 interface QuickListProps {

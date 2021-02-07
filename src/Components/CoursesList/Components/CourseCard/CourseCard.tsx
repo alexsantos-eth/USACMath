@@ -1,11 +1,13 @@
 // REACT
 import React from 'react'
 
-// ESTILOS
+// HOOKS
 import { useStrings } from 'Hooks/Context'
+
+// ESTILOS
 import Style from './CourseCard.module.scss'
 
-// HOOKS
+// TOOLS
 import shareFile from './Helpers/Tools'
 import showCommentAlert from './Helpers/Comments'
 
