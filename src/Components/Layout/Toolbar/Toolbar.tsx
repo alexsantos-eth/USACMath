@@ -2,20 +2,16 @@
 // REACT
 import React from 'react'
 
-// ESTILOS
-
 // TIPOS
 import { Link, useHistory } from 'react-router-dom'
-
-// ICONOS
-import G from 'Assets/icons/gicon.png'
-import F from 'Assets/icons/ficon.png'
 
 // HOOKS
 import { useStrings, useUser } from 'Hooks/Context'
 
 // GRID
 import ROUTES from 'Env/Routes'
+
+// ESTILOS
 import Styles from './Toolbar.module.scss'
 
 // HELPERS
@@ -82,16 +78,6 @@ const Toolbar: React.FC = () => {
 					<span>Departamento</span>
 				</li>
 			</ul>
-			<div className={Styles.logsContainer}>
-				<button type='button' className={Styles.fLogin}>
-					<img src={F} alt='Login Icon F' />
-					Iniciar con Facebook
-				</button>
-				<button type='button' className={Styles.gLogin}>
-					<img src={G} alt='Login Icon G' />
-					Iniciar con Google
-				</button>
-			</div>
 		</>
 	)
 }

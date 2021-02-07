@@ -45,16 +45,16 @@ body {
 }
 
 /* ALERTAS */
-main + div > div {
+main > div:last-child > div {
 	background-color: var(--whiteDarkGray) !important;
 }
-main + div > div > p,
-main + div > div > h1,
-main + div > div > ul > li > button {
+main > div:last-child > div > p,
+main > div:last-child > div > h1,
+main > div:last-child > div > ul > li > button {
 	color: var(--blackWhite) !important;
 }
 
-main + div > div > ul > li:last-child > button {
+main > div:last-child > div > ul > li:last-child > button {
 	color: var(--white) !important;
 }
 

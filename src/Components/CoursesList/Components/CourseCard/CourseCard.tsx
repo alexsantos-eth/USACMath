@@ -7,6 +7,7 @@ import Style from './CourseCard.module.scss'
 
 // HOOKS
 import shareFile from './Helpers/Tools'
+import showCommentAlert from './Helpers/Comments'
 
 // PROPIEDADES
 interface CourseCardProps {
@@ -19,6 +20,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }: CourseCardProps) => {
 
 	// COMPARTIR DOCUMENTO
 	const handleShareFile = (url: string) => () => shareFile(url, lang)
+
+	// MOSTRAR COMENTARIOS
+	const handelComments = (id: number) => () => showCommentAlert(lang, id)
 
 	return (
 		<>
@@ -57,7 +61,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }: CourseCardProps) => {
 								share
 							</i>
 						</button>
-						<button type='button' className={Style.action}>
+						<button onClick={handelComments(course.id)} type='button' className={Style.action}>
 							<i data-file={course.title} className='material-icons'>
 								comment
 							</i>

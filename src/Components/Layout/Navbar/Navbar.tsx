@@ -1,12 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useRef } from 'react'
 
+// HOOKS
+import { useStrings } from 'Hooks/Context'
+import sendQuickSearch from './Helpers/Search'
+
 // ESTILOS
-import { useSetDarkmode, useStrings, useDarkmode } from 'Hooks/Context'
 import Styles from './Navbar.module.scss'
 
-// HOOKS
-import sendQuickSearch from './Helpers/Search'
+// COMPONENTES
+import Header from './Components/Header/Header'
+import SearchBox from './Components/SearchBox/SearchBox'
+import Drawer from './Components/Drawer/Drawer'
 
 // PROPIEDADES
 interface NavbarProps {
@@ -21,15 +26,6 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onQuickSearch }: NavbarProps)
 	// REFERENCIAS
 	const quickSearchToggle: React.RefObject<HTMLInputElement> = useRef(null)
 
-	// ASIGNAR DARKMODE
-	const setDarkmodeCtx: (darkmode: boolean) => void = useSetDarkmode()
-
-	// LEER DARKMODE
-	const darkmode: boolean = useDarkmode()
-
-	// CAMBIAR DARKMODE
-	const toggleDarkmode = () => setDarkmodeCtx(!darkmode)
-
 	// ENVIAR BÚSQUEDAS RÁPIDAS
 	const handleQuickSearch = (word: string) => {
 		if (quickSearchToggle.current) quickSearchToggle.current.checked = false
@@ -40,42 +36,16 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch, onQuickSearch }: NavbarProps)
 		<div className={Styles.navbar}>
 			<div className={Styles.navContent}>
 				{/* HEADER */}
-				<div className={Styles.headerText}>
-					<div className={Styles.headerContent}>
-						<h1>{lang.application.general.title}</h1>
-						<p className={Styles.headerIntroD}>{lang.application.general.main_2}</p>
-						<p className={Styles.headerIntroM}>{lang.application.general.main}</p>
-					</div>
-				</div>
+				<Header />
 
 				{/* BUSCADOR */}
-				<div className={Styles.searchBox}>
-					<label className='material-icons' htmlFor='search'>
-						search
-					</label>
-					<input
-						type='search'
-						className={Styles.search}
-						id='search'
-						name='search'
-						onChange={onSearch}
-						placeholder={lang.application.placeholders.search}
-					/>
-				</div>
+				<SearchBox onSearch={onSearch} />
 
 				{/* INPUT DE DRAWER */}
 				<input type='checkbox' ref={quickSearchToggle} id='showList' className={Styles.showList} />
 
 				{/* DRAWER */}
-				<div className={Styles.navTools}>
-					<label htmlFor='showList' className={Styles.showSearchList}>
-						<i className='material-icons'>flash_on</i>
-						{lang.application.buttons.advancedSearch}
-					</label>
-					<button type='button' className={Styles.darkMode} onClick={toggleDarkmode}>
-						<i className='material-icons '>brightness_medium</i>
-					</button>
-				</div>
+				<Drawer />
 
 				{/* LISTA */}
 				<label htmlFor='showList' className={Styles.searchList}>

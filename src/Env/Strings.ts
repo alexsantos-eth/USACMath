@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export interface Strings {
 	es: Es
 }
@@ -40,7 +39,7 @@ export interface Buttons {
 export interface General {
 	title: string
 	main: string
-	main_2: string
+	main2: string
 }
 
 export interface Placeholders {
@@ -64,9 +63,9 @@ export interface NotFound {
 }
 
 export interface EsComments {
-	points: string
 	button: string
-	setPoints: string
+	placeholder: string
+	title: string
 }
 
 export interface Course {
@@ -82,8 +81,8 @@ export interface Login {
 }
 
 export interface Rights {
-	text_1: string
-	text_2: string
+	text1: string
+	text2: string
 }
 
 export interface Schedule {
@@ -102,7 +101,7 @@ export interface Success {
 }
 
 export interface Toast {
-	text_1: string
-	text_2: string
+	text1: string
+	text2: string
 	share: string
 }

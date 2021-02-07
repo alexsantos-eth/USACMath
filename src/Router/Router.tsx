@@ -10,6 +10,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // RUTAS
 import ROUTES from 'Env/Routes'
 
+// ALERTS
+import withAlerts from '@weareluastudio/lualert'
+
 const Router: FC = () => {
 	return (
 		<BrowserRouter>
@@ -20,4 +23,10 @@ const Router: FC = () => {
 	)
 }
 
-export default Router
+export default withAlerts(Router, {
+	blurred: true,
+	confirmText: 'Aceptar',
+	cancelText: 'Cancelar',
+	confirmColor: '#1976d2',
+	zIndex: 10,
+})
