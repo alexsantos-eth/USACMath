@@ -1,15 +1,13 @@
 // REACT
 import React from 'react'
 
-// HOOKS
-import { useStrings } from 'Hooks/Context'
-
 // ESTILOS
 import Style from './CourseCard.module.scss'
 
-// TOOLS
-import shareFile from './Helpers/Tools'
-import showCommentAlert from './Helpers/Comments'
+// COMPONENTES
+import Header from './Components/Header/Header'
+import CardInfo from './Components/CardInfo/CardInfo'
+import CardActions from './Components/CardActions/CardActions'
 
 // PROPIEDADES
 interface CourseCardProps {
@@ -17,63 +15,12 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }: CourseCardProps) => {
-	// STRINGS
-	const lang = useStrings()
-
-	// COMPARTIR DOCUMENTO
-	const handleShareFile = (url: string) => () => shareFile(url, lang)
-
-	// MOSTRAR COMENTARIOS
-	const handelComments = (id: number) => () => showCommentAlert(lang, id)
-
 	return (
 		<>
 			<div className={Style.file}>
-				<div className={Style.fileHead}>
-					<h1>{course.title}</h1>
-					<p>{course.text}</p>
-				</div>
-
-				<div className={Style.fileMiddle}>
-					<ul>
-						<li>
-							<i>{lang.course.labels[0]}:</i>
-							<span>{course.upload}</span>
-						</li>
-						<li>
-							<i>{lang.course.labels[1]}:</i>
-							<span>{course.course}</span>
-						</li>
-						<li>
-							<i>{lang.course.labels[2]}:</i>
-							<span>{course.type}</span>
-						</li>
-					</ul>
-				</div>
-
-				<div className={Style.fileBody}>
-					<div className={Style.actions}>
-						<button type='button' className={Style.action}>
-							<i data-link={course.link} className='material-icons'>
-								visibility
-							</i>
-						</button>
-						<button type='button' onClick={handleShareFile(course.link)} className={Style.action}>
-							<i data-link={course.link} className='material-icons'>
-								share
-							</i>
-						</button>
-						<button onClick={handelComments(course.id)} type='button' className={Style.action}>
-							<i data-file={course.title} className='material-icons'>
-								comment
-							</i>
-						</button>
-					</div>
-
-					<a href={course.link} title={course.title} download>
-						<i className='material-icons'>arrow_downward</i> {lang.course.download}
-					</a>
-				</div>
+				<Header title={course.title} text={course.text} />
+				<CardInfo upload={course.upload} course={course.course} type={course.type} />
+				<CardActions link={course.link} title={course.title} id={course.id} />
 			</div>
 		</>
 	)

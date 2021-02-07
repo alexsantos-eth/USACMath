@@ -1,0 +1,36 @@
+.fileMiddle {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	align-self: flex-end;
+
+	ul {
+		list-style: none;
+		padding: 10px 0 20px 0;
+		font-size: 0.8em;
+		display: grid;
+		grid-template-columns: repeat(3, auto);
+		justify-content: flex-start;
+		column-gap: 20px;
+
+		li {
+			i {
+				font-style: normal;
+				margin-right: 5px;
+				color: var(--blackWhite);
+				font-weight: 450;
+			}
+
+			span {
+				color: var(--blackWhite);
+				display: block;
+				opacity: 0.6;
+				text-transform: capitalize;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.fileMiddle {
+		font-size: 1.2em;
+	}
+}

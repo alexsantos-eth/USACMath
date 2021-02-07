@@ -1,0 +1,39 @@
+.fileHead {
+	padding-top: 20px;
+	overflow: hidden;
+
+	h1 {
+		font-size: 1.3em;
+		color: var(--blackWhite);
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	p {
+		margin-top: 10px;
+		font-size: 0.9em;
+		color: var(--blackWhite);
+		text-overflow: ellipsis;
+		opacity: 0.8;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.fileHead {
+		font-size: 1.2em;
+	}
+}
