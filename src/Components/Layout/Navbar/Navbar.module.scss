@@ -23,74 +23,10 @@
 		width: 100%;
 		padding: 30px;
 
-		.searchList {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			z-index: 10;
-			height: 100vh;
-			background: rgba(0, 0, 0, 0.7);
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.2s ease-in-out;
-			overflow: hidden;
-
-			ul {
-				background: var(--whiteDarkGray);
-				padding: 5px 20px;
-				list-style: none;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 90%;
-				height: 500px;
-				border-radius: 10px;
-				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-				max-width: 350px;
-				font-size: 1.3em;
-				overflow: scroll;
-
-				li,
-				button {
-					border: none;
-					outline: none;
-					background: transparent;
-					height: 55px;
-					border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-					transition: all 0.2s ease-in-out;
-					cursor: pointer;
-					font-weight: 600;
-					color: var(--blackWhite);
-					display: flex;
-					align-items: center;
-					padding: 13px;
-					width: 100%;
-					font-size: 0.8em;
-					opacity: 0.6;
-
-					i {
-						margin-right: 15px;
-					}
-
-					&:first-child {
-						color: var(--blackWhite);
-						font-size: 0.9em;
-						opacity: 0.8;
-					}
-
-					&:last-child {
-						border: none;
-					}
-				}
-			}
-		}
-
 		.showList {
 			display: none;
 
-			&:checked ~ .searchList {
+			&:checked + div + label {
 				transition: opacity 0.2s ease-in-out;
 				opacity: 1;
 				pointer-events: all;
@@ -133,36 +69,6 @@
 		left: var(--toolbar);
 		width: calc(100% - var(--appWidth) - var(--toolbar));
 		height: 100vh;
-	}
-}
-
-@media screen and (min-width: 1200px) {
-	.navbar {
-		.navContent {
-			.searchList {
-				background: rgba(0, 0, 0, 0.2);
-
-				ul {
-					transform: none;
-					left: 100px;
-					top: 300px;
-					height: 300px;
-				}
-
-				&::after {
-					content: '';
-					position: absolute;
-					top: 282px;
-					z-index: 2;
-					left: 120px;
-					width: 0;
-					height: 0;
-					border-left: 18px solid transparent;
-					border-right: 18px solid transparent;
-					border-bottom: 18px solid var(--whiteDarkGray);
-				}
-			}
-		}
 	}
 }
 
