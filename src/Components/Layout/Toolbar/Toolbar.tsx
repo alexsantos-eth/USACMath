@@ -43,7 +43,7 @@ const Toolbar: React.FC = () => {
 				<i className='material-icons'>more_vert</i>
 			</label>
 			<label htmlFor='showToolbar' className={Styles.toolbarShadow} />
-			<ul className={Styles.toolbar}>
+			<div className={Styles.toolbar}>
 				<div className={Styles.toolbarHeader}>
 					<h1>{lang.application.toolbar.title}</h1>
 					<p>{lang.application.toolbar.text}</p>
@@ -61,23 +61,19 @@ const Toolbar: React.FC = () => {
 						<span>Iniciar sesión</span>
 					</button>
 				)}
-				<Link to={ROUTES.files}>
-					<li className={path === ROUTES.files ? Styles.pathActive : ''}>
+				<div className={path === ROUTES.files ? Styles.pathActive : ''}>
+					<Link to={ROUTES.files}>
 						<i className='material-icons'>style</i>
 						<span>Archivos</span>
-					</li>
-				</Link>
-				<Link to={ROUTES.schedule}>
-					<li className={path === ROUTES.schedule ? Styles.pathActive : ''}>
+					</Link>
+				</div>
+				<div className={path === ROUTES.schedule ? Styles.pathActive : ''}>
+					<Link to={ROUTES.schedule}>
 						<i className='material-icons'>event</i>
 						<span>Horarios</span>
-					</li>
-				</Link>
-				<li>
-					<i className='material-icons'>devices</i>
-					<span>Departamento</span>
-				</li>
-			</ul>
+					</Link>
+				</div>
+			</div>
 		</>
 	)
 }
