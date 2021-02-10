@@ -1,16 +1,22 @@
 {
-  "short_name": "MateFIUSAC",
-  "name": "Departamento de Matemática",
-  "gcm_sender_id": "671038474128",
-  "icons": [
-    {
-      "src": "./images/icon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#607d8b",
-  "background_color": "#ffffff"
+	"short_name": "MateFIUSAC",
+	"name": "Departamento de Matemática",
+	"gcm_sender_id": "671038474128",
+	"icons": [
+		{
+			"src": "/images/icon.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/images/maskable_icon.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#607d8b",
+	"background_color": "#ffffff"
 }
