@@ -9,7 +9,7 @@ import { nfd } from 'Utils/Tools'
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window'
 
 // LIST COMPONENTS
-import Skeleton from 'Components/Skeleton/Skeleton'
+import Skeleton from 'Components/Skeleton/CoursesList/Skeleton'
 import { itemHeight, listHeight, listWidth } from './Helpers/ListSize'
 
 // ESTILOS

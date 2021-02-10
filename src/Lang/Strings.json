@@ -114,7 +114,8 @@
 		"comments": {
 			"button": "Enviar",
 			"placeholder": "Escribe un comentario...",
-			"title": "Comentarios"
+			"title": "Comentarios",
+			"close": "Cerrar comentarios"
 		},
 		"schedule": {
 			"banner": {

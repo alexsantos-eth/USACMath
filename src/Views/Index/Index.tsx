@@ -4,7 +4,7 @@ import React, { lazy, Suspense, useState, FC } from 'react'
 // COMPONENTES
 import Navbar from 'Components/Layout/Navbar/Navbar'
 import Toolbar from 'Components/Layout/Toolbar/Toolbar'
-import Skeleton from 'Components/Skeleton/Skeleton'
+import Skeleton from 'Components/Skeleton/CoursesList/Skeleton'
 
 // COMPONENTES
 const CoursesList = lazy(() => import('Components/CoursesList/CoursesList'))

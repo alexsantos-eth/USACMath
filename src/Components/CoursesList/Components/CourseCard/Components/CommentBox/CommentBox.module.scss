@@ -1,4 +1,4 @@
-.container {
+.newComment {
 	position: relative;
 	width: 100%;
 	display: grid;
@@ -6,6 +6,7 @@
 	column-gap: 10px;
 	align-items: center;
 	justify-content: flex-start;
+	transition: opacity 0.2s ease-in-out;
 
 	img {
 		width: 40px;
@@ -41,4 +42,16 @@
 		border-radius: 100%;
 		z-index: 2;
 	}
+}
+
+.disableForm {
+	opacity: 0.5;
+	pointer-events: none;
+	cursor: wait;
+}
+
+.enableForm {
+	opacity: 1;
+	pointer-events: all;
+	cursor: initial;
 }

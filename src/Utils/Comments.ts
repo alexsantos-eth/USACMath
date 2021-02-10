@@ -10,13 +10,13 @@ const getCommentDoc = async (
 }
 
 // LEER COMENTARIOS
-const readComments = async (id: number): Promise<FileComments> => {
+const readComments = async (id: number): Promise<FileComments | null> => {
 	const doc = await getCommentDoc(id)
 	const snap = await doc.get()
 	const data = snap.docs.map((sDoc) => sDoc.data()) as [FileComments]
 
 	// RETORNAR
-	return data[0]
+	return data[0] || null
 }
 
 // GUARDAR COMENTARIO
@@ -31,7 +31,7 @@ export const saveComment = async (id: number, comment: FileComment): Promise<voi
 	if (data[0]) {
 		// AGREGAR
 		const comments: FileComment[] = data[0].comments || []
-		comments.push(comment)
+		comments.unshift(comment)
 
 		// GUARDAR
 		await col.doc(docId[0]).set({ comments }, { merge: true })
