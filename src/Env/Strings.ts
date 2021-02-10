@@ -56,7 +56,6 @@ export interface Comments {
     button:       string;
     placeholder:  string;
     title:        string;
-    close:        string;
     notFound:     string;
     notFoundText: string;
 }

@@ -10,7 +10,6 @@ const showCommentAlert = (lang: Es, id: number): void => {
 	window.Alert({
 		title: lang.comments.title,
 		body: '',
-		confirmText: lang.comments.close,
 		type: 'confirm',
 		customElements: <CommentBox id={id} />,
 		onHide: () => window.hideAlert(),
