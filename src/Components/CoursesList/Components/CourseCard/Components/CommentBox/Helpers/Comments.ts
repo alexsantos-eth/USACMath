@@ -36,13 +36,13 @@ const addComment = async (
 ): Promise<void> => {
 	return sendComment(id, comment, user).then((fileComment: FileComment | null) =>
 		setCommentsList((prevList: FileComments | null | undefined) => {
-			if (prevList && fileComment) {
+			if (fileComment) {
 				// AGREGAR COMENTARIO A ESTADO
-				const comments = [...prevList.comments]
+				const comments = prevList ? [...prevList.comments] : []
 				comments.unshift(fileComment)
 
 				// ACTUALIZAR
-				return { id: prevList.id, comments }
+				return { id: prevList?.id || id, fileComment, comments }
 			}
 			return null
 		})
