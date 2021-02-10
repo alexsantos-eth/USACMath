@@ -91,7 +91,7 @@
 		width: 100%;
 	}
 
-	li {
+	div {
 		img {
 			height: 28px;
 			margin-left: -6px;
@@ -100,9 +100,11 @@
 	}
 }
 
-.toolbar > a > li,
-.toolbar > li,
+.toolbar > div > a,
+.toolbar > div,
 .toolbar > button {
+	display: block;
+	height: 45px;
 	appearance: none;
 	border: none;
 	outline: none;
@@ -194,8 +196,8 @@
 			display: none;
 		}
 
-		li,
-		a > li,
+		div > a,
+		div,
 		button {
 			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
@@ -223,11 +225,11 @@
 		display: none;
 	}
 
-	.toolbar > a > li:hover,
-	.toolbar > li:hover,
+	.toolbar > div > a:hover,
+	.toolbar > div:hover,
 	.toolbar > button:hover {
 		opacity: 1;
-		transform: scale(1.2);
+		transform: scale(1.1);
 		background: transparent;
 
 		& > span {
@@ -236,8 +238,7 @@
 		}
 	}
 
-	.toolbar > a > li > i,
-	.toolbar > li > i,
+	.toolbar > div > a > i,
 	.toolbar > button > i {
 		font-size: 1.5em;
 		color: var(--white);
@@ -255,7 +256,8 @@
 		}
 
 		span {
-			margin-left: 53px;
+			font-size: 0.75em;
+			margin-left: 55px;
 		}
 	}
 

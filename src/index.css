@@ -1,15 +1,3 @@
-@font-face {
-	src: url('./Fonts/Product_Sans_Bold.ttf');
-	font-family: 'ProductSans';
-	font-weight: 700;
-}
-
-@font-face {
-	src: url('./Fonts/Product_Sans_Regular.ttf');
-	font-family: 'ProductSans';
-	font-weight: 500;
-}
-
 body {
 	overscroll-behavior: none;
 	position: relative;
@@ -23,10 +11,6 @@ body {
 	margin: 0;
 	background-color: #eee;
 	box-sizing: border-box;
-	font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
-		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	overflow: hidden;
 	font-size: 15px;
 }
@@ -41,7 +25,6 @@ body {
 	-webkit-touch-callout: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-user-drag: none;
-	font-family: 'ProductSans';
 }
 
 /* ALERTAS */
