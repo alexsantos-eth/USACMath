@@ -33,14 +33,14 @@ const QuickList: React.FC<QuickListProps> = ({
 
 	return (
 		<label htmlFor='showList' className={Styles.searchList}>
-			<ul>
-				<li>{lang.application.short.listTitle}</li>
+			<div>
+				<p>{lang.application.short.listTitle}</p>
 				{lang.application.short.buttons.map((e: { icon: string; text: string }) => (
 					<button type='button' onClick={handleQuickSearch(e.text)} key={`quickList_${e.text}`}>
 						<i className='material-icons'>{e.icon}</i> {e.text}
 					</button>
 				))}
-			</ul>
+			</div>
 		</label>
 	)
 }
