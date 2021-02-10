@@ -3,10 +3,11 @@
 import React, { useState, lazy, Suspense } from 'react'
 
 // USER
-import { useStrings, useUser } from 'Hooks/Context'
+import { useUser } from 'Hooks/Context'
 
 // COMPONENTES
 import CommentBoxSkeleton from 'Components/Skeleton/CommentBox/CommentBox'
+import CommentInput from './Components/CommentInput/CommentInput'
 
 // ESTILOS
 import Styles from './CommentBox.module.scss'
@@ -24,9 +25,6 @@ interface CommentBoxProps {
 }
 
 const CommentBox: React.FC<CommentBoxProps> = ({ id }: CommentBoxProps) => {
-	// STRINGS
-	const lang = useStrings()
-
 	// USER
 	const user = useUser()
 
@@ -66,21 +64,12 @@ const CommentBox: React.FC<CommentBoxProps> = ({ id }: CommentBoxProps) => {
 			) : (
 				<span>Sin comentarios</span>
 			)}
-			<form
-				className={`${Styles.newComment} ${isSubmitting ? Styles.disableForm : Styles.enableForm}`}
-				onSubmit={submitFileComment}>
-				<img src={user?.picture || ''} alt='User pic' />
-				<input
-					value={comment}
-					type='text'
-					id='comment'
-					placeholder={lang.comments.placeholder}
-					onChange={handleTextComment}
-				/>
-				<button type='submit' className='material-icons' onClick={submitFileComment}>
-					arrow_forward
-				</button>
-			</form>
+			<CommentInput
+				isSubmitting={isSubmitting}
+				handleTextComment={handleTextComment}
+				submitFileComment={submitFileComment}
+				comment={comment}
+			/>
 		</div>
 	)
 }
