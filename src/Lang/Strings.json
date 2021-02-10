@@ -109,7 +109,6 @@
 			"button": "Enviar",
 			"placeholder": "Escribe un comentario...",
 			"title": "Comentarios",
-			"close": "Cerrar comentarios",
 			"notFound": "Sin comentarios",
 			"notFoundText": "Se el primero en enviar un comentario"
 		},

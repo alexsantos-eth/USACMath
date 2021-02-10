@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 // HOOKS
 import useCourseFiles from 'Hooks/Courses'
@@ -18,6 +18,7 @@ import Style from './CoursesList.module.scss'
 // COMPONENTES
 import CourseCard from './Components/CourseCard/CourseCard'
 import NotFound from './Components/NotFound/NotFound'
+import Preview from './Components/Preview/Preview'
 
 // PROPIEDADES
 interface CoursesListProps {
@@ -28,8 +29,19 @@ const CoursesList: React.FC<CoursesListProps> = ({ search }: CoursesListProps) =
 	// ESTADOS
 	const [courseFiles, setCourseFiles] = useState<CourseFile[] | null>(null)
 
+	// URL DE PREVIEW
+	const [previewUrl, setPreviewUrl] = useState<string>('')
+
 	// HOOK DE ARCHIVOS
 	useCourseFiles(setCourseFiles)
+
+	// REFERENCIAS
+	const openPreviewRef: React.RefObject<HTMLInputElement> = useRef(null)
+
+	// BORRAR URL
+	const resetPreviewUrl = () => {
+		if (!openPreviewRef.current?.checked) setPreviewUrl('')
+	}
 
 	// FILTRAR CURSOS
 	const nfdSearch: string = nfd(search)
@@ -56,21 +68,36 @@ const CoursesList: React.FC<CoursesListProps> = ({ search }: CoursesListProps) =
 	if (courseFiles)
 		if (filteredFiles.length > 0)
 			return (
-				<div className={Style.container}>
-					<List
-						width={listWidth}
-						height={listHeight}
-						itemCount={filteredFiles.length}
-						itemSize={itemHeight}>
-						{({ style, index }: ListChildComponentProps) => {
-							return (
-								<div className={Style.itemContainer} style={style}>
-									<CourseCard course={filteredFiles[index]} />
-								</div>
-							)
-						}}
-					</List>
-				</div>
+				<>
+					<input
+						type='checkbox'
+						ref={openPreviewRef}
+						id='openPreview'
+						className={Style.openPreview}
+					/>
+					<div className={Style.container}>
+						<List
+							width={listWidth}
+							height={listHeight}
+							itemCount={filteredFiles.length}
+							itemSize={itemHeight}>
+							{({ style, index }: ListChildComponentProps) => {
+								return (
+									<div className={Style.itemContainer} style={style}>
+										<CourseCard
+											openPreviewRef={openPreviewRef}
+											onPreview={setPreviewUrl}
+											course={filteredFiles[index]}
+										/>
+									</div>
+								)
+							}}
+						</List>
+					</div>
+					<label htmlFor='openPreview' className={Style.preview} onTransitionEnd={resetPreviewUrl}>
+						<Preview url={previewUrl} />
+					</label>
+				</>
 			)
 		else
 			return (
