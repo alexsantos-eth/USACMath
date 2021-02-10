@@ -95,12 +95,6 @@
 			"text2": "Sin conexión a internet",
 			"share": "Copiado al portapapeles"
 		},
-		"alerts": {
-			"comments": {
-				"notFound": "Sin comentarios",
-				"notFoundText": "Se el primero en enviar un comentario y calificar este documento."
-			}
-		},
 		"rights": {
 			"text1": "OpenSource MIT LICENSE",
 			"text2": "Alex Santos ® 2020"
@@ -115,7 +109,9 @@
 			"button": "Enviar",
 			"placeholder": "Escribe un comentario...",
 			"title": "Comentarios",
-			"close": "Cerrar comentarios"
+			"close": "Cerrar comentarios",
+			"notFound": "Sin comentarios",
+			"notFoundText": "Se el primero en enviar un comentario"
 		},
 		"schedule": {
 			"banner": {

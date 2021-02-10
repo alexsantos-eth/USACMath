@@ -8,6 +8,7 @@ import { useUser } from 'Hooks/Context'
 // COMPONENTES
 import CommentBoxSkeleton from 'Components/Skeleton/CommentBox/CommentBox'
 import CommentInput from './Components/CommentInput/CommentInput'
+import NotFound from './Components/NotFound/NotFound'
 
 // ESTILOS
 import Styles from './CommentBox.module.scss'
@@ -62,7 +63,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ id }: CommentBoxProps) => {
 			) : commentsList === undefined ? (
 				<CommentBoxSkeleton />
 			) : (
-				<span>Sin comentarios</span>
+				<NotFound />
 			)}
 			<CommentInput
 				isSubmitting={isSubmitting}

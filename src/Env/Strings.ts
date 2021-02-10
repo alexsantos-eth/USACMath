@@ -8,20 +8,10 @@ export interface Es {
     notFound:    NotFound;
     share:       Share;
     toast:       Toast;
-    alerts:      Alerts;
     rights:      Rights;
     login:       Login;
-    comments:    EsComments;
+    comments:    Comments;
     schedule:    Schedule;
-}
-
-export interface Alerts {
-    comments: AlertsComments;
-}
-
-export interface AlertsComments {
-    notFound:     string;
-    notFoundText: string;
 }
 
 export interface Application {
@@ -62,11 +52,13 @@ export interface NotFound {
     text:  string;
 }
 
-export interface EsComments {
-    button:      string;
-    placeholder: string;
-    title:       string;
-    close:       string;
+export interface Comments {
+    button:       string;
+    placeholder:  string;
+    title:        string;
+    close:        string;
+    notFound:     string;
+    notFoundText: string;
 }
 
 export interface Course {
