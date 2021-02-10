@@ -1,10 +1,11 @@
-interface Comment {
-	points: number[]
-	comment: string[]
-	file: string
-	author: {
-		photo: string
-		name: string
-	}[]
-	upload: string[]
+interface FileComment {
+	comment: string
+	file: number
+	author: Partial<User>
+	upload: Date
+}
+
+interface FileComments {
+	id: number
+	comments: FileComment[]
 }

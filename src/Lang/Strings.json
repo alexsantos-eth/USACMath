@@ -8,7 +8,7 @@
 			"general": {
 				"title": "Matemática - FIUSAC",
 				"main": "Bienvenido al buscador del departamento de matemática de la facultad de ingeniería.",
-				"main_2": "Bienvenido al buscador del departamento de matemática, aquí podrás buscar parciales, claves, proyectos, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad."
+				"main2": "Bienvenido al buscador del departamento de matemática, aquí podrás buscar parciales, claves, programas, horarios, etc de cualquier curso del area matemática y profesional, todos los documentos más recientes publicados y material de apoyo para todos los cursos compartido por otros estudiantes de la facultad."
 			},
 			"placeholders": {
 				"search": "Buscar archivos",
@@ -91,19 +91,13 @@
 			}
 		},
 		"toast": {
-			"text_1": "De nuevo en línea",
-			"text_2": "Sin conexión a internet",
+			"text1": "De nuevo en línea",
+			"text2": "Sin conexión a internet",
 			"share": "Copiado al portapapeles"
 		},
-		"alerts": {
-			"comments": {
-				"notFound": "Sin comentarios",
-				"notFoundText": "Se el primero en enviar un comentario y calificar este documento."
-			}
-		},
 		"rights": {
-			"text_1": "OpenSource MIT LICENSE",
-			"text_2": "Alex Santos ® 2020"
+			"text1": "OpenSource MIT LICENSE",
+			"text2": "Alex Santos ® 2020"
 		},
 		"login": {
 			"title": "Iniciar Sesión",
@@ -112,9 +106,12 @@
 			"logoutText": "¿Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a iniciar con cualquier cuenta cuando quieras."
 		},
 		"comments": {
-			"points": "Puntuación: ",
 			"button": "Enviar",
-			"setPoints": "Puntuar: "
+			"placeholder": "Escribe un comentario...",
+			"title": "Comentarios",
+			"close": "Cerrar comentarios",
+			"notFound": "Sin comentarios",
+			"notFoundText": "Se el primero en enviar un comentario"
 		},
 		"schedule": {
 			"banner": {

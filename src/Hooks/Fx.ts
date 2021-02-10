@@ -8,9 +8,11 @@ import { toggleDarkMode } from 'Utils/Tools'
 export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown): void =>
 	useEffect(() => {
 		// OBTENER VALOR ACTUAL
-		const currentDark: boolean = window.localStorage.getItem('darkmode') === '1'
+		const localDarkmode: string | null = window.localStorage.getItem('darkmode')
+		const currentDark: boolean = localDarkmode ? localDarkmode === '1' : true
 
 		// CAMBIAR CSS
+		if (!localDarkmode) window.localStorage.setItem('darkmode', '1')
 		toggleDarkMode()
 
 		// ACTUALIZAR ESTADO

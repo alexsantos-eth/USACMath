@@ -10,7 +10,7 @@ import { toggleDarkMode } from 'Utils/Tools'
 
 const DarkmodeProvider = ({ children }: React.ComponentProps<'div'>): JSX.Element => {
 	// ESTADO
-	const [darkmode, setDarkmode] = useState<boolean>(false)
+	const [darkmode, setDarkmode] = useState<boolean>(true)
 
 	// HOOKS
 	useLoadDarkmode(setDarkmode)

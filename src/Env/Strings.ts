@@ -1,108 +1,100 @@
-/* eslint-disable camelcase */
 export interface Strings {
-	es: Es
+    es: Es;
 }
 
 export interface Es {
-	application: Application
-	course: Course
-	notFound: NotFound
-	share: Share
-	toast: Toast
-	alerts: Alerts
-	rights: Rights
-	login: Login
-	comments: EsComments
-	schedule: Schedule
-}
-
-export interface Alerts {
-	comments: AlertsComments
-}
-
-export interface AlertsComments {
-	notFound: string
-	notFoundText: string
+    application: Application;
+    course:      Course;
+    notFound:    NotFound;
+    share:       Share;
+    toast:       Toast;
+    rights:      Rights;
+    login:       Login;
+    comments:    Comments;
+    schedule:    Schedule;
 }
 
 export interface Application {
-	toolbar: NotFound
-	general: General
-	placeholders: Placeholders
-	buttons: Buttons
-	short: Short
+    toolbar:      NotFound;
+    general:      General;
+    placeholders: Placeholders;
+    buttons:      Buttons;
+    short:        Short;
 }
 
 export interface Buttons {
-	advancedSearch: string
+    advancedSearch: string;
 }
 
 export interface General {
-	title: string
-	main: string
-	main_2: string
+    title: string;
+    main:  string;
+    main2: string;
 }
 
 export interface Placeholders {
-	search: string
-	comment: string
+    search:  string;
+    comment: string;
 }
 
 export interface Short {
-	listTitle: string
-	buttons: Button[]
+    listTitle: string;
+    buttons:   Button[];
 }
 
 export interface Button {
-	icon: string
-	text: string
+    icon: string;
+    text: string;
 }
 
 export interface NotFound {
-	title: string
-	text: string
+    title: string;
+    text:  string;
 }
 
-export interface EsComments {
-	points: string
-	button: string
-	setPoints: string
+export interface Comments {
+    button:       string;
+    placeholder:  string;
+    title:        string;
+    close:        string;
+    notFound:     string;
+    notFoundText: string;
 }
 
 export interface Course {
-	labels: string[]
-	download: string
+    labels:   string[];
+    download: string;
 }
 
 export interface Login {
-	title: string
-	text: string
-	logoutTitle: string
-	logoutText: string
+    title:       string;
+    text:        string;
+    logoutTitle: string;
+    logoutText:  string;
 }
 
 export interface Rights {
-	text_1: string
-	text_2: string
+    text1: string;
+    text2: string;
 }
 
 export interface Schedule {
-	banner: NotFound
+    banner: NotFound;
 }
 
 export interface Share {
-	text: string
-	wait: Success
-	success: Success
+    text:    string;
+    wait:    Success;
+    success: Success;
 }
 
 export interface Success {
-	title: string
-	body: string
+    title: string;
+    body:  string;
 }
 
 export interface Toast {
-	text_1: string
-	text_2: string
-	share: string
+    text1: string;
+    text2: string;
+    share: string;
 }

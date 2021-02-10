@@ -2,20 +2,16 @@
 // REACT
 import React from 'react'
 
-// ESTILOS
-
 // TIPOS
 import { Link, useHistory } from 'react-router-dom'
-
-// ICONOS
-import G from 'Assets/icons/gicon.png'
-import F from 'Assets/icons/ficon.png'
 
 // HOOKS
 import { useStrings, useUser } from 'Hooks/Context'
 
 // GRID
 import ROUTES from 'Env/Routes'
+
+// ESTILOS
 import Styles from './Toolbar.module.scss'
 
 // HELPERS
@@ -52,16 +48,19 @@ const Toolbar: React.FC = () => {
 					<h1>{lang.application.toolbar.title}</h1>
 					<p>{lang.application.toolbar.text}</p>
 				</div>
-				<button type='button' className={Styles.logBtn} onClick={sessionHandler}>
-					{user ? (
+				{user ? (
+					<button type='button' className={Styles.logBtn} onClick={sessionHandler}>
 						<img src={user.picture || ''} alt='User pic' />
-					) : (
-						<>
-							<i className='material-icons'>person</i>
-							<span>Iniciar sesión</span>
-						</>
-					)}
-				</button>
+						<span style={{ textTransform: 'capitalize' }}>
+							{user.name.split(' ')[0].toLowerCase()} {user.name.split(' ')[2].toLowerCase()}
+						</span>
+					</button>
+				) : (
+					<button type='button' onClick={sessionHandler}>
+						<i className='material-icons'>person</i>
+						<span>Iniciar sesión</span>
+					</button>
+				)}
 				<Link to={ROUTES.files}>
 					<li className={path === ROUTES.files ? Styles.pathActive : ''}>
 						<i className='material-icons'>style</i>
@@ -79,16 +78,6 @@ const Toolbar: React.FC = () => {
 					<span>Departamento</span>
 				</li>
 			</ul>
-			<div className={Styles.logsContainer}>
-				<button type='button' className={Styles.fLogin}>
-					<img src={F} alt='Login Icon F' />
-					Iniciar con Facebook
-				</button>
-				<button type='button' className={Styles.gLogin}>
-					<img src={G} alt='Login Icon G' />
-					Iniciar con Google
-				</button>
-			</div>
 		</>
 	)
 }

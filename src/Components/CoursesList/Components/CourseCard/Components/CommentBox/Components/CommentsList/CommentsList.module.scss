@@ -1,0 +1,15 @@
+.container {
+	background: var(--lightLightGray);
+	border-radius: 10px;
+	margin-bottom: 20px;
+
+	.itemContainer {
+		width: 100%;
+		height: max-content;
+		border-bottom: 1px solid var(--gray);
+
+		&:last-child {
+			border: none;
+		}
+	}
+}

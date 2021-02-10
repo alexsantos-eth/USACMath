@@ -1,3 +1,15 @@
+@font-face {
+	src: url('./Fonts/Product_Sans_Bold.ttf');
+	font-family: 'ProductSans';
+	font-weight: 700;
+}
+
+@font-face {
+	src: url('./Fonts/Product_Sans_Regular.ttf');
+	font-family: 'ProductSans';
+	font-weight: 500;
+}
+
 body {
 	overscroll-behavior: none;
 	position: relative;
@@ -29,6 +41,21 @@ body {
 	-webkit-touch-callout: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-user-drag: none;
+	font-family: 'ProductSans';
+}
+
+/* ALERTAS */
+main > div:last-child > div {
+	background-color: var(--whiteDarkGray) !important;
+}
+main > div:last-child > div > p,
+main > div:last-child > div > h1,
+main > div:last-child > div > ul > li > button {
+	color: var(--blackWhite) !important;
+}
+
+main > div:last-child > div > ul > li:last-child > button {
+	color: var(--white) !important;
 }
 
 /* LISTAS */

@@ -1,23 +1,23 @@
 // REACT
 import React, { useState } from 'react'
 
-// ESTILOS
-import { FixedSizeList as List, ListChildComponentProps } from 'react-window'
-import Skeleton from 'Components/Skeleton/Skeleton'
+// HOOKS
 import useCourseFiles from 'Hooks/Courses'
-import { nfd } from 'Utils/Tools'
-import Style from './CoursesList.module.scss'
 
-// REACT WINDOW
+// TOOLS
+import { nfd } from 'Utils/Tools'
+import { FixedSizeList as List, ListChildComponentProps } from 'react-window'
+
+// LIST COMPONENTS
+import Skeleton from 'Components/Skeleton/CoursesList/Skeleton'
 import { itemHeight, listHeight, listWidth } from './Helpers/ListSize'
+
+// ESTILOS
+import Style from './CoursesList.module.scss'
 
 // COMPONENTES
 import CourseCard from './Components/CourseCard/CourseCard'
 import NotFound from './Components/NotFound/NotFound'
-
-// HOOKS
-
-// TOOLS
 
 // PROPIEDADES
 interface CoursesListProps {
