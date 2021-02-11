@@ -1,6 +1,6 @@
 // REACT
 import React, { useState } from 'react'
-import useAnimatedWidth from '../Helpers/Hooks'
+import useAnimatedWidth from 'Components/Skeleton/Helpers/Hooks'
 
 // ESTILO
 import Style from './CommentBox.module.scss'
