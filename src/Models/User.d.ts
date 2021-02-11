@@ -4,4 +4,5 @@ interface User {
 	name: string
 	phone: string | null
 	picture: string | null
+	role: 'student' | 'admin' | 'docent'
 }
