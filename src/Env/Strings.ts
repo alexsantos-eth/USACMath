@@ -8,6 +8,7 @@ export interface Es {
     notFound:    NotFound;
     share:       Share;
     toast:       Toast;
+    toolbar:     Toolbar;
     rights:      Rights;
     login:       Login;
     comments:    Comments;
@@ -96,4 +97,13 @@ export interface Toast {
     text1: string;
     text2: string;
     share: string;
+}
+
+export interface Toolbar {
+    options:     string[];
+    signingMenu: SigningMenu;
+}
+
+export interface SigningMenu {
+    options: string[];
 }

@@ -95,6 +95,10 @@
 			"text2": "Sin conexión a internet",
 			"share": "Copiado al portapapeles"
 		},
+		"toolbar": {
+			"options": ["Iniciar sesión", "Archivos", "Horarios"],
+			"signingMenu": { "options": ["Estudiante", "Docente/Admin"] }
+		},
 		"rights": {
 			"text1": "OpenSource MIT LICENSE",
 			"text2": "Alex Santos ® 2020"
