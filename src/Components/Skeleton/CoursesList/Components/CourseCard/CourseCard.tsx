@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
+// HOOKS
+import useAnimatedWidth from 'Components/Skeleton/Helpers/Hooks'
+
 // ESTILOS
 import Style from './CourseCard.module.scss'
-import useAnimatedWidth from '../../../Helpers/Hooks'
 
 const CourseCard: React.FC = () => {
 	// ESTADO

@@ -8,8 +8,8 @@ import { useStrings } from 'Hooks/Context'
 import Style from './CardActions.module.scss'
 
 // TOOLS
-import showCommentAlert from '../../Helpers/Comments'
-import shareFile from '../../Helpers/Tools'
+import showCommentAlert from './Helpers/Comments'
+import shareFile from './Helpers/Tools'
 
 interface CardActionsProps {
 	link: string
