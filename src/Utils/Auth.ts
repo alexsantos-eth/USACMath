@@ -55,16 +55,19 @@ const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
 }
 
 // GUARDAR USUARIO
-const saveUser = (name?: string) => (credential: firebase.default.auth.UserCredential) => {
+const saveUser = (role?: 'student' | 'admin' | 'docent') => (
+	credential: firebase.default.auth.UserCredential
+) => {
 	// VERIFICAR CREDENCIAL
 	if (credential.user?.uid && credential.user.email)
 		return setUserFirestore(
 			{
 				uid: credential.user?.uid,
-				name: name || credential.user.displayName || '',
+				name: credential.user.displayName || '',
 				email: credential.user.email,
 				phone: credential.user?.phoneNumber || null,
 				picture: credential.user?.photoURL || null,
+				role: role || 'student',
 			},
 			true
 		)
@@ -81,7 +84,7 @@ export const googleSigning = async (onError?: (error: string) => unknown): Promi
 		auth()
 			.signInWithPopup(gProvider)
 			.then((res) => {
-				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser()(res)
+				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser('student')(res)
 				window.postMessage({
 					action: 'auth',
 					data: res.credential,
