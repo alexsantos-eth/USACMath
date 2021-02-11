@@ -17,6 +17,9 @@ import Styles from './Toolbar.module.scss'
 // HELPERS
 import handleUserSession from './Helpers/User'
 
+// COMPONENTES
+import SigningMenu from './Components/SigningMenu/SigningMenu'
+
 const Toolbar: React.FC = () => {
 	// STRING
 	const lang = useStrings()
@@ -44,6 +47,12 @@ const Toolbar: React.FC = () => {
 			</label>
 			<label htmlFor='showToolbar' className={Styles.toolbarShadow} />
 			<div className={Styles.toolbar}>
+				<input
+					type='checkbox'
+					id='openSigning'
+					className={Styles.openSigning}
+					style={{ display: 'none' }}
+				/>
 				<div className={Styles.toolbarHeader}>
 					<h1>{lang.application.toolbar.title}</h1>
 					<p>{lang.application.toolbar.text}</p>
@@ -56,21 +65,23 @@ const Toolbar: React.FC = () => {
 						</span>
 					</button>
 				) : (
-					<button type='button' onClick={sessionHandler}>
+					<label htmlFor='openSigning' className={Styles.signBtn}>
 						<i className='material-icons'>person</i>
-						<span>Iniciar sesión</span>
-					</button>
+						<span>{lang.toolbar.options[0]}</span>
+						<i className='material-icons'>arrow_drop_down</i>
+						<SigningMenu className={Styles.signingMenu} sessionHandler={sessionHandler} />
+					</label>
 				)}
 				<div className={path === ROUTES.files ? Styles.pathActive : ''}>
 					<Link to={ROUTES.files}>
 						<i className='material-icons'>style</i>
-						<span>Archivos</span>
+						<span>{lang.toolbar.options[1]}</span>
 					</Link>
 				</div>
 				<div className={path === ROUTES.schedule ? Styles.pathActive : ''}>
 					<Link to={ROUTES.schedule}>
 						<i className='material-icons'>event</i>
-						<span>Horarios</span>
+						<span>{lang.toolbar.options[2]}</span>
 					</Link>
 				</div>
 			</div>

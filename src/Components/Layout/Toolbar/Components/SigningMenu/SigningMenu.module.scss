@@ -1,0 +1,43 @@
+.container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background: var(--whiteDarkGray);
+	width: calc(100% - 15px);
+
+	p {
+		display: none;
+	}
+
+	button {
+		cursor: pointer;
+		background: transparent;
+		border: none;
+		outline: none;
+		appearance: none;
+		width: 100%;
+		color: var(--darkGrayWhite);
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding-left: 15px;
+		height: 45px;
+
+		span {
+			margin-left: 15px !important;
+			font-size: 0.65em !important;
+			color: var(--darkGrayWhite) !important;
+		}
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.container {
+		p {
+			display: block;
+			font-weight: bold;
+			padding: 15px 0 10px 20px;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		}
+	}
+}

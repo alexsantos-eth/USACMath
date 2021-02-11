@@ -32,10 +32,6 @@
 	top: 0;
 	width: 250px;
 	padding: 20px 30px;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 80px repeat(7, 45px);
-	row-gap: 5px;
 	align-items: center;
 	justify-items: flex-start;
 	list-style: none;
@@ -44,30 +40,14 @@
 	transition: transform 0.2s ease-in-out;
 	font-size: 1.2em;
 
-	.logBtn {
-		padding: 0;
-		height: 45px;
-		width: calc(100% + 30px);
-
-		img {
-			width: 35px;
-			height: 35px;
-			border-radius: 100%;
-			object-fit: cover;
-			margin-left: 17px;
-		}
-
-		span {
-			margin-left: 10px;
-		}
-	}
-
 	.toolbarHeader {
 		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
 		flex-direction: column;
 		align-self: flex-start;
+		height: max-content;
+		background: transparent !important;
 
 		h1 {
 			font-size: 1.2em;
@@ -91,65 +71,114 @@
 		width: 100%;
 	}
 
-	div {
+	& > button {
 		img {
-			height: 28px;
-			margin-left: -6px;
+			height: 30px;
+			width: 30px;
 			border-radius: 100%;
 		}
-	}
-}
 
-.toolbar > div > a,
-.toolbar > div,
-.toolbar > button {
-	display: block;
-	height: 45px;
-	appearance: none;
-	border: none;
-	outline: none;
-	position: relative;
-	color: var(--blackWhite);
-	width: calc(100% + 30px);
-	opacity: 0.8;
-	cursor: pointer;
-	transition: background 0.2s ease-in-out;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	border-radius: 5px;
-	padding: 10px 15px;
-	margin-left: -15px;
-	font-size: 1em;
-	background-color: transparent;
-
-	img {
-		width: 100%;
-		height: 100%;
-	}
-
-	i {
-		font-size: 1.5em;
-		color: var(--blackWhite);
-	}
-
-	&:hover {
-		background: var(--blue);
-		opacity: 1;
-
-		i,
-		span {
-			color: var(--white);
+		img + span {
+			margin-left: 10px;
 		}
 	}
 
-	span {
-		font-weight: bold;
-		font-size: 0.9em;
-		margin-left: 20px;
+	& > div,
+	& > label,
+	& > button {
+		display: block;
+		height: 45px;
+		appearance: none;
+		border: none;
+		outline: none;
+		position: relative;
+		color: var(--blackWhite);
+		width: calc(100% + 30px);
+		opacity: 0.8;
+		cursor: pointer;
+		transition: background 0.2s ease-in-out;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		border-radius: 5px;
+		padding: 10px 15px;
+		margin-left: -15px;
+		margin-bottom: 10px;
+		font-size: 1em;
+		background-color: transparent;
+
+		i {
+			font-size: 1.5em;
+			color: var(--blackWhite);
+		}
+
+		span {
+			font-weight: bold;
+			font-size: 0.9em;
+			margin-left: 15px;
+			opacity: 1;
+			pointer-events: none;
+			transition: opacity 0.2s ease-in-out;
+		}
+
+		a {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			color: var(--blackWhite);
+		}
+	}
+
+	& > div {
+		&:hover {
+			background: var(--blue);
+			opacity: 1;
+
+			i,
+			span {
+				color: var(--white);
+			}
+		}
+	}
+
+	.signBtn {
+		display: grid;
+		grid-template-columns: auto auto auto 1fr;
+		grid-template-rows: auto;
+		height: max-content;
+		justify-content: flex-start;
+		padding-bottom: 0;
+
+		i:nth-child(3) {
+			transition: transform 0.2s ease-in-out;
+		}
+	}
+
+	.signingMenu {
+		position: relative;
+		margin-top: 10px;
+		width: 100%;
+		z-index: 2;
+		grid-column: 1/5;
+		grid-row: 2/3;
+		height: 0;
+		transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		opacity: 0;
+	}
+
+	.openSigning:checked ~ .signBtn {
+		padding-bottom: 10px;
+	}
+
+	.openSigning:checked ~ .signBtn {
+		i:nth-child(3) {
+			transform: rotateZ(180deg);
+		}
+	}
+
+	.openSigning:checked ~ .signBtn > .signingMenu {
+		height: 90px;
 		opacity: 1;
-		pointer-events: none;
-		transition: opacity 0.2s ease-in-out;
 	}
 }
 
@@ -196,9 +225,10 @@
 			display: none;
 		}
 
-		div > a,
-		div,
-		button {
+		& > div > a,
+		& > label,
+		& > div,
+		& > button {
 			transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
 			img {
@@ -211,7 +241,7 @@
 				padding: 10px;
 				position: absolute;
 				border-radius: 5px;
-				font-size: 0.7em;
+				font-size: 0.8em;
 				width: max-content;
 				margin-left: 40px;
 				background: var(--whiteDarkGray);
@@ -219,23 +249,67 @@
 				box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 			}
 		}
+
+		& > div > a,
+		& > div,
+		& > label,
+		& > button {
+			&:hover {
+				opacity: 1;
+				background: transparent;
+
+				& > span {
+					opacity: 1;
+					pointer-events: all;
+				}
+			}
+		}
+
+		& > label {
+			& > span:nth-child(2) {
+				display: none;
+			}
+		}
+
+		.signBtn {
+			padding-bottom: 10px;
+			z-index: 2;
+
+			& > i:nth-child(3) {
+				display: none;
+			}
+		}
+
+		.signingMenu {
+			position: absolute;
+			left: 138%;
+			width: 193px;
+			top: -250%;
+			height: max-content !important;
+			opacity: 0;
+			border-radius: 10px;
+			z-index: 2;
+			pointer-events: none;
+			box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+			button {
+				span {
+					opacity: 1;
+					border-radius: 0;
+					box-shadow: none;
+					margin-left: 30px !important;
+				}
+			}
+		}
+
+		.signBtn:hover .signingMenu {
+			opacity: 1;
+			pointer-events: all;
+		}
 	}
 
 	.showToolbar {
 		display: none;
-	}
-
-	.toolbar > div > a:hover,
-	.toolbar > div:hover,
-	.toolbar > button:hover {
-		opacity: 1;
-		transform: scale(1.1);
-		background: transparent;
-
-		& > span {
-			opacity: 1;
-			pointer-events: all;
-		}
 	}
 
 	.toolbar > div > a > i,
@@ -248,10 +322,13 @@
 		height: 45px;
 		width: 45px;
 		display: flex;
+		padding: 0;
+		margin-top: 6px;
+		margin-bottom: 15px;
 
 		img {
-			width: 100%;
 			height: 100%;
+			width: 100%;
 			margin-left: 6.5px;
 		}
 
