@@ -58,7 +58,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ id }: CommentBoxProps) => {
 		<div className={Styles.container}>
 			{commentsList ? (
 				<Suspense fallback={<CommentBoxSkeleton />}>
-					<CommentsList comments={commentsList.comments} />
+					<CommentsList comments={commentsList.comments} isSubmitting={isSubmitting} />
 				</Suspense>
 			) : commentsList === undefined ? (
 				<CommentBoxSkeleton />
