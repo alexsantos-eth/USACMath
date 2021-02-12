@@ -7,6 +7,9 @@ import { useStrings } from 'Hooks/Context'
 // ESTILOS
 import Style from './SigningMenu.module.scss'
 
+// TOOLS
+import showAdminSigning from './Helpers/Alerts'
+
 interface SigningMenuProps {
 	className?: string
 	sessionHandler: () => void
@@ -19,13 +22,16 @@ const SigningMenu: React.FC<SigningMenuProps> = ({
 	// STRINGS
 	const lang = useStrings()
 
+	// ALERTA DE INICIO DE SESIÓN
+	const openAdminSigning = () => showAdminSigning(lang)
+
 	return (
 		<div className={`${Style.container} ${className}`}>
 			<p>{lang.toolbar.options[0]}</p>
 			<button type='button' className='material-icons' onClick={sessionHandler}>
 				school <span>{lang.toolbar.signingMenu.options[0]}</span>
 			</button>
-			<button type='button' className='material-icons'>
+			<button type='button' className='material-icons' onClick={openAdminSigning}>
 				business_center <span>{lang.toolbar.signingMenu.options[1]}</span>
 			</button>
 		</div>

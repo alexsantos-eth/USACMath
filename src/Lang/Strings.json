@@ -104,8 +104,10 @@
 			"text2": "Alex Santos ® 2020"
 		},
 		"login": {
-			"title": "Iniciar Sesión",
-			"text": "Puedes iniciar sesión o crear una cuenta nueva para la aplicación, es GRATIS.",
+			"title": "Iniciar sesión",
+			"inputs": ["Correo electrónico", "Contraseña"],
+			"helpers": ["Email autorizado", "¿Olvidaste tu contraseña?"],
+			"text": "Accede con tu cuenta como administrador o docente, tu cuenta debe estar previamente creada y autorizada.",
 			"logoutTitle": "Cerrar sesión",
 			"logoutText": "¿Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a iniciar con cualquier cuenta cuando quieras."
 		},

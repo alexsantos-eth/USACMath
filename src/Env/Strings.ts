@@ -68,6 +68,8 @@ export interface Course {
 
 export interface Login {
     title:       string;
+    inputs:      string[];
+    helpers:     string[];
     text:        string;
     logoutTitle: string;
     logoutText:  string;
