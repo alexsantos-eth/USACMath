@@ -1,0 +1,97 @@
+.container {
+	position: relative;
+	margin-top: 7px;
+	border-bottom: 1px solid var(--blackWhite);
+	margin-bottom: 23px;
+
+	label {
+		position: absolute;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
+		padding: 15px 0;
+
+		span {
+			position: absolute;
+			font-weight: bold;
+			bottom: 15px;
+			color: var(--blackWhite);
+			transition: transform 0.1s linear, color 0.1s linear, font-size 0.1s linear;
+		}
+
+		i {
+			position: absolute;
+			bottom: -23px;
+			color: var(--blackWhite);
+			opacity: 0.8;
+			font-size: 0.9em;
+			font-style: normal;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-bottom: 2px solid var(--focuscolor);
+			transform: scaleX(0);
+			transform-origin: center center;
+			transition: transform 0.2s ease-in-out;
+		}
+	}
+
+	button {
+		position: absolute;
+		border: none;
+		outline: none;
+		top: 13px;
+		color: var(--blackWhite);
+		cursor: pointer;
+		right: 0;
+		background: transparent;
+	}
+
+	input {
+		background: transparent;
+		border: none;
+		outline: none;
+		width: 100%;
+		height: 50px;
+		padding: 15px 0;
+		color: var(--blackWhite);
+		box-shadow: 0 0 0 30px transparent inset !important;
+		font-size: 1em;
+
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			box-shadow: 0 0 0 30px transparent inset !important;
+			background-color: transparent !important;
+		}
+
+		&:-webkit-autofill {
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: var(--blackWhite) !important;
+		}
+	}
+
+	input:focus ~ label > span,
+	input:not(:placeholder-shown) ~ label > span {
+		color: var(--focuscolor);
+		font-size: 0.9em;
+		transform: translateY(-150%);
+	}
+
+	input:focus ~ label,
+	input:not(:placeholder-shown) ~ label {
+		&::after {
+			transform: scaleX(1);
+		}
+	}
+}

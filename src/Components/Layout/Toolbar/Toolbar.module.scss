@@ -149,6 +149,10 @@
 		justify-content: flex-start;
 		padding-bottom: 0;
 
+		i {
+			color: var(--white);
+		}
+
 		i:nth-child(3) {
 			transition: transform 0.2s ease-in-out;
 		}
@@ -223,6 +227,10 @@
 
 		.toolbarHeader {
 			display: none;
+		}
+
+		.openSigning:checked ~ .signBtn > .signingMenu {
+			opacity: 0;
 		}
 
 		& > div > a,
@@ -303,7 +311,7 @@
 		}
 
 		.signBtn:hover .signingMenu {
-			opacity: 1;
+			opacity: 1 !important;
 			pointer-events: all;
 		}
 	}

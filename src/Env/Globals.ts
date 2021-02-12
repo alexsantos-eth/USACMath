@@ -13,7 +13,7 @@ const primaryColors: IPColor[] = [
 	{ name: '--lightGray', value: '#aaa' },
 	{ name: '--gray', value: '#777' },
 	{ name: '--blueGray', value: '#607d8b' },
-	{ name: '--lightBlue', value: 'hsl(187, 79%, 40%)' },
+	{ name: '--lightBlue', value: '#03A9F4' },
 	{ name: '--blueDarkGray', value: '#455a64' },
 	{ name: '--blueDeepGray', value: '#263238' },
 	{ name: '--black', value: 'rgba(0, 0, 0, 0.8)' },
