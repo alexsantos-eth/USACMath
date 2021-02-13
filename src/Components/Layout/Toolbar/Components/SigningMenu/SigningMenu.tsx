@@ -4,11 +4,17 @@ import React from 'react'
 // HOOKS
 import { useStrings } from 'Hooks/Context'
 
-// ESTILOS
-import Style from './SigningMenu.module.scss'
+// HOOKS
+import { useHistory } from 'react-router-dom'
+
+// ROTAS
+import ROUTES from 'Env/Routes'
 
 // TOOLS
 import showAdminSigning from './Helpers/Alerts'
+
+// ESTILOS
+import Style from './SigningMenu.module.scss'
 
 interface SigningMenuProps {
 	className?: string
@@ -22,8 +28,11 @@ const SigningMenu: React.FC<SigningMenuProps> = ({
 	// STRINGS
 	const lang = useStrings()
 
+	// HISTORY
+	const history = useHistory()
+
 	// ALERTA DE INICIO DE SESIÓN
-	const openAdminSigning = () => showAdminSigning(lang)
+	const openAdminSigning = () => showAdminSigning(lang, () => history.push(ROUTES.schedule))
 
 	return (
 		<div className={`${Style.container} ${className}`}>

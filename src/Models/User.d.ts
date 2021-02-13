@@ -6,3 +6,10 @@ interface User {
 	picture: string | null
 	role: 'student' | 'admin' | 'docent'
 }
+
+// PROPIEDADES DE AUTH
+interface UserFormProps {
+	[index: string]: string
+	email: string
+	password: string
+}

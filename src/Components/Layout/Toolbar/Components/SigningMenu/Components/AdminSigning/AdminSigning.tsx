@@ -1,5 +1,5 @@
 // REACT
-import React from 'react'
+import React, { useRef } from 'react'
 
 // HOOKS
 import { useStrings } from 'Hooks/Context'
@@ -9,13 +9,29 @@ import TextField from './Components/TextField/TextField'
 
 // ESTILOS
 import Styles from './AdminSigning.module.scss'
+import setFieldData, { sendCredentials } from './Helpers/Form'
 
-const AdminSigning: React.FC = () => {
+// PROPIEDADES
+interface AdminSigningProps {
+	onSubmit: (credentials: UserFormProps) => unknown
+	onChange: (credentials: UserFormProps) => unknown
+}
+
+const AdminSigning: React.FC<AdminSigningProps> = ({ onSubmit, onChange }: AdminSigningProps) => {
 	// STRINGS
 	const lang = useStrings()
 
+	// REFERENCIAS
+	const userCredentials: React.MutableRefObject<UserFormProps> = useRef({ email: '', password: '' })
+
+	// ASIGNAR DATOS
+	const setFieldDataEv = setFieldData(onChange, userCredentials)
+
+	// ENVIAR DATOS
+	const sendCredentialsEv = sendCredentials(onSubmit, userCredentials)
+
 	return (
-		<form className={Styles.container}>
+		<form className={Styles.container} onSubmit={sendCredentialsEv}>
 			<TextField
 				type='email'
 				id='email'
@@ -23,8 +39,9 @@ const AdminSigning: React.FC = () => {
 				helper={lang.login.helpers[0]}
 				label={lang.login.inputs[0]}
 				className={Styles.emailInp}
+				onChange={setFieldDataEv}
 				autoComplete='email'
-				focuscolor='var(--blueLightBlue)'
+				focusColor='var(--blueLightBlue)'
 			/>
 			<TextField
 				type='password'
@@ -32,8 +49,9 @@ const AdminSigning: React.FC = () => {
 				name='password'
 				helper={lang.login.helpers[1]}
 				label={lang.login.inputs[1]}
+				onChange={setFieldDataEv}
 				autoComplete='current-password'
-				focuscolor='var(--blueLightBlue)'
+				focusColor='var(--blueLightBlue)'
 			/>
 		</form>
 	)

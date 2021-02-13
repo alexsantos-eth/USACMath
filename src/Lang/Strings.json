@@ -107,6 +107,14 @@
 			"title": "Iniciar sesión",
 			"inputs": ["Correo electrónico", "Contraseña"],
 			"helpers": ["Email autorizado", "¿Olvidaste tu contraseña?"],
+			"wait": {
+				"title": "Espera un momento",
+				"body": "Se esta intentando iniciar sesión como docente o administrador en este dispositivo..."
+			},
+			"error": {
+				"title": "Ocurrió un error",
+				"body": "No fue posible iniciar sesión, es posible que la contraseña o email no son correctos, intenta nuevamente."
+			},
 			"text": "Accede con tu cuenta como administrador o docente, tu cuenta debe estar previamente creada y autorizada.",
 			"logoutTitle": "Cerrar sesión",
 			"logoutText": "¿Estas seguro de querer cerrar sesión en este dispositivo?, puedes volver a iniciar con cualquier cuenta cuando quieras."

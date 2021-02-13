@@ -85,12 +85,23 @@ export const googleSigning = async (onError?: (error: string) => unknown): Promi
 			.signInWithPopup(gProvider)
 			.then((res) => {
 				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser('student')(res)
-				window.postMessage({
-					action: 'auth',
-					data: res.credential,
-				})
 			})
 			.catch(authErrorHandler(onError))
+}
+
+// INICIAR CON CORREO Y CONTRASEÑA
+export const emailLogin = async (
+	email: string,
+	password: string,
+	onError?: (error: string) => unknown
+): Promise<firebase.default.auth.UserCredential | void | null> => {
+	// AUTH
+	const auth = await getAuth()
+
+	// INICIAR
+	if (auth && gProvider)
+		return auth().signInWithEmailAndPassword(email, password).catch(authErrorHandler(onError))
+	return null
 }
 
 // CERRAR SESIÓN

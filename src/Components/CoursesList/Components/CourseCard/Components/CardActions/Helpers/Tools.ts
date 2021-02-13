@@ -1,8 +1,8 @@
 // TYPES
-import { Es, Success } from 'Env/Strings'
+import { Es, Error } from 'Env/Strings'
 
 // COPIAR TEXTO
-const copyString = (str: string, waitAlert: Success, successAlert: Success) => {
+const copyString = (str: string, waitAlert: Error, successAlert: Error) => {
 	if ('clipboard' in navigator) {
 		window.Alert({ ...waitAlert, type: 'window' })
 		navigator.clipboard.writeText(str).then(
@@ -15,7 +15,7 @@ const copyString = (str: string, waitAlert: Success, successAlert: Success) => {
 }
 
 // SHARE API
-const shareAPI = (data: ShareData, waitAlert: Success) => {
+const shareAPI = (data: ShareData, waitAlert: Error) => {
 	if ('share' in navigator) {
 		window.Alert({ ...waitAlert, type: 'window' })
 		navigator.share(data).then(window.hideAlert())

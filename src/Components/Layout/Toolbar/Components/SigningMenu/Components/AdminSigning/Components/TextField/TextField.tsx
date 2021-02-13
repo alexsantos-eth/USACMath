@@ -8,7 +8,7 @@ import Styles from './TexField.module.scss'
 interface TextFieldProps extends Omit<React.ComponentProps<'input'>, 'onChange'> {
 	label?: string
 	helper?: string
-	focuscolor?: string
+	focusColor?: string
 	onHelperClick?: () => unknown
 	onChange?: (value: string, ev: React.ChangeEvent<HTMLInputElement>) => unknown
 }
@@ -18,7 +18,12 @@ const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
 	const [showPassword, setShowPassword] = useState<string>('password')
 
 	// PROPS
-	const { id, label, className, onChange, type, focuscolor, helper, onHelperClick } = props
+	const { id, label, className, onChange, type, focusColor, helper, onHelperClick } = props
+	const customProps = { ...props }
+	delete customProps.helper
+	delete customProps.label
+	delete customProps.onHelperClick
+	delete customProps.focusColor
 
 	// ENVIAR DATOS
 	const sendText = (ev: React.ChangeEvent<HTMLInputElement>) =>
@@ -30,9 +35,9 @@ const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
 	return (
 		<div
 			className={`${Styles.container} ${className}`}
-			style={{ ['--focuscolor' as string]: focuscolor }}>
+			style={{ ['--focuscolor' as string]: focusColor }}>
 			<input
-				{...props}
+				{...customProps}
 				placeholder=' '
 				className={undefined}
 				onChange={sendText}
@@ -61,7 +66,7 @@ TextField.defaultProps = {
 	helper: '',
 	onChange: undefined,
 	onHelperClick: undefined,
-	focuscolor: 'var(--blue)',
+	focusColor: 'var(--blue)',
 }
 
 export default TextField
