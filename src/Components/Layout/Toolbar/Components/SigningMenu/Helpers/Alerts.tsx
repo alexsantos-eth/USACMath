@@ -27,6 +27,14 @@ const showAdminSigning = (lang: Es, callback: () => unknown): void => {
 			onHide: () => setTimeout(() => showAdminSigning(lang, callback), 300),
 		})
 
+	// CERRAR TODO
+	const closeAndConfirm = (cred: void | firebase.default.auth.UserCredential | null) => {
+		if (cred) {
+			callback()
+			window.hideAlert()
+		}
+	}
+
 	// INICIAR DATOS
 	const loginEvent = (userCredentials?: UserFormProps) => {
 		// ALERTA DE ESPERA
@@ -48,10 +56,8 @@ const showAdminSigning = (lang: Es, callback: () => unknown): void => {
 		})
 
 		// INICIAR SESIÓN
-		if (userCredentials)
-			emailLoginEvent(userCredentials, errorEvent).then((cred) => (cred ? callback() : null))
-		else if (credentials)
-			emailLoginEvent(credentials, errorEvent).then((cred) => (cred ? callback() : null))
+		if (userCredentials) emailLoginEvent(userCredentials, errorEvent).then(closeAndConfirm)
+		else if (credentials) emailLoginEvent(credentials, errorEvent).then(closeAndConfirm)
 	}
 
 	window.Alert({

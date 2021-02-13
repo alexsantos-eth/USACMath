@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // REACT
-import React from 'react'
+import React, { useRef } from 'react'
 
 // TIPOS
 import { Link, useHistory } from 'react-router-dom'
@@ -19,6 +19,7 @@ import handleUserSession from './Helpers/User'
 
 // COMPONENTES
 import SigningMenu from './Components/SigningMenu/SigningMenu'
+import useUserRoleListener from './Helpers/Hooks'
 
 const Toolbar: React.FC = () => {
 	// STRING
@@ -27,12 +28,25 @@ const Toolbar: React.FC = () => {
 	// USER
 	const user = useUser()
 
+	// REFERENCIAS
+	const recentLogged: React.MutableRefObject<boolean> = useRef(false)
+
 	// INICIAR/CERRAR SESSION
-	const sessionHandler = () => handleUserSession(user, lang)
+	const sessionHandler = () => {
+		handleUserSession(user, lang)
+		recentLogged.current = false
+	}
 
 	// HISTORY
 	const history = useHistory()
 	const path: string = history.location.pathname
+
+	// REDIRIGIR
+	const enableRouteChange = () => (recentLogged.current = true)
+	const goToRole = (role: string) => history.push(`/${role}`)
+
+	// CAMBIAR
+	useUserRoleListener(recentLogged, user, goToRole)
 
 	return (
 		<>
@@ -61,7 +75,8 @@ const Toolbar: React.FC = () => {
 					<button type='button' className={Styles.logBtn} onClick={sessionHandler}>
 						<img src={user.picture || ''} alt='User pic' />
 						<span style={{ textTransform: 'capitalize' }}>
-							{user.name.split(' ')[0].toLowerCase()} {user.name.split(' ')[2].toLowerCase()}
+							{user.name.split(' ')[0].toLowerCase()}{' '}
+							{(user.name.split(' ')[2] || user.name.split(' ')[1]).toLowerCase()}
 						</span>
 					</button>
 				) : (
@@ -69,7 +84,11 @@ const Toolbar: React.FC = () => {
 						<i className='material-icons'>person</i>
 						<span>{lang.toolbar.options[0]}</span>
 						<i className='material-icons'>arrow_drop_down</i>
-						<SigningMenu className={Styles.signingMenu} sessionHandler={sessionHandler} />
+						<SigningMenu
+							className={Styles.signingMenu}
+							sessionHandler={sessionHandler}
+							callback={enableRouteChange}
+						/>
 					</label>
 				)}
 				<div className={path === ROUTES.files ? Styles.pathActive : ''}>

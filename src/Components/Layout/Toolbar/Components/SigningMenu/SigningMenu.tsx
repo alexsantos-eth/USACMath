@@ -4,12 +4,6 @@ import React from 'react'
 // HOOKS
 import { useStrings } from 'Hooks/Context'
 
-// HOOKS
-import { useHistory } from 'react-router-dom'
-
-// ROTAS
-import ROUTES from 'Env/Routes'
-
 // TOOLS
 import showAdminSigning from './Helpers/Alerts'
 
@@ -19,20 +13,19 @@ import Style from './SigningMenu.module.scss'
 interface SigningMenuProps {
 	className?: string
 	sessionHandler: () => void
+	callback: () => unknown
 }
 
 const SigningMenu: React.FC<SigningMenuProps> = ({
 	className,
 	sessionHandler,
+	callback,
 }: SigningMenuProps) => {
 	// STRINGS
 	const lang = useStrings()
 
-	// HISTORY
-	const history = useHistory()
-
 	// ALERTA DE INICIO DE SESIÓN
-	const openAdminSigning = () => showAdminSigning(lang, () => history.push(ROUTES.schedule))
+	const openAdminSigning = () => showAdminSigning(lang, callback)
 
 	return (
 		<div className={`${Style.container} ${className}`}>
