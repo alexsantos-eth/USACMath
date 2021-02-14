@@ -1,5 +1,11 @@
 /* eslint-disable no-param-reassign */
-// ASIGNAR DATOS
+
+/**
+ * Guardar datos desde formulario
+ * @param  {(credentials:UserFormProps)=>unknown} onChange
+ * @param  {React.MutableRefObject<UserFormProps>} userCredentials
+ * @returns void
+ */
 const setFieldData = (
 	onChange: (credentials: UserFormProps) => unknown,
 	userCredentials: React.MutableRefObject<UserFormProps>
@@ -8,7 +14,12 @@ const setFieldData = (
 	onChange(userCredentials.current)
 }
 
-// ENVIAR DATOS
+/**
+ * Enviar datos al formulario
+ * @param  {(credentials:UserFormProps)=>unknown} onSubmit
+ * @param  {React.MutableRefObject<UserFormProps>} userCredentials
+ * @returns void
+ */
 export const sendCredentials = (
 	onSubmit: (credentials: UserFormProps) => unknown,
 	userCredentials: React.MutableRefObject<UserFormProps>

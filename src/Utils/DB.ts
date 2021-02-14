@@ -1,6 +1,9 @@
 const globalDB: firebase.default.firestore.Firestore | null = null
 
-// COLECCIÓN
+/**
+ * Obtener cualquier collection en la DB
+ * @param  {string} col
+ */
 const getCollection = async (
 	col: string
 ): Promise<

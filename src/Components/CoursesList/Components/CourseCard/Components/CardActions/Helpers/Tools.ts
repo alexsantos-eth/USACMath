@@ -1,7 +1,13 @@
 // TYPES
 import { Es, Error } from 'Env/Strings'
 
-// COPIAR TEXTO
+/**
+ * Copiar string usando ClipboardAPI
+ * @param  {string} str
+ * @param  {Error} waitAlert
+ * @param  {Error} successAlert
+ * @returns void
+ */
 const copyString = (str: string, waitAlert: Error, successAlert: Error) => {
 	if ('clipboard' in navigator) {
 		window.Alert({ ...waitAlert, type: 'window' })
@@ -14,7 +20,12 @@ const copyString = (str: string, waitAlert: Error, successAlert: Error) => {
 	}
 }
 
-// SHARE API
+/**
+ * Usar ShareAPI con texto
+ * @param  {ShareData} data
+ * @param  {Error} waitAlert
+ * @returns void
+ */
 const shareAPI = (data: ShareData, waitAlert: Error) => {
 	if ('share' in navigator) {
 		window.Alert({ ...waitAlert, type: 'window' })
@@ -22,7 +33,12 @@ const shareAPI = (data: ShareData, waitAlert: Error) => {
 	}
 }
 
-// COMPARTIR DOCUMENTO
+/**
+ * Cambiar entre ClipboardAPI y ShareAPI cuando estén disponibles
+ * @param  {string} url
+ * @param  {Es} lang
+ * @returns void
+ */
 const shareFile = (url: string, lang: Es): void => {
 	if ('share' in navigator)
 		shareAPI({ title: lang.application.general.title, text: lang.share.text, url }, lang.share.wait)

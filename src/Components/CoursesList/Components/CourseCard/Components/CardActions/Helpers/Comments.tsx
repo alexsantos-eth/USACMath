@@ -4,7 +4,12 @@ import { Es } from 'Env/Strings'
 // COMPONENTES
 import CommentBox from '../Components/CommentBox/CommentBox'
 
-// ABRIR ALERTA DE COMENTARIOS
+/**
+ * Mostrar alerta de caja de comentarios
+ * @param lang
+ * @param id
+ * @returns void
+ */
 const showCommentAlert = (lang: Es, id: number): void => {
 	// ALERTA
 	window.Alert({

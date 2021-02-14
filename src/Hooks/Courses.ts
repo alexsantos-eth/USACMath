@@ -2,7 +2,11 @@
 import { useEffect, Dispatch, SetStateAction } from 'react'
 import getCourses from 'Utils/Courses'
 
-// OBTENER CURSOS
+/**
+ * Hook para obtener todos los cursos de la DB
+ * @param  {Dispatch<SetStateAction<CourseFile[]|null>>} setCourses
+ * @returns void
+ */
 const useCourseFiles = (setCourses: Dispatch<SetStateAction<CourseFile[] | null>>): void => {
 	useEffect(() => {
 		getCourses().then(setCourses)

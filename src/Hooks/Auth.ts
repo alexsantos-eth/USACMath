@@ -2,7 +2,11 @@
 import { useEffect } from 'react'
 import { getAuth } from 'Utils/Auth'
 
-// AUTH
+/**
+ * Este hook utiliza onAuthStateChanged en el parámetro cb
+ * @param  {(user:firebase.default.User|null)=>unknown} cb
+ * @returns {void}
+ */
 const useAuth = (cb: (user: firebase.default.User | null) => unknown): void => {
 	useEffect(() => {
 		// LEER USUARIO

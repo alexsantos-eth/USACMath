@@ -1,6 +1,10 @@
 import getCollection from './DB'
 
-// LEER DOCUMENTO DE COMENTARIO
+/**
+ * Obtener comentarios de curso en DB
+ * @param  {number} id
+ * @return Promise<firestore.Query<firestore.DocumentData>>
+ */
 const getCommentDoc = async (
 	id: number
 ): Promise<firebase.default.firestore.Query<firebase.default.firestore.DocumentData>> => {
@@ -9,7 +13,11 @@ const getCommentDoc = async (
 	return doc
 }
 
-// LEER COMENTARIOS
+/**
+ * Obtener comentarios por curso en DB
+ * @param  {number} id
+ * @returns Promise<FileComments | null>
+ */
 const readComments = async (id: number): Promise<FileComments | null> => {
 	const doc = await getCommentDoc(id)
 	const snap = await doc.get()
@@ -19,7 +27,12 @@ const readComments = async (id: number): Promise<FileComments | null> => {
 	return data[0] || null
 }
 
-// GUARDAR COMENTARIO
+/**
+ * Guardar comentarios por curso en lista en DB
+ * @param  {number} id
+ * @param  {FileComment} comment
+ * @returns Promise<void>
+ */
 export const saveComment = async (id: number, comment: FileComment): Promise<void> => {
 	// LEER COMENTARIO
 	const col = await getCollection('comments')

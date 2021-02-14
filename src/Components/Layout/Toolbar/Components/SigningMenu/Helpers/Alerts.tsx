@@ -11,7 +11,12 @@ import Spinner from '../Components/Spinner/Spinner'
 // UTILS
 import emailLoginEvent from './Auth'
 
-// MOSTRAR ALERTA DE INICIO COMO ADMIN
+/**
+ * Mostrar alerta de inicio de sesión para docentes y admins
+ * @param lang
+ * @param callback
+ * @returns void
+ */
 const showAdminSigning = (lang: Es, callback: () => unknown): void => {
 	//  DATOS
 	let credentials: UserFormProps | null = null

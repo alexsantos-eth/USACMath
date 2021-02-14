@@ -1,6 +1,12 @@
 import colors from 'Env/Globals'
 
-// CAMBIAR UN COLOR
+/**
+ * Cambiar de color global
+ * @description formato (lightMode)(DarkMode )
+ * @example color: var(--whiteDark)
+ * @param  {IColor} selectedColor
+ * @param  {boolean} dark
+ */
 const changeColor = (selectedColor: IColor, dark: boolean) => {
 	// SELECCIONAR BODY
 	const { body } = document
@@ -9,7 +15,10 @@ const changeColor = (selectedColor: IColor, dark: boolean) => {
 	body.style.setProperty(selectedColor.name, dark ? selectedColor.darkValue : selectedColor.value)
 }
 
-// CAMBIAR TODOS
+/**
+ * Cambiar estado de darkmode
+ * @returns void
+ */
 export const toggleDarkMode = (): void => {
 	// LEER VARIABLE GLOBAL
 	const darkValue: boolean = window.localStorage.getItem('darkmode') === '1'
@@ -18,8 +27,11 @@ export const toggleDarkMode = (): void => {
 	colors.forEach((color: IColor) => changeColor(color, darkValue))
 }
 
-// NORMALIZAR ENTRADAS
-
+/**
+ * Normalizar string
+ * @param  {string} str
+ * @returns string
+ */
 export const nfd = (str: string): string => {
 	return str
 		.toLowerCase()

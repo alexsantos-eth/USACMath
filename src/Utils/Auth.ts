@@ -1,8 +1,6 @@
 import AuthErrorsJSON from 'Env/auth-errors.json'
 import getCollection from './DB'
 
-// ERRORES
-
 // GLOBALES
 let globalAuth: (() => firebase.default.auth.Auth) | null = null
 let gProvider: firebase.default.auth.GoogleAuthProvider | null = null
@@ -13,6 +11,11 @@ interface AuthErrorES {
 	'auth/user-not-found': string
 }
 const authErrors: AuthErrorES = AuthErrorsJSON
+
+/**
+ * Mostrar en consola errores de auth
+ * @param  {(message:string)=>unknown} cb?
+ */
 const authErrorHandler = (cb?: (message: string) => unknown) => (
 	err: firebase.default.auth.AuthError
 ) => {
@@ -24,7 +27,10 @@ const authErrorHandler = (cb?: (message: string) => unknown) => (
 	else if (cb) cb(err.message)
 }
 
-// INSTANCIA DE AUTH
+/**
+ * Obtener objeto global Auth
+ *  @returns Promise<(() => firebase.default.auth.Auth) | null>
+ */
 export const getAuth = async (): Promise<(() => firebase.default.auth.Auth) | null> => {
 	const firebase = await import('Keys/firebase')
 	await import('firebase/auth')
@@ -43,7 +49,11 @@ export const getAuth = async (): Promise<(() => firebase.default.auth.Auth) | nu
 	return globalAuth
 }
 
-// GUARDAR USUARIO EN FIRESTORE
+/**
+ * Guardar usuario con firestore
+ * @param  {Partial<User>} userData
+ * @param  {boolean} merge?
+ */
 const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
 	// REFERENCIA
 	const col: firebase.default.firestore.CollectionReference = await getCollection('users')
@@ -54,12 +64,15 @@ const setUserFirestore = async (userData: Partial<User>, merge?: boolean) => {
 	return doc.set(userData)
 }
 
-// GUARDAR USUARIO
+/**
+ * Guardar usuario en DB
+ * @param  {'student'|'admin'|'docent'} role?
+ */
 const saveUser = (role?: 'student' | 'admin' | 'docent') => (
 	credential: firebase.default.auth.UserCredential
 ) => {
 	// VERIFICAR CREDENCIAL
-	if (credential.user?.uid && credential.user.email)
+	if (credential.user?.uid && credential.user.email && credential.additionalUserInfo?.isNewUser)
 		return setUserFirestore(
 			{
 				uid: credential.user?.uid,
@@ -74,22 +87,28 @@ const saveUser = (role?: 'student' | 'admin' | 'docent') => (
 	return null
 }
 
-// INICIAR CON GOOGLE
+/**
+ * Iniciar sesión con Google
+ * @description con scope global { hd: 'ingenieria.usac.edu.gt' } }
+ * @param  {(error:string)=>unknown} onError?
+ * @returns Promise<void>
+ */
 export const googleSigning = async (onError?: (error: string) => unknown): Promise<void> => {
 	// AUTH
 	const auth = await getAuth()
 
 	// INICIAR
 	if (auth && gProvider)
-		auth()
-			.signInWithPopup(gProvider)
-			.then((res) => {
-				if (res.credential && res.additionalUserInfo?.isNewUser) saveUser('student')(res)
-			})
-			.catch(authErrorHandler(onError))
+		auth().signInWithPopup(gProvider).then(saveUser('student')).catch(authErrorHandler(onError))
 }
 
-// INICIAR CON CORREO Y CONTRASEÑA
+/**
+ * Iniciar sesión con correo y contraseña
+ * @param  {string} email
+ * @param  {string} password
+ * @param  {(error:string)=>unknown} onError?
+ * @returns Promise<firebase.default.auth.UserCredential | void | null>
+ */
 export const emailLogin = async (
 	email: string,
 	password: string,
@@ -104,17 +123,21 @@ export const emailLogin = async (
 	return null
 }
 
-// CERRAR SESIÓN
+/**
+ * Cerrar sesión
+ * @returns Promise<void | null>
+ */
 export const logout = async (): Promise<void | null> => {
 	const auth = await getAuth()
-	window.postMessage({
-		action: 'logout',
-	})
 	if (auth) return auth().signOut()
 	return null
 }
 
-// OBTENER USUARIO
+/**
+ * Obtener usuario desde la DB
+ * @param  {string} uid?
+ * @returns Promise<User | null>
+ */
 export const getUser = async (uid?: string): Promise<User | null> => {
 	// REFERENCIA
 	const col: firebase.default.firestore.CollectionReference = await getCollection('users')

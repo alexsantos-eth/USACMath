@@ -1,7 +1,11 @@
 // REACT
 import { useEffect, Dispatch, SetStateAction } from 'react'
 
-// HOOK DE ANIMACIÓN
+/**
+ * Hook para generar widths (%) aleatorios
+ * @param  {Dispatch<SetStateAction<number[]>>} setWidths
+ * @returns void
+ */
 const useAnimatedWidth = (setWidths: Dispatch<SetStateAction<number[]>>): void => {
 	useEffect(() => {
 		// ANIMAR CADA 0.5S

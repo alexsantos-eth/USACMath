@@ -1,6 +1,12 @@
 import { saveComment } from 'Utils/Comments'
 
-// CREAR COMENTARIO
+/**
+ * Crear objeto de comentario
+ * @param  {number} id
+ * @param  {string} comment
+ * @param  {User|null} user
+ * @param Promise<FileComment | null>
+ */
 const sendComment = async (
 	id: number,
 	comment: string,
@@ -27,7 +33,14 @@ const sendComment = async (
 	return null
 }
 
-// ACTUALIZAR COMENTARIO
+/**
+ * Agregar comentario a curso
+ * @param  {number} id
+ * @param  {string} comment
+ * @param  {User|null} user
+ * @param  {React.Dispatch<React.SetStateAction<FileComments|null|undefined>>} setCommentsList
+ * @returns Promise<void>
+ */
 const addComment = async (
 	id: number,
 	comment: string,
@@ -49,7 +62,16 @@ const addComment = async (
 	)
 }
 
-// ENVIAR COMENTARIO DE FORMULARIO
+/**
+ * Guardar comentario desde formulario
+ * @param  {React.Dispatch<React.SetStateAction<boolean>>} setSubmitting
+ * @param  {React.Dispatch<React.SetStateAction<string>>} setComment
+ * @param  {number} id
+ * @param  {string} comment
+ * @param  {User|null} user
+ * @param  {React.Dispatch<React.SetStateAction<FileComments|null|undefined>>} setCommentsList
+ * @returns void
+ */
 const submitComment = (
 	setSubmitting: React.Dispatch<React.SetStateAction<boolean>>,
 	setComment: React.Dispatch<React.SetStateAction<string>>,
