@@ -4,7 +4,6 @@ import { useEffect, Dispatch, SetStateAction } from 'react'
 /**
  * Hook para generar widths (%) aleatorios
  * @param  {Dispatch<SetStateAction<number[]>>} setWidths
- * @returns void
  */
 const useAnimatedWidth = (setWidths: Dispatch<SetStateAction<number[]>>): void => {
 	useEffect(() => {

@@ -11,7 +11,6 @@ import { Es } from 'Env/Strings'
 
 /**
  * Hook para utilizar los strings globales
- * @returns Es
  */
 export const useStrings = (): Es => {
 	const { lang } = useContext(StringsContext)
@@ -30,7 +29,6 @@ export const useLangCode = (): string => {
 /**
  * Hook para utilizar el darkmode
  * @description true si esta en darkmode o false si es lightode
- * @returns boolean
  */
 export const useDarkmode = (): boolean => {
 	const { darkmode } = useContext(DarkModeContext)
@@ -39,7 +37,6 @@ export const useDarkmode = (): boolean => {
 
 /**
  * Hook para cambiar el darkmode
- * @returns (darkmode: boolean) => void)
  */
 export const useSetDarkmode = (): ((darkmode: boolean) => void) => {
 	const { setDarkmode } = useContext(DarkModeContext)
@@ -48,7 +45,6 @@ export const useSetDarkmode = (): ((darkmode: boolean) => void) => {
 
 /**
  * Hook para utilizar los datos del usuario
- * @returns User | null
  */
 export const useUser = (): User | null => {
 	const { user } = useContext(AuthContext)

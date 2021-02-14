@@ -5,7 +5,7 @@ import getCourses from 'Utils/Courses'
 /**
  * Hook para obtener todos los cursos de la DB
  * @param  {Dispatch<SetStateAction<CourseFile[]|null>>} setCourses
- * @returns void
+
  */
 const useCourseFiles = (setCourses: Dispatch<SetStateAction<CourseFile[] | null>>): void => {
 	useEffect(() => {

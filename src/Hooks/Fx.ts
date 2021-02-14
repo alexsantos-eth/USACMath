@@ -7,7 +7,6 @@ import { toggleDarkMode } from 'Utils/Tools'
 /**
  * Hook para cargar datos iniciales del darkmode
  * @param  {(darkMode:boolean)=>unknown} setState
- * @returns void
  */
 export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown): void =>
 	useEffect(() => {
@@ -26,7 +25,6 @@ export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown): void 
 /**
  * Usar meta tag de títulos
  * @param  {string} title
- * @returns void
  */
 export const useMetaTitle = (title: string): void => {
 	useEffect(() => {

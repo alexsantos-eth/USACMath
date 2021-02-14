@@ -5,7 +5,6 @@ import { googleSigning, logout } from 'Utils/Auth'
  * Cierra o inicia sesión
  * @param  {User|null} user
  * @param  {Es} lang
- * @returns void
  */
 const handleUserSession = (user: User | null, lang: Es): void => {
 	if (user)

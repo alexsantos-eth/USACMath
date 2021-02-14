@@ -15,7 +15,6 @@ import emailLoginEvent from './Auth'
  * Mostrar alerta de inicio de sesión para docentes y admins
  * @param lang
  * @param callback
- * @returns void
  */
 const showAdminSigning = (lang: Es, callback: () => unknown): void => {
 	//  DATOS

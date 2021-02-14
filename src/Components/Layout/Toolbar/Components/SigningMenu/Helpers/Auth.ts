@@ -4,7 +4,6 @@ import { emailLogin } from 'Utils/Auth'
  * Evento para iniciar con correo
  * @param  {UserFormProps} credentials
  * @param  {(error:string)=>unknown} onError?
- * @returns Promise<firebase.default.auth.UserCredential | void | null>
  */
 const emailLoginEvent = async (
 	credentials: UserFormProps,

@@ -29,7 +29,6 @@ const authErrorHandler = (cb?: (message: string) => unknown) => (
 
 /**
  * Obtener objeto global Auth
- *  @returns Promise<(() => firebase.default.auth.Auth) | null>
  */
 export const getAuth = async (): Promise<(() => firebase.default.auth.Auth) | null> => {
 	const firebase = await import('Keys/firebase')
@@ -91,7 +90,6 @@ const saveUser = (role?: 'student' | 'admin' | 'docent') => (
  * Iniciar sesión con Google
  * @description con scope global { hd: 'ingenieria.usac.edu.gt' } }
  * @param  {(error:string)=>unknown} onError?
- * @returns Promise<void>
  */
 export const googleSigning = async (onError?: (error: string) => unknown): Promise<void> => {
 	// AUTH
@@ -107,7 +105,6 @@ export const googleSigning = async (onError?: (error: string) => unknown): Promi
  * @param  {string} email
  * @param  {string} password
  * @param  {(error:string)=>unknown} onError?
- * @returns Promise<firebase.default.auth.UserCredential | void | null>
  */
 export const emailLogin = async (
 	email: string,
@@ -125,7 +122,6 @@ export const emailLogin = async (
 
 /**
  * Cerrar sesión
- * @returns Promise<void | null>
  */
 export const logout = async (): Promise<void | null> => {
 	const auth = await getAuth()
@@ -136,7 +132,6 @@ export const logout = async (): Promise<void | null> => {
 /**
  * Obtener usuario desde la DB
  * @param  {string} uid?
- * @returns Promise<User | null>
  */
 export const getUser = async (uid?: string): Promise<User | null> => {
 	// REFERENCIA

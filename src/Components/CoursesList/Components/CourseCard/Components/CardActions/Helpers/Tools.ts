@@ -6,7 +6,6 @@ import { Es, Error } from 'Env/Strings'
  * @param  {string} str
  * @param  {Error} waitAlert
  * @param  {Error} successAlert
- * @returns void
  */
 const copyString = (str: string, waitAlert: Error, successAlert: Error) => {
 	if ('clipboard' in navigator) {
@@ -24,7 +23,6 @@ const copyString = (str: string, waitAlert: Error, successAlert: Error) => {
  * Usar ShareAPI con texto
  * @param  {ShareData} data
  * @param  {Error} waitAlert
- * @returns void
  */
 const shareAPI = (data: ShareData, waitAlert: Error) => {
 	if ('share' in navigator) {
@@ -37,7 +35,6 @@ const shareAPI = (data: ShareData, waitAlert: Error) => {
  * Cambiar entre ClipboardAPI y ShareAPI cuando estén disponibles
  * @param  {string} url
  * @param  {Es} lang
- * @returns void
  */
 const shareFile = (url: string, lang: Es): void => {
 	if ('share' in navigator)

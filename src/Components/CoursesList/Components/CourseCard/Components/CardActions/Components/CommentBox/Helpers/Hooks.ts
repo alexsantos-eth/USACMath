@@ -8,7 +8,6 @@ import readComments from 'Utils/Comments'
  * Hook para comentarios desde de DB
  * @param  {number} id
  * @param  {React.Dispatch<React.SetStateAction<FileComments|null|undefined>>} setComments
- * @returns void
  */
 const useComments = (
 	id: number,

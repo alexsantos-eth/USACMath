@@ -17,7 +17,6 @@ const changeColor = (selectedColor: IColor, dark: boolean) => {
 
 /**
  * Cambiar estado de darkmode
- * @returns void
  */
 export const toggleDarkMode = (): void => {
 	// LEER VARIABLE GLOBAL
@@ -30,7 +29,6 @@ export const toggleDarkMode = (): void => {
 /**
  * Normalizar string
  * @param  {string} str
- * @returns string
  */
 export const nfd = (str: string): string => {
 	return str

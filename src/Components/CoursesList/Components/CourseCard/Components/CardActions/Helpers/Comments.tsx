@@ -8,7 +8,6 @@ import CommentBox from '../Components/CommentBox/CommentBox'
  * Mostrar alerta de caja de comentarios
  * @param lang
  * @param id
- * @returns void
  */
 const showCommentAlert = (lang: Es, id: number): void => {
 	// ALERTA

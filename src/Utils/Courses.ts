@@ -3,7 +3,6 @@ import getCollection from './DB'
 
 /**
  * Obtener lista de cursos en DB
- * @returns Promise<CourseFile[] | null>
  */
 const getCourses = async (): Promise<CourseFile[] | null> => {
 	const coursesCol = await getCollection('files')

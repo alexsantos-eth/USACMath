@@ -6,7 +6,6 @@ import { useEffect } from 'react'
  * @param  {React.MutableRefObject<boolean>} recentLogged
  * @param  {User|null} user
  * @param  {(role:string)=>unknown} callback
- * @returns void
  */
 const useUserRoleListener = (
 	recentLogged: React.MutableRefObject<boolean>,

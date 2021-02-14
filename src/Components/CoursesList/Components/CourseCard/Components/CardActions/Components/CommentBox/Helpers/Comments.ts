@@ -39,7 +39,6 @@ const sendComment = async (
  * @param  {string} comment
  * @param  {User|null} user
  * @param  {React.Dispatch<React.SetStateAction<FileComments|null|undefined>>} setCommentsList
- * @returns Promise<void>
  */
 const addComment = async (
 	id: number,
@@ -70,7 +69,6 @@ const addComment = async (
  * @param  {string} comment
  * @param  {User|null} user
  * @param  {React.Dispatch<React.SetStateAction<FileComments|null|undefined>>} setCommentsList
- * @returns void
  */
 const submitComment = (
 	setSubmitting: React.Dispatch<React.SetStateAction<boolean>>,

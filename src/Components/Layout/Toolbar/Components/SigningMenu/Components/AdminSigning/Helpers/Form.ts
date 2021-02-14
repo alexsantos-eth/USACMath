@@ -4,7 +4,6 @@
  * Guardar datos desde formulario
  * @param  {(credentials:UserFormProps)=>unknown} onChange
  * @param  {React.MutableRefObject<UserFormProps>} userCredentials
- * @returns void
  */
 const setFieldData = (
 	onChange: (credentials: UserFormProps) => unknown,
@@ -18,7 +17,6 @@ const setFieldData = (
  * Enviar datos al formulario
  * @param  {(credentials:UserFormProps)=>unknown} onSubmit
  * @param  {React.MutableRefObject<UserFormProps>} userCredentials
- * @returns void
  */
 export const sendCredentials = (
 	onSubmit: (credentials: UserFormProps) => unknown,

@@ -16,7 +16,6 @@ const getCommentDoc = async (
 /**
  * Obtener comentarios por curso en DB
  * @param  {number} id
- * @returns Promise<FileComments | null>
  */
 const readComments = async (id: number): Promise<FileComments | null> => {
 	const doc = await getCommentDoc(id)
@@ -31,7 +30,6 @@ const readComments = async (id: number): Promise<FileComments | null> => {
  * Guardar comentarios por curso en lista en DB
  * @param  {number} id
  * @param  {FileComment} comment
- * @returns Promise<void>
  */
 export const saveComment = async (id: number, comment: FileComment): Promise<void> => {
 	// LEER COMENTARIO
