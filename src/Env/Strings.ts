@@ -70,9 +70,16 @@ export interface Login {
     title:       string;
     inputs:      string[];
     helpers:     string[];
+    wait:        Error;
+    error:       Error;
     text:        string;
     logoutTitle: string;
     logoutText:  string;
+}
+
+export interface Error {
+    title: string;
+    body:  string;
 }
 
 export interface Rights {
@@ -86,13 +93,8 @@ export interface Schedule {
 
 export interface Share {
     text:    string;
-    wait:    Success;
-    success: Success;
-}
-
-export interface Success {
-    title: string;
-    body:  string;
+    wait:    Error;
+    success: Error;
 }
 
 export interface Toast {

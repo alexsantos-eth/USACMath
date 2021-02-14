@@ -9,31 +9,43 @@ import AuthContext from 'Context/Auth'
 // TYPES
 import { Es } from 'Env/Strings'
 
-// STRINGS
+/**
+ * Hook para utilizar los strings globales
+ */
 export const useStrings = (): Es => {
 	const { lang } = useContext(StringsContext)
 	return lang
 }
 
-// STRINGS
+/**
+ * Hook para utilizar el código de idioma
+ * @returns 'es' | 'en'
+ */
 export const useLangCode = (): string => {
 	const { langCode } = useContext(StringsContext)
 	return langCode
 }
 
-// DARKMODE
+/**
+ * Hook para utilizar el darkmode
+ * @description true si esta en darkmode o false si es lightode
+ */
 export const useDarkmode = (): boolean => {
 	const { darkmode } = useContext(DarkModeContext)
 	return darkmode
 }
 
-// DARKMODE
+/**
+ * Hook para cambiar el darkmode
+ */
 export const useSetDarkmode = (): ((darkmode: boolean) => void) => {
 	const { setDarkmode } = useContext(DarkModeContext)
 	return setDarkmode
 }
 
-// USER
+/**
+ * Hook para utilizar los datos del usuario
+ */
 export const useUser = (): User | null => {
 	const { user } = useContext(AuthContext)
 	return user

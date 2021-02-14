@@ -4,26 +4,28 @@ import React from 'react'
 // HOOKS
 import { useStrings } from 'Hooks/Context'
 
-// ESTILOS
-import Style from './SigningMenu.module.scss'
-
 // TOOLS
 import showAdminSigning from './Helpers/Alerts'
+
+// ESTILOS
+import Style from './SigningMenu.module.scss'
 
 interface SigningMenuProps {
 	className?: string
 	sessionHandler: () => void
+	callback: () => unknown
 }
 
 const SigningMenu: React.FC<SigningMenuProps> = ({
 	className,
 	sessionHandler,
+	callback,
 }: SigningMenuProps) => {
 	// STRINGS
 	const lang = useStrings()
 
 	// ALERTA DE INICIO DE SESIÓN
-	const openAdminSigning = () => showAdminSigning(lang)
+	const openAdminSigning = () => showAdminSigning(lang, callback)
 
 	return (
 		<div className={`${Style.container} ${className}`}>

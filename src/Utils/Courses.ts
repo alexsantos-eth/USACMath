@@ -1,7 +1,9 @@
 // BASE DE DATOS
 import getCollection from './DB'
 
-// OBTENER CURSOS
+/**
+ * Obtener lista de cursos en DB
+ */
 const getCourses = async (): Promise<CourseFile[] | null> => {
 	const coursesCol = await getCollection('files')
 	const coursesDoc = coursesCol.doc('documents')

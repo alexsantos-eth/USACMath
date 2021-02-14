@@ -1,7 +1,11 @@
 import { Es } from 'Env/Strings'
 import { googleSigning, logout } from 'Utils/Auth'
 
-// INICIAR/CERRAR SESIÓN
+/**
+ * Cierra o inicia sesión
+ * @param  {User|null} user
+ * @param  {Es} lang
+ */
 const handleUserSession = (user: User | null, lang: Es): void => {
 	if (user)
 		window.Alert({

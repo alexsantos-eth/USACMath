@@ -46,6 +46,7 @@ module.exports = {
 				allow: ['warn', 'error'],
 			},
 		],
+		'no-return-assign': 'off',
 		'multiline-ternary': 0,
 		'no-unused-vars': 'off',
 		'no-shadow': 1,

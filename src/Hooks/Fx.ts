@@ -4,7 +4,10 @@ import { useEffect } from 'react'
 // TOOLS
 import { toggleDarkMode } from 'Utils/Tools'
 
-// DARK MODE
+/**
+ * Hook para cargar datos iniciales del darkmode
+ * @param  {(darkMode:boolean)=>unknown} setState
+ */
 export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown): void =>
 	useEffect(() => {
 		// OBTENER VALOR ACTUAL
@@ -19,7 +22,10 @@ export const useLoadDarkmode = (setState: (darkMode: boolean) => unknown): void 
 		setState(currentDark)
 	}, [setState])
 
-// USAR TITULO Y DESCRIPCIÓN
+/**
+ * Usar meta tag de títulos
+ * @param  {string} title
+ */
 export const useMetaTitle = (title: string): void => {
 	useEffect(() => {
 		// ASIGNAR
